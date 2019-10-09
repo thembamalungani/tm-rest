@@ -42,6 +42,6 @@ public class DownloadedInfoPackMapper extends BaseLeadMapper {
      */
     public virtual GDPR parseGDPR() {
 
-        return super.parseGDPR()
+        return super.parseGDPR();
     }
 }

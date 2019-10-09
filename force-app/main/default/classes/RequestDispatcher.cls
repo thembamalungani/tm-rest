@@ -52,7 +52,7 @@ public class RequestDispatcher implements IRestDispatcher {
      * @param Type type
      * @return IHttpResponse
      */
-    private HttpResponse handleSync(Type type) {
+    private HttpResponse handleSync(Type type,  HttpRequest request) {
 
         IHttpMethodHandler handler = (IHttpMethodHandler) type.newInstance();
 
@@ -74,6 +74,6 @@ public class RequestDispatcher implements IRestDispatcher {
 
         System.enqueueJob(handler);
 
-        return HttpResponse.accepted();
+        return HttpResponse.accepted('test');
     } 
 }

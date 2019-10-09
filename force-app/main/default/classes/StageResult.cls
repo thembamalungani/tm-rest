@@ -15,6 +15,11 @@ public class StageResult {
         this.stageCase = builder.case;
     }
 
+    public static builder() {
+
+        return new StageResult.Builder();
+    }
+
     /**
      * Converts the object to a map
      *

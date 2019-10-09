@@ -23,7 +23,7 @@ public virtual class BaseLead implements IMappable {
     /**
      * Instatiate a new lead from a json parser instance
      */
-    public override IMappable fromMapper(ILeadMapper mapper) {
+    public IMappable fromMapper(ILeadMapper mapper) {
 
         this.contactDetails = mapper.mapContactDetails();
         this.tracking = mapper.mapTracking();

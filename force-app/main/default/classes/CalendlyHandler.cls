@@ -1,4 +1,4 @@
-public with sharing class CalendlyHandler {
+public class CalendlyHandler {
     
     private Object result;
 
