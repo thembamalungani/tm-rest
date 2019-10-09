@@ -67,7 +67,7 @@ public class RequestDispatcher implements IRestDispatcher {
      */
     private HttpResponse handleAsync(Type type) {
 
-        IAsyncHttpRequestHandler handler = (IAsyncHttpRequestHandler) Application.Component.newInstance(IAsyncHttpRequestHandler.class);
+        AsyncHttpRequestHandler handler = (AsyncHttpRequestHandler) Application.Component.newInstance(IAsyncHttpRequestHandler.class);
         
         handler.setRequest(request);
         handler.setType(type);

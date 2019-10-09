@@ -9,9 +9,16 @@ public class Application {
         new Application.ComponentFactory(
             new Map<Type, Type> {
                 IRestDispatcher.class => RequestDispatcher.class,
-                IAsyncHttpRequestHandler.class => AsyncHttpRequestHandler.class,
+                AsyncHttpRequestHandler.class => AsyncHttpRequestHandler.class,
                 ILeadBatchParser.class => LeadBatchParser.class,
                 IAsyncLeadHandler.class => AsyncLeadHandler.class
+            }
+        );
+    
+    public static final Application.SelectorFactory Selector = 
+        new Application.SelectorFactory(
+            new Map<Type, Type> {
+                IAccountSelector.class => AccountSelector.class
             }
         );
     
@@ -159,7 +166,7 @@ public class Application {
          *
          * @param Map<Type, Type> handleMapping
          */
-        public LeadHandlerFactory(Map<Type, Type> handleMapping) {
+        public LeadHandlerFactory(Map<LeadType, Type> handleMapping) {
 
             this.handleMapping = handleMapping;
         }

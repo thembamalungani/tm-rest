@@ -12,4 +12,11 @@ public interface ILeadHandler {
      * @return Object
      */
     Object handle(BaseLead lead);
+
+    /**
+     * Determines if the lead was handle successfully
+     *
+     * @return Boolean
+     */
+    Boolean isSuccess();
 }

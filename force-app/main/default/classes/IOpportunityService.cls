@@ -1,5 +1,4 @@
-public with sharing class IOpportunityService {
-    public IOpportunityService() {
-
-    }
+public interface IOpportunityService {
+    
+    Object create(BaseLead lead, Account account);
 }
