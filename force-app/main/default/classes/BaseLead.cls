@@ -8,17 +8,17 @@ public virtual class BaseLead implements IMappable {
     /**
      * @param ContactDetails contactDetails
      */
-    public final ContactDetails contactDetails;
+    public ContactDetails contactDetails;
 
     /**
      * @param Tracking tracking
      */
-    public final Tracking tracking;
+    public Tracking tracking;
 
     /**
      * @param GDPR gdpr
      */
-    public final GDPR gdpr;
+    public GDPR gdpr;
 
     /**
      * Instatiate a new lead from a json parser instance
