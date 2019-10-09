@@ -1,0 +1,25 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description This is the factory class which is used to create lead objects
+ * @date 2019-10-01
+ */
+public virtual class BaseLeadFactory implements ILeadFactory {
+
+    /**
+     * Create a lead instance from a lead map
+     *
+     * @param Map<String, Object> leadMap
+     * @throws UnsupportedLeadTypeException
+     * @return BaseLead
+     */
+    public BaseLead createFrom(Map<String, Object> leadMap) {
+        
+        LeadType type = (ILeadTypeChecker) Application.Component.newInstance(ILeadTypeChecker.class);
+        IMappable model = (IMappable) Application.Model.newInstance(type);
+        ILeadMapper mapper = (ILeadMapper) Application.LeadMapper.newInstance(type);
+
+        mapper.setLeadMap(leadMap);
+
+        return model.fromMapper(mapper);
+    }
+}
