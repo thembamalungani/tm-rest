@@ -27,7 +27,7 @@ public class LeadTypeChecker implements ILeadTypeChecker {
      * @param Map<String, Object> leadMap
      * @return String
      */
-    public override LeadType check(Map<String, Object> leadMap) {
+    public LeadType check(Map<String, Object> leadMap) {
         
         String type = (String)leadMap.get('leadCaptureFormType');
 

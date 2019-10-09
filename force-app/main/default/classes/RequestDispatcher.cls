@@ -8,9 +8,9 @@ public class RequestDispatcher implements IRestDispatcher {
     /**
      * Dispatch the request to be handled asynchronously
      *
-     * @param Type handler
+     * @param IHttpMethodHandler handler
      */
-    public Object dispatch(Type type) {
+    public Object dispatch(IHttpMethodHandler type) {
 
         return process(type, true);
     }
@@ -18,10 +18,10 @@ public class RequestDispatcher implements IRestDispatcher {
     /**
      * Dispatch the request to be handled synchronously
      *
-     * @param Type type
+     * @param IHttpMethodHandler type
      * @return Object
      */
-    Object dispatchNow(Type type) {
+    public Object dispatchNow(IHttpMethodHandler type) {
 
         return process(type, false);
     }

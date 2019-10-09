@@ -1,15 +1,54 @@
 public class HttpResponse {
     
+    private String body;
+    private Integer statusCode;
+
+    public HttpResponse(HttpResponse.Builder builder) {
+
+        this.body = builder.body;
+        this.statusCode = builder.statusCode;
+    }
+
+    public static HttpResponse builder() {
+
+        return new HttpResponse.Builder();
+    }
+
+    public class Builder {
+
+        public String body;
+        public Integer statusCode;
+
+        public static HttpResponse build() {
+
+            return new HttpResponse(this);
+        }
+
+        public Builder statusCode(Integer statusCode) {
+
+            this.statusCode = statusCode;
+
+            return this;
+        }
+
+        public Builder body(String body) {
+
+            this.body = body;
+
+            return this;
+        }
+    }
+
     /**
     * Return a 202 status code with http accepted
     *
     * @return IHttpResponse
     */
-   public static HttpResponse accepted() {
+   public static HttpResponse accepted(String body) {
 
        return HttpResponse.builder()
-                    .statusCode()
-                    .body()
+                    .statusCode(202)
+                    .body(body)
                 .build();
    }
 
@@ -18,11 +57,11 @@ public class HttpResponse {
     *
     * @return IHttpResponse
     */
-   public static HttpResponse badRequest() {
+   public static HttpResponse badRequest(String body) {
 
        return HttpResponse.builder()
-                    .statusCode()
-                    .body()
+                    .statusCode(400)
+                    .body(body)
                 .build();
    }
 }

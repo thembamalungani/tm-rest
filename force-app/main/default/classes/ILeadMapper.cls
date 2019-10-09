@@ -15,21 +15,21 @@ public interface ILeadMapper {
     /**
      * Map contact details
      * 
-     * @return ContactDetails
+     * @return BaseLead.ContactDetails
      */
-    ContactDetails mapContactDetails();
+    BaseLead.ContactDetails mapContactDetails();
 
     /**
      * Map tracking details
      *
-     * @return Tracking
+     * @return BaseLead.Tracking
      */
-    Tracking mapTracking();
+    BaseLead.Tracking mapTracking();
 
     /**
      * Map gdpr details
      *
-     * @return GDPR
+     * @return BaseLead.GDPR
      */
-    GDPR mapGDPR();
+    BaseLead.GDPR mapGDPR();
 }

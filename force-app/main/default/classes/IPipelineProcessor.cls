@@ -10,7 +10,7 @@ public interface IPipelineProcessor {
      *
      * @param Object payload
      * @param List<IPipelineStage> stages
-     * @return IStageResult
+     * @return Object
      */
-    IStageResult process(Object payload, List<IPipelineStage> stages);
+    Object process(Object payload, List<IPipelineStage> stages);
 }

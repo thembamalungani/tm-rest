@@ -11,7 +11,7 @@ public interface IAccountService {
      * @param Map<String, String> parameters
      * @return Account
      */
-    Account _create(Map<String, String> parameters);
+    Account createAccount(Map<String, String> parameters);
 
     /**
      * Updates account with passed id with the parameters
@@ -20,7 +20,7 @@ public interface IAccountService {
      * @param Map<String, String> parameters
      * @return Account
      */
-    Account _update(Id accountId, Map<String, String> parameters);
+    Account updateAccount(Id accountId, Map<String, String> parameters);
 
     /**
      * Finds a account with the passed email

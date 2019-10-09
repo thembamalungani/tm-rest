@@ -8,10 +8,10 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
     /**
      * Handles create leads
      *
-     * @param IHttpRequest request
-     * @return IHttpResponse
+     * @param HttpRequest request
+     * @return HttpRequest
      */
-    public IHttpResponse handle(IHttpRequest request) {
+    public HttpResponse handle(HttpRequest request) {
 
         Boolean isQueued;
 
@@ -27,6 +27,14 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
         }
 
         return response(isQueued);
+    }
+
+    public void fail(HttpRequest request, HttpResponse response) {
+
+    }
+
+    public void complete(HttpRequest request, HttpResponse response) {
+
     }
 
     /**

@@ -5,8 +5,8 @@
  */
 public class Application {
     
-    public static final LeadsApplication.ComponentFactory Component = 
-        new LeadsApplication.ComponentFactory(
+    public static final Application.ComponentFactory Component = 
+        new Application.ComponentFactory(
             new Map<Type, Type> {
                 IRestDispatcher.class => RequestDispatcher.class,
                 IAsyncHttpRequestHandler.class => AsyncHttpRequestHandler.class,
@@ -15,8 +15,8 @@ public class Application {
             }
         );
     
-    public static final LeadsApplication.LeadProcessPipelineFactory LeadHandler = 
-        new LeadsApplication.LeadProcessPipelineFactory(
+    public static final Application.LeadProcessPipelineFactory LeadHandler = 
+        new Application.LeadProcessPipelineFactory(
             new Map<LeadType, Type> {
                 LeadType.DOWNLOADED_INFO_PACK => DownloadedInfoPackHandler.class,
                 LeadType.REQUESTED_A_CALL => RequestedACallHandler.class,
@@ -26,8 +26,8 @@ public class Application {
             }
         );
 
-    public static final LeadsApplication.LeadMapperFactory LeadMapper = 
-        new LeadsApplication.LeadMapperFactory(
+    public static final Application.LeadMapperFactory LeadMapper = 
+        new Application.LeadMapperFactory(
             new Map<LeadType, Type> {
                 LeadType.DOWNLOADED_INFO_PACK => DownloadedInfoPackMapper.class,
                 LeadType.REQUESTED_A_CALL => RequestedACallMapper.class,
@@ -37,15 +37,15 @@ public class Application {
             }
         );
 
-    public static final LeadsApplication.LeadMapperFactory Selector = 
-        new LeadsApplication.Selector(
+    public static final Application.LeadMapperFactory Selector = 
+        new Application.Selector(
             new Map<ISelector, Type> {
                 IAccountSelector.class => AccountSelector.class
             }
         );
 
-    public static final LeadsApplication.ServiceFactory Service = 
-        new LeadsApplication.ServiceFactory(
+    public static final Application.ServiceFactory Service = 
+        new Application.ServiceFactory(
             new Map<Type, Type> {
                 IAccountService.class => AccountService.class,
                 IOpportunityService.class => OpportunityService.class,

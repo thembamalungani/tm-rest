@@ -11,7 +11,7 @@ public with sharing class AccountService implements IAccountService {
      * @param Map<String, String> parameters
      * @return Account
      */
-    public Account _create(Map<String, String> parameters){
+    public Account createAccount(Map<String, String> parameters){
         
         Account account = fromParameters(parameters);
 
@@ -30,7 +30,7 @@ public with sharing class AccountService implements IAccountService {
      * @param ISpecification specification
      * @return Account
      */
-    public Account _update(Id accountId, Map<String, String> parameters){
+    public Account updateAccount(Id accountId, Map<String, String> parameters){
         
         Account account = this.accountSelector.find(accountId);
 

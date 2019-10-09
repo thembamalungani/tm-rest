@@ -38,8 +38,19 @@ public class Pipeline implements IPipeline {
      * @param BaseLead lead
      * @return Object
      */
-    Object process(Object lead) {
+    public Object process(Object lead) {
 
         return this.processor.process(lead, this.stages);
+    }
+
+    /**
+     * Add the stage to the pipeline
+     *
+     * @param IPipelineStage stage
+     * @return IPipeline
+     */
+    public IPipeline pipe(IPipelineStage stage) {
+
+        this.stages.add(stage);
     }
 }

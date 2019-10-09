@@ -2,9 +2,9 @@ public class StageResult {
     
     private BaseLead lead;
     private Boolean isSuccess;
-    private Account account;
-    private Opportunity opportunity;
-    private Case case;
+    private Account stageAccount;
+    private Opportunity stageOpportunity;
+    private Case stageCase;
 
     public StageResult(StageResult.Builer builder) {
 
@@ -25,9 +25,9 @@ public class StageResult {
         return new Map<String, Object>{
             'lead'          => lead,
             'isSuccess'     => isSuccess,
-            'account'       => account,
-            'opportunity'   => opportunity,
-            'case'          => case
+            'account'       => stageAccount,
+            'opportunity'   => stageOpportunity,
+            'case'          => stageCase
         };
     }
 
@@ -35,9 +35,9 @@ public class StageResult {
 
         public BaseLead lead;
         public Boolean isSuccess;
-        public Account account;
-        public Opportunity opportunity;
-        public Case case;
+        public Account stageAccount;
+        public Opportunity stageOpportunity;
+        public Case stageCase;
 
         public StageResult build() {
 
@@ -53,28 +53,28 @@ public class StageResult {
 
         public StageResult.Builer lead(BaseLead lead) {
 
-            this.lead = baseLead;
+            this.lead = lead;
 
             return this;
         }
 
         public StageResult.Builer account(Account account) {
 
-            this.lead = baseLead;
+            this.stageAccount = account;
 
             return this;
         }
 
         public StageResult.Builer opportunity(Opportunity opportunity) {
 
-            this.opportunity = opportunity;
+            this.stageOpportunity = opportunity;
 
             return this;
         }
 
         public StageResult.Builer case(Case case) {
 
-            this.case = case;
+            this.stageCase = case;
 
             return this;
         }

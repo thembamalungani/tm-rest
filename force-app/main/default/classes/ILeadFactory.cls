@@ -6,5 +6,4 @@
 public interface ILeadFactory {
 
     BaseLead createFrom(Map<String, Object> leadMap);
-    void setTypeChecker(ILeadTypeChecker typeChecker);
 }

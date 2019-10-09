@@ -23,9 +23,9 @@ public class CreateAccountStage implements IPipelineStage {
      * Called when the stage is run
      * 
      * @param Object payload
-     * @return IStageResult
+     * @return Object
      */
-    public IStageResult call(Object payload) {
+    public Object call(Object payload) {
 
         Map<String, Object> payloadMap = (Map<String, Object>) payload;
         BaseLead lead = (BaseLead) payloadMap.get('lead');

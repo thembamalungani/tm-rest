@@ -21,13 +21,23 @@ public virtual class BaseLeadMapper implements ILeadMapper {
     }
 
     /**
+     * Used to set the json to be parsed
+     *
+     * @param Map<String, Object> leadMap
+     */
+    public void setMap(Map<String, Object> leadMap) {
+
+        this.leadMap = leadMap;
+    }
+
+    /**
      * Parses the contect details from leadMap
      *
      * @return ContactDetails
      */
     public virtual ContactDetails parserContactDetails() {
 
-        ContactDetails contectDetails = new ContactDetails();
+        BaseLead.ContactDetails contectDetails = new BaseLead.ContactDetails();
 
         return contectDetails;
     }
@@ -39,7 +49,7 @@ public virtual class BaseLeadMapper implements ILeadMapper {
      */
     public virtual Tracking parserTracking() {
 
-        Tracking tracking = new Tracking();
+        BaseLead.Tracking tracking = new BaseLead.Tracking();
 
         return tracking;
     }
@@ -51,7 +61,7 @@ public virtual class BaseLeadMapper implements ILeadMapper {
      */
     public virtual GDPR parseGDPR() {
 
-        GDPR gdpr = new GDPR();
+        BaseLead.GDPR gdpr = new BaseLead.GDPR();
 
         return gdpr;
     }

@@ -19,12 +19,12 @@ public virtual class LeadBatchParser implements ILeadBatchParser {
      */
     protected ILeadFactory factory;
 
-    /**
+    /**ILeadMapperFactory
      * Pass the json to be parsed
      */
     public LeadBatchParser() {
 
-        this.factory = (ILeadFactory) Application.Component.newInstance(ILeadMapperFactory.class);
+        this.factory = (ILeadFactory) Application.Component.newInstance(ILeadFactory.class);
     }
 
     /**
@@ -36,7 +36,7 @@ public virtual class LeadBatchParser implements ILeadBatchParser {
         
         List<BaseLead> leads = new List<BaseLead>();
 
-        List<Object> events = (List<Object>) JSON.deserializeUntyped(json);
+        List<Object> events = (List<Map<String, Object>>) JSON.deserializeUntyped(json);
 
         for(Object event: events) {
 

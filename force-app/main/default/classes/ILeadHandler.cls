@@ -9,7 +9,7 @@ public interface ILeadHandler {
      * Handles the lead and return handle results
      *
      * @param BaseLead leads
-     * @return BaseLead
+     * @return Object
      */
-    HandleResult handle(BaseLead lead);
+    Object handle(BaseLead lead);
 }
