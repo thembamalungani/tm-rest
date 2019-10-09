@@ -60,7 +60,7 @@ public class CreateOpportunityStage implements IPipelineStage {
         return StageResult.builder()
                 .lead(lead)
                 .stageAccount(account)
-                .stageOpportunity(opportunity)
+                .stageOpportunityp(opportunity)
                 .build()
                 .toMap();
     }

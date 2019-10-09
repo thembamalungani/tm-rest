@@ -15,13 +15,6 @@ public class Application {
             }
         );
     
-    public static final Application.SelectorFactory Selector = 
-        new Application.SelectorFactory(
-            new Map<Type, Type> {
-                IAccountSelector.class => AccountSelector.class
-            }
-        );
-    
     public static final Application.LeadHandlerFactory LeadHandler = 
         new Application.LeadHandlerFactory(
             new Map<LeadType, Type> {
@@ -209,9 +202,9 @@ public class Application {
          *
          * @param Map<Type, Type> serviceImplementation
          */
-        public ServiceFactory(Map<Type, Type> serviceImplementation) {
+        public ServiceFactory(Map<Type, Type> serviceImplementationMapping) {
 
-            this.serviceImplementation = serviceImplementation;
+            this.serviceImplementationMapping = serviceImplementationMapping;
         }
 
         /**

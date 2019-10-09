@@ -21,12 +21,4 @@ public interface IAccountService {
      * @return Account
      */
     Account updateAccount(Id accountId, Map<String, String> parameters);
-
-    /**
-     * Finds a account with the passed email
-     *
-     * @param String email
-     * @return Account
-     */
-    Account findByEmail(String email);
 }
