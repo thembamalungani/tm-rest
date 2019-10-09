@@ -28,9 +28,9 @@ public class SubmittedRegistrationStep1Mapper extends BaseLeadMapper {
     /**
      * Parses tracking info from leadMap
      *
-     * @param Tracking
+     * @param BaseLead.Tracking
      */
-    public override Tracking parserTracking() {
+    public override BaseLead.Tracking parserTracking() {
 
         return super.parserTracking();
     }
@@ -38,9 +38,9 @@ public class SubmittedRegistrationStep1Mapper extends BaseLeadMapper {
     /**
      * Parses the GDRP data from leadMap
      *
-     * @param GDPR
+     * @param BaseLead.GDPR
      */
-    public override GDPR parseGDPR() {
+    public override BaseLead.GDPR parseGDPR() {
 
         return super.parseGDPR();
     }

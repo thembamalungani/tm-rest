@@ -74,9 +74,8 @@ public class CreateAccountStage implements IPipelineStage {
     private Object response(BaseLead lead, Account account) {
 
         return StageResult.builder()
-                .status(isSuccess)
                 .lead(lead)
-                .account(account)
+                .stageAccount(account)
                 .build()
                 .toMap();
     }

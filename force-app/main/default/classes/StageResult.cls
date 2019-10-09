@@ -15,7 +15,7 @@ public class StageResult {
         this.stageCase = builder.stageCase;
     }
 
-    public static builder() {
+    public static tageResult.Builder builder() {
 
         return new StageResult.Builder();
     }
@@ -63,21 +63,21 @@ public class StageResult {
             return this;
         }
 
-        public StageResult.Builer account(Account account) {
+        public StageResult.Builer stageAccount(Account stageAccount) {
 
-            this.stageAccount = account;
-
-            return this;
-        }
-
-        public StageResult.Builer opportunity(Opportunity opportunity) {
-
-            this.stageOpportunity = opportunity;
+            this.stageAccount = stageAccount;
 
             return this;
         }
 
-        public StageResult.Builer case(Case case) {
+        public StageResult.Builer stageAccount(Opportunity stageOpportunity) {
+
+            this.stageOpportunity = stageOpportunity;
+
+            return this;
+        }
+
+        public StageResult.Builer stageAccount(Case stageCase) {
 
             this.stageCase = case;
 
