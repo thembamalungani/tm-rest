@@ -72,10 +72,8 @@ public class RequestDispatcher implements IRestDispatcher {
         handler.setRequest(request);
         handler.setType(type);
 
-        // The framework also need to be injected
-        AsyncApexFramework.submitQueueable(handler, null, false);
-        AsyncApexFramework.flush();
+        System.enqueueJob(handler);
 
-        return HttpHelper.accepted();
+        return HttpResponse.accepted();
     } 
 }

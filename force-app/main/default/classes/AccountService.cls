@@ -4,13 +4,6 @@
  * @date 2019-10-09
  */
 public with sharing class AccountService implements IAccountService {
-    
-    /**
-     * Wire dependencies
-     */
-    public AccountService() {
-        
-    }
 
     /**
      * Creates or update an account based on condition

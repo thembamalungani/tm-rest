@@ -11,11 +11,6 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
     private BaseLead lead;
 
     /**
-     * @param IEventDispatcher eventDispatcher
-     */
-    //private IEventDispatcher eventDispatcher;
-
-    /**
      * Sets the lead to be handled.
      *
      * @param BaseLead lead
@@ -34,15 +29,6 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
     public void execute(QueueableContext context) {
         
         Boolean isSuccess = handler().handle(lead);
-
-        // if (result.isSuccess()) {
-
-        //     this.eventDispatcher.dispatch(new LeadWasProcessed(lead, result));
-
-        // } else {
-
-        //     this.eventDispatcher.dispatch(new LeadProcessingFailed(lead, result));
-        // }
     }
 
     /**
