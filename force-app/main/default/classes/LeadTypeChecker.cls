@@ -13,7 +13,7 @@ public class LeadTypeChecker implements ILeadTypeChecker {
     /**
      * This is a map of the incoming event types to an enum value
      */
-    protected Map<String, LeadType> types = new Map<String, String>{
+    protected Map<String, LeadType> types = new Map<String, LeadType>{
         'Download Info Pack'            => LeadType.DOWNLOADED_INFO_PACK,
         'Requested a Call'              => LeadType.REQUESTED_A_CALL,
         'Submitted Registration Step 1' => LeadType.SUBMITTED_REGISTRATION_STEP1,

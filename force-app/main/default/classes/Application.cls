@@ -15,8 +15,8 @@ public class Application {
             }
         );
     
-    public static final Application.LeadProcessPipelineFactory LeadHandler = 
-        new Application.LeadProcessPipelineFactory(
+    public static final Application.LeadHandlerFactory LeadHandler = 
+        new Application.LeadHandlerFactory(
             new Map<LeadType, Type> {
                 LeadType.DOWNLOADED_INFO_PACK => DownloadedInfoPackHandler.class,
                 LeadType.REQUESTED_A_CALL => RequestedACallHandler.class,
@@ -145,23 +145,23 @@ public class Application {
      * @description Used as a container for lead handlers.
      * @date 2019-10-03
      */
-    public class LeadProcessPipelineFactory {
+    public class LeadHandlerFactory {
 
         /**
          * The mapping netween handler interface and implementation
          *
-         * @param Map<Type, Type> processPipelineImplementationMapping
+         * @param Map<Type, Type> handleMapping
          */
-        private Map<Type, Type> processPipelineImplementationMapping;
+        private Map<Type, Type> handleMapping;
 
         /**
          * Inject the lead handler mapping
          *
-         * @param Map<Type, Type> processPipelineImplementationMapping
+         * @param Map<Type, Type> handleMapping
          */
-        public LeadProcessPipelineFactory(Map<Type, Type> processPipelineImplementationMapping) {
+        public LeadHandlerFactory(Map<Type, Type> handleMapping) {
 
-            this.processPipelineImplementationMapping = processPipelineImplementationMapping;
+            this.handleMapping = handleMapping;
         }
 
         /**
@@ -170,16 +170,16 @@ public class Application {
          * @param Type handlerInterface
          * @return Object
          */
-        public ILeadProcessPipeline newInstance(LeadType leadType) {
+        public ILeadHandler newInstance(LeadType leadType) {
 
-            Type pipeline = processPipelineImplementationMapping.get(leadType);
+            Type handler = handleMapping.get(leadType);
 
-            if (pipeline == null) {
+            if (handler == null) {
 
                 throw new Exception('No handler implementation for: ' + leadType.getName());
             }
 
-            return (ILeadProcessPipeline) pipeline.newInstance();
+            return (ILeadHandler) handler.newInstance();
         }
     }
 

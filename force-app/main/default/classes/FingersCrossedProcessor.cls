@@ -12,7 +12,7 @@ public class FingersCrossedProcessor implements IPipelineProcessor {
      * @param List<IPipelineStage> stages
      * @return Object
      */
-    Object process(Object payload, List<IPipelineStage> stages) {
+    public Object process(Object payload, List<IPipelineStage> stages) {
         
         for (IPipelineStage stage: stages) {
             

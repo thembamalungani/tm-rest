@@ -19,7 +19,7 @@ public class HttpResponse {
         public String body;
         public Integer statusCode;
 
-        public static HttpResponse build() {
+        public HttpResponse build() {
 
             return new HttpResponse(this);
         }
