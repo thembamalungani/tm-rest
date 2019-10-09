@@ -5,6 +5,8 @@
  */
 public class DownloadedInfoPackHandler implements ILeadHandler {
 
+    private Object result;
+
     /**
      * Called when the stage is run
      * 
@@ -20,6 +22,25 @@ public class DownloadedInfoPackHandler implements ILeadHandler {
                                 .pipe(new CreateOpportunityStage());
 
 
-        return pipeline.process(payload);
+        this.result = pipeline.process(payload);
+
+        return this.result;
+    }
+
+    /**
+     * Determines if the lead was handle successfully
+     *
+     * @return Boolean
+     */
+    public Boolean isSuccess() {
+
+        Map<String, Object> responseMap = (Map<String, Object>) this.result;
+
+        if ( responseMap.get('account') != null && responseMap.get('opportunity') != null ) {
+
+            return true;
+        }
+
+        return false;
     }
 }

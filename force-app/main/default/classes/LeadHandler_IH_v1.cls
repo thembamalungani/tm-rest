@@ -22,7 +22,7 @@ public class LeadHandler_IH_v1 {
 
         dispatcher = (IRestDispatcher) Application.Component.newInstance(IRestDispatcher.class);
         
-        IHttpResponse response = dispatcher.dispatch(LeadsCreateHandler.class);
+        IHttpResponse response = dispatcher.dispatchNow(LeadsCreateHandler.class);
 
         return serialiser.serialise(response);
     }

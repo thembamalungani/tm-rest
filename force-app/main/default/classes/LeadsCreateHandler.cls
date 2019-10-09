@@ -33,18 +33,12 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
      * Queues the leads using the AsyncApexFramework
      *
      * @param List<BaseLead> leads
-     * @param Boolean shouldFlush
      */
-    private void queueLeads(List<BaseLead> leads, Boolean shouldFlush) {
+    private void queueLeads(List<BaseLead> leads) {
         
         for (BaseLead lead: leads) {
 
             queueLead(lead);
-        }
-
-        if (shouldFlush) {
-
-            AsyncApexFramework.flush();
         }
     }
 
@@ -52,34 +46,28 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
      * Queues the lead using the AsyncApexFramework
      *
      * @param List<BaseLead> leads
-     * @param Boolean shouldFlush
      */
-    private void queueLead(BaseLead lead, Boolean shouldFlush) {
+    private void queueLead(BaseLead lead) {
         
         IAsyncLeadHandler handler = (IAsyncLeadHandler) Application.Component.newInstance(IAsyncLeadHandler.class);
             
         handler.setLead(lead);
 
-        AsyncApexFramework.submitQueueable((Queueable)handler, null, false);
-        
-        if (shouldFlush) {
-
-            AsyncApexFramework.flush();
-        }
+        System.enqueueJob((Queueable)handler);
     }
 
     /**
      * Create a response based on whether the leads are queued for processing or not
      *
-     * @return IHttpResponse
+     * @return HttpResponse
      */
-    private IHttpResponse response(Boolean isQueued) {
+    private HttpResponse response(Boolean isQueued) {
 
         if (isQueued) {
 
-            return HttpHelper.accepted();
+            return HttpResponse.accepted();
         }
 
-        return HttpHelper.badRequest();
+        return HttpResponse.badRequest();
     }
 }
