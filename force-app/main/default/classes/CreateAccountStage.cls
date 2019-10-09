@@ -11,6 +11,11 @@ public class CreateAccountStage implements IPipelineStage {
     private IAccountService accountService;
 
     /**
+     * @param IAccountSelector accountSelector
+     */
+    private IAccountSelector accountSelector;
+
+    /**
      * Wire dependencies
      */
     public CreateAccountStage() {
@@ -70,7 +75,7 @@ public class CreateAccountStage implements IPipelineStage {
 
         return StageResult.builder()
                 .status(isSuccess)
-                .lead(data)
+                .lead(lead)
                 .account(account)
                 .build()
                 .toMap();

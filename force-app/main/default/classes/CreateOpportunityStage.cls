@@ -18,7 +18,7 @@ public class CreateOpportunityStage implements IPipelineStage {
     /**
      * Wire dependencies
      */
-    public CreateAccountStage() {
+    public CreateOpportunityStage() {
 
         this.opportunityService = (IOpportunityService) Application.Service.newInstance(IOpportunityService.class);
     }
@@ -42,6 +42,11 @@ public class CreateOpportunityStage implements IPipelineStage {
         return (Object) response(lead, account, opportunity);
     }
 
+    public Opportunity createFromLead(BaseLead lead, Account account) {
+
+        return new Opportunity();
+    }
+
     /**
      * Builds a stage result
      *
@@ -53,7 +58,6 @@ public class CreateOpportunityStage implements IPipelineStage {
     private Object response(BaseLead lead, Account account, Opportunity opportunity) {
 
         return StageResult.builder()
-                .success(isSuccess)
                 .lead(lead)
                 .account(account)
                 .opportunity(opportunity)
