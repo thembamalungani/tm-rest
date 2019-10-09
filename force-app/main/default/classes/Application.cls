@@ -37,6 +37,13 @@ public class Application {
             }
         );
 
+    public static final LeadsApplication.LeadMapperFactory Selector = 
+        new LeadsApplication.Selector(
+            new Map<ISelector, Type> {
+                IAccountSelector.class => AccountSelector.class
+            }
+        );
+
     public static final LeadsApplication.ServiceFactory Service = 
         new LeadsApplication.ServiceFactory(
             new Map<Type, Type> {
