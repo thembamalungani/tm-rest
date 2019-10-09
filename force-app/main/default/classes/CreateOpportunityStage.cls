@@ -1,0 +1,63 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description This stage is used to create an opportunity
+ * @date 2019-10-09
+ */
+public class CreateOpportunityStage implements IPipelineStage {
+    
+    /**
+     * @param IOpportunityService opportunityService
+     */
+    private IOpportunityService opportunityService;
+
+    /**
+     * @param IAccountSelector accountSelector
+     */
+    private IAccountSelector accountSelector;
+
+    /**
+     * Wire dependencies
+     */
+    public CreateAccountStage() {
+
+        this.opportunityService = (IOpportunityService) Application.Service.newInstance(IOpportunityService.class);
+    }
+
+    /**
+     * Called when the stage is run
+     * 
+     * @param Object payload
+     * @return Object
+     */
+    public Object call(Object payload) {
+
+        Map<String, Object> payloadMap = (Map<String, Object>) payload;
+        BaseLead lead = (BaseLead) payloadMap.get('lead');
+        DAccount account = (DAccount) payloadMap.get('account');
+
+        DOpportunity opportunity = createFromLead(lead, account);
+
+        opportunity = this.opportunityService.create(lead, account);
+
+        return (Object) response(lead, account, opportunity);
+    }
+
+    /**
+     * Builds a stage result
+     *
+     * @param BaseLead lead
+     * @param DAccount account
+     * @param DOpportunity opportunity
+     * @return Object
+     */
+    private Object response(BaseLead lead, DAccount account, DOpportunity opportunity) {
+
+        return StageResult.builder()
+                .success(isSuccess)
+                .lead(lead)
+                .account(account)
+                .opportunity(opportunity)
+                .build()
+                .toMap();
+    }
+}

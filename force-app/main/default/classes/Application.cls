@@ -15,14 +15,14 @@ public class Application {
             }
         );
     
-    public static final LeadsApplication.LeadProcessPipelineFactory LeadProcessPipeline = 
+    public static final LeadsApplication.LeadProcessPipelineFactory LeadHandler = 
         new LeadsApplication.LeadProcessPipelineFactory(
             new Map<LeadType, Type> {
-                LeadType.DOWNLOADED_INFO_PACK => DownloadedInfoPackPipeline.class,
-                LeadType.REQUESTED_A_CALL => RequestedACallPipeline.class,
-                LeadType.SUBMITTED_REGISTRATION_STEP1 => SubmittedRegistrationStep1Pipeline.class,
-                LeadType.CALENDLY_RAC_CREATED => CalendlyPipeline.class,
-                LeadType.CALENDLY_RAC_CANCELED => CalendlyPipeline.class
+                LeadType.DOWNLOADED_INFO_PACK => DownloadedInfoPackHandler.class,
+                LeadType.REQUESTED_A_CALL => RequestedACallHandler.class,
+                LeadType.SUBMITTED_REGISTRATION_STEP1 => SubmittedRegistrationStep1Handler.class,
+                LeadType.CALENDLY_RAC_CREATED => CalendlyHandler.class,
+                LeadType.CALENDLY_RAC_CANCELED => CalendlyHandler.class
             }
         );
 

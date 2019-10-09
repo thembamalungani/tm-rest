@@ -11,6 +11,11 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
     private BaseLead lead;
 
     /**
+     * @param IEventDispatcher eventDispatcher
+     */
+    private IEventDispatcher eventDispatcher;
+
+    /**
      * Sets the lead to be handled.
      *
      * @param BaseLead lead
@@ -18,6 +23,7 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
     public void setLead(BaseLead lead) {
         
         this.lead = lead;
+        this.eventDispatcher = (IEventDispatcher) Application.Component.newInstance(IEventDispatcher.class);
     }
 
     /**
@@ -27,18 +33,27 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
      */
     public void execute(QueueableContext context) {
         
-        pipeline().process(lead);
+        HandleResult result = handler().handle(lead);
+
+        if (result.isSuccess()) {
+
+            this.eventDispatcher.dispatch(new LeadWasProcessed(lead, result));
+
+        } else {
+
+            this.eventDispatcher.dispatch(new LeadProcessingFailed(lead, result));
+        }
     }
 
     /**
-     * Builds a handle pipeline for the current lead
+     * Gets a registered handle for the current lead type
      * 
-     * @return ILeadProcessPipeline
+     * @return ILeadHandler
      */
-    private ILeadProcessPipeline pipeline() {
+    private ILeadHandler handler() {
 
-        ILeadProcessPipeline pipeline = (ILeadProcessPipeline) Application.LeadProcessPipeline.newInstance(lead.getType());
+        ILeadHandler handler = (ILeadHandler) Application.LeadHandler.newInstance(lead.getType());
 
-        return pipeline;
+        return handler;
     }
 }

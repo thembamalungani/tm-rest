@@ -6,10 +6,10 @@
 public interface ILeadHandler {
 
     /**
-     * Handles the leads and return a LeadResult for each BaseLead
+     * Handles the lead and return handle results
      *
-     * @param List<BaseLead> leads
-     * @return List<LeadHandleResult>
+     * @param BaseLead leads
+     * @return BaseLead
      */
-    List<LeadHandleResult> handle(List<BaseLead> leads);
+    HandleResult handle(BaseLead lead);
 }
