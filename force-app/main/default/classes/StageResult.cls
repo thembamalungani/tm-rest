@@ -10,9 +10,9 @@ public class StageResult {
 
         this.lead = builder.lead;
         this.isSuccess = builder.isSuccess;
-        this.stageAccount = builder.account;
-        this.stageOpportunity = builder.opportunity;
-        this.stageCase = builder.case;
+        this.stageAccount = builder.stageAccount;
+        this.stageOpportunity = builder.stageOpportunity;
+        this.stageCase = builder.stageCase;
     }
 
     public static builder() {
