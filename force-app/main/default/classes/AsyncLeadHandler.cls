@@ -13,7 +13,7 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
     /**
      * @param IEventDispatcher eventDispatcher
      */
-    private IEventDispatcher eventDispatcher;
+    //private IEventDispatcher eventDispatcher;
 
     /**
      * Sets the lead to be handled.
@@ -23,7 +23,7 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
     public void setLead(BaseLead lead) {
         
         this.lead = lead;
-        this.eventDispatcher = (IEventDispatcher) Application.Component.newInstance(IEventDispatcher.class);
+        //this.eventDispatcher = (IEventDispatcher) Application.Component.newInstance(IEventDispatcher.class);
     }
 
     /**
@@ -33,16 +33,16 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
      */
     public void execute(QueueableContext context) {
         
-        HandleResult result = handler().handle(lead);
+        Boolean isSuccess = handler().handle(lead);
 
-        if (result.isSuccess()) {
+        // if (result.isSuccess()) {
 
-            this.eventDispatcher.dispatch(new LeadWasProcessed(lead, result));
+        //     this.eventDispatcher.dispatch(new LeadWasProcessed(lead, result));
 
-        } else {
+        // } else {
 
-            this.eventDispatcher.dispatch(new LeadProcessingFailed(lead, result));
-        }
+        //     this.eventDispatcher.dispatch(new LeadProcessingFailed(lead, result));
+        // }
     }
 
     /**
@@ -55,5 +55,17 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
         ILeadHandler handler = (ILeadHandler) Application.LeadHandler.newInstance(lead.getType());
 
         return handler;
+    }
+
+    private Boolean isSuccess(Object payload) {
+
+        Map<String, Object> payloadMap = (Map<String, Object>) payload;
+
+        if ( payloadMap.get('account') != null && payloadMap.get('opportunity') != null ) {
+
+            return true;
+        }
+
+        return false;
     }
 }

@@ -32,14 +32,14 @@ public class RequestDispatcher implements IRestDispatcher {
      *
      * @param Type type
      * @param Boolean isAsync
-     * @return IHttpResponse
+     * @return HttpResponse
      */
-    private IHttpResponse process(Type type, Boolean isAsync) {
+    private HttpResponse process(Type type, Boolean isAsync) {
 
         HttpRequest request = HttpRequest.fromContext(RestContext.request);
         IHttpRequestLoggerService loggerService = (IHttpRequestLoggerService) Application.Service.newInstance(IHttpRequestLoggerService.class);
 
-        IHttpResponse response = isAsync ? handleAsync(type) : handleSync(type);
+        HttpResponse response = isAsync ? handleAsync(type) : handleSync(type);
 
         loggerService.log(request, response);
 
@@ -52,7 +52,7 @@ public class RequestDispatcher implements IRestDispatcher {
      * @param Type type
      * @return IHttpResponse
      */
-    private IHttpResponse handleSync(Type type) {
+    private HttpResponse handleSync(Type type) {
 
         IHttpMethodHandler handler = (IHttpMethodHandler) type.newInstance();
 
@@ -63,9 +63,9 @@ public class RequestDispatcher implements IRestDispatcher {
      * Handle the request synchronously by queuing a brackground job
      *
      * @param Type type
-     * @return IHttpResponse
+     * @return HttpResponse
      */
-    private IHttpResponse handleAsync(Type type) {
+    private HttpResponse handleAsync(Type type) {
 
         IAsyncHttpRequestHandler handler = (IAsyncHttpRequestHandler) Application.Component.newInstance(IAsyncHttpRequestHandler.class);
         

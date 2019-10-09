@@ -11,13 +11,14 @@ public class DownloadedInfoPackHandler implements ILeadHandler {
      * @param Object payload
      * @return Object
      */
-    public HandleResult handle(Object payload) {
+    public Object handle(Object payload) {
 
         BaseLead lead = (BaseLead) payload;
 
         IPipeline pipeline = (new Pipeline(new FingersCrossedProcessor()))
                                 .pipe(new CreateAccountStage())
                                 .pipe(new CreateOpportunityStage());
+
 
         return pipeline.process(payload);
     }

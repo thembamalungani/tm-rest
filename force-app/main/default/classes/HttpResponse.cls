@@ -1,11 +1,6 @@
-/**
- * @author Themba Malungani <themba.clarence@gmail.com>
- * @description Http helper
- * @date 2019-10-01
- */
-public class HttpHelper {
-   
-   /**
+public class HttpResponse {
+    
+    /**
     * Return a 202 status code with http accepted
     *
     * @return IHttpResponse
