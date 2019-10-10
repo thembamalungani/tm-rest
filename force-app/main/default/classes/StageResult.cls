@@ -6,7 +6,7 @@ public class StageResult {
     private Opportunity stageOpportunity;
     private Case stageCase;
 
-    public StageResult(StageResult.Builer builder) {
+    public StageResult(StageResult.Builder builder) {
 
         this.lead = builder.lead;
         this.isSuccess = builder.isSuccess;
