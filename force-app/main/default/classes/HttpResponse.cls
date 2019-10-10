@@ -14,6 +14,16 @@ public class HttpResponse {
         return new HttpResponse.Builder();
     }
 
+    public void setStatusCode(Integer statusCode) {
+
+        this.statusCode = statusCode;
+    }
+
+    public void setBody(String body) {
+
+        this.body = body;
+    }
+
     public class Builder {
 
         public String body;

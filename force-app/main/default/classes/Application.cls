@@ -247,16 +247,16 @@ public class Application {
         /**
          * The mapping for lead type model mapping
          *
-         * @param Map<Type, Type> leadTypeModelMapping
+         * @param Map<LeadType, Type> leadTypeModelMapping
          */
-        private Map<Type, Type> leadTypeModelMapping;
+        private Map<LeadType, Type> leadTypeModelMapping;
 
         /**
          * Inject the lead type model mapping
          *
-         * @param Map<Type, Type> leadTypeModelMapping
+         * @param Map<LeadType, Type> leadTypeModelMapping
          */
-        public ModelFactory(Map<Type, Type> leadTypeModelMapping) {
+        public ModelFactory(Map<LeadType, Type> leadTypeModelMapping) {
 
             this.leadTypeModelMapping = leadTypeModelMapping;
         }

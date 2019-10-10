@@ -20,9 +20,12 @@ public virtual class BaseLeadFactory implements ILeadFactory {
         AbstractLeadMapper mapper = (AbstractLeadMapper) Application.LeadMapper.newInstance(type);
 
         mapper.setMap(leadMap);
-        BaseLead lead = (BaseLead) model.fromMapper(mapper);
-        lead.setType(type);
+        model.setMapper(mapper);
 
+        BaseLead lead = (BaseLead) model.fromMapper();
+
+        lead.setType(type);
+        
         return lead;
     }
 }

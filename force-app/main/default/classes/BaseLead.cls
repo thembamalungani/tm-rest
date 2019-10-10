@@ -9,6 +9,11 @@ public virtual class BaseLead implements IMappable {
      * @var LeadType type
      */
     public LeadType type;
+
+    /**
+     * Mapper
+     */
+    public AbstractLeadMapper mapper;
     
     /**
      * @param ContactDetails contactDetails
@@ -35,10 +40,15 @@ public virtual class BaseLead implements IMappable {
         return this.type;
     }
 
+    public void setMapper(AbstractLeadMapper mapper) {
+
+        this.mapper = mapper;
+    }
+
     /**
      * Instatiate a new lead from a json parser instance
      */
-    public BaseLead fromMapper(AbstractLeadMapper mapper) {
+    public BaseLead fromMapper() {
 
         this.contactDetails = (ContactDetails) mapper.mapContactDetails();
         this.tracking = (Tracking) mapper.mapTracking();
