@@ -3,24 +3,14 @@
  * @description Used to map a Calendly lead
  * @date 2019-10-03
  */
-public class CalendlyLeadMapper  extends BaseLeadMapper {
-
-    /**
-     * Used to set the json to be parsed
-     *
-     * @param Map<String, Object> leadMap
-     */
-    public void setMap(Map<String, Object> leadMap) {
-
-        super.setMap(leadMap);
-    }
+public class CalendlyLeadMapper extends BaseLeadMapper {
 
     /**
      * Parses the contect details from leadMap
      *
      * @return BaseLead.ContactDetails
      */
-    public BaseLead.ContactDetails parserContactDetails() {
+    public override BaseLead.ContactDetails parserContactDetails() {
 
         return super.parserContactDetails();
     }
@@ -30,7 +20,7 @@ public class CalendlyLeadMapper  extends BaseLeadMapper {
      *
      * @param Tracking
      */
-    public BaseLead.Tracking parserTracking() {
+    public override BaseLead.Tracking parserTracking() {
 
         return super.parserTracking();
     }
@@ -40,7 +30,7 @@ public class CalendlyLeadMapper  extends BaseLeadMapper {
      *
      * @param GDPR
      */
-    public BaseLead.GDPR parseGDPR() {
+    public override BaseLead.GDPR parseGDPR() {
 
         return super.parseGDPR();
     }
