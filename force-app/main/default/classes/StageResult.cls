@@ -79,7 +79,7 @@ public class StageResult {
 
         public StageResult.Builer stageAccount(Case stageCase) {
 
-            this.stageCase = case;
+            this.stageCase = stageCase;
 
             return this;
         }

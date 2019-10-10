@@ -8,8 +8,8 @@ public interface IMappable {
     /**
      * Creates an instance of mappable from the mapper
      *
-     * @param ILeadMapper mapper
+     * @param AbstractLeadMapper mapper
      * @return BaseLead
      */
-    BaseLead fromMapper(ILeadMapper mapper);
+    BaseLead fromMapper(AbstractLeadMapper mapper);
 }
