@@ -20,7 +20,7 @@ global class LeadHandler_IH_v1 {
      */
     global static String create() {
 
-        dispatcher = (IRestDispatcher) Application.Component.newInstance(IRestDispatcher.class);
+        dispatcher = new RequestDispatcher();
         
         IHttpResponse response = dispatcher.dispatchNow(LeadsCreateHandler.class);
 

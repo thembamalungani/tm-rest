@@ -17,7 +17,7 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
 
         try {
 
-            ILeadBatchParser parser = (ILeadBatchParser) Application.Component.newInstance(ILeadBatchParser.class);
+            ILeadBatchParser parser = new LeadBatchParser();
             queueLeads( parser.parse(request.getBody()), true);
             isQueued = true;
 
@@ -57,7 +57,7 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
      */
     private void queueLead(BaseLead lead) {
         
-        IAsyncLeadHandler handler = (IAsyncLeadHandler) Application.Component.newInstance(IAsyncLeadHandler.class);
+        IAsyncLeadHandler handler = new AsyncLeadHandler();
             
         handler.setLead(lead);
 

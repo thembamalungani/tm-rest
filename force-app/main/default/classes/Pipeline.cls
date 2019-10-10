@@ -19,7 +19,7 @@ public class Pipeline implements IPipeline {
      */
     public Pipeline() {
 
-        this.processor = (IPipelineProcessor) Application.Component.newInstance(IPipelineProcessor.class);
+        this.processor = new Pipeline();
     }
 
     /**

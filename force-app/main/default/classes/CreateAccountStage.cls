@@ -20,8 +20,8 @@ public class CreateAccountStage implements IPipelineStage {
      */
     public CreateAccountStage() {
 
-        this.accountService = (IAccountService) Application.Service.newInstance(IAccountService.class);
-        this.accountSelector = (IAccountSelector) Application.Selector.newInsatnce(IAccountSelector.class);
+        this.accountService = new AccountService();
+        this.accountSelector = new AccountSelector();
     }
 
     /**

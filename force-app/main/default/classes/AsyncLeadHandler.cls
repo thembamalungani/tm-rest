@@ -39,7 +39,12 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
      */
     private ILeadHandler handler() {
 
-        ILeadHandler handler = (ILeadHandler) Application.LeadHandler.newInstance(lead.getType());
+        ILeadHandler handler;
+
+        if (lead.getType() == LeadType.DOWNLOADED_INFO_PACK) {
+
+            handler = new DownloadedInfoPackHandler();
+        }
 
         return handler;
     }

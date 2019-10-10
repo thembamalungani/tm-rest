@@ -8,72 +8,30 @@ public class RequestDispatcher implements IRestDispatcher {
     /**
      * Dispatch the request to be handled asynchronously
      *
-     * @param IHttpMethodHandler handler
+     * @param Type handler
      */
-    public Object dispatch(IHttpMethodHandler type) {
+    public Object dispatch(Type type) {
 
-        return process(type, true);
-    }
-
-    /**
-     * Dispatch the request to be handled synchronously
-     *
-     * @param IHttpMethodHandler type
-     * @return Object
-     */
-    public Object dispatchNow(IHttpMethodHandler type) {
-
-        return process(type, false);
+        return process(type);
     }
 
     /**
      * Handles the http request by delegating the handling to the instance of HttpRouteHandler
      * passed
      *
-     * @param IHttpMethodHandler type
-     * @param Boolean isAsync
+     * @param Type type
      * @return HttpResponse
      */
-    private HttpResponse process(IHttpMethodHandler type, Boolean isAsync) {
+    private HttpResponse process(Type type) {
 
         HttpRequest request = HttpRequest.fromContext(RestContext.request);
-        IHttpRequestLoggerService loggerService = (IHttpRequestLoggerService) Application.Service.newInstance(IHttpRequestLoggerService.class);
+        IHttpRequestLoggerService loggerService = new SysIntegrationRequestLoggerService();
+        IHttpMethodHandler handler = (IHttpMethodHandler) type.newInstance();
 
-        HttpResponse response = isAsync ? handleAsync(type, request) : handleSync(type, request);
+        HttpResponse response = handler.handle(request);
 
         loggerService.log(request, response);
 
         return response;
     }
-
-    /**
-     * Handle the request synchronously
-     *
-     * @param Type type
-     * @return IHttpResponse
-     */
-    private HttpResponse handleSync(Type type,  HttpRequest request) {
-
-        IHttpMethodHandler handler = (IHttpMethodHandler) type.newInstance();
-
-        return handler.handle(request);
-    }   
-
-    /**
-     * Handle the request synchronously by queuing a brackground job
-     *
-     * @param Type type
-     * @return HttpResponse
-     */
-    private HttpResponse handleAsync(Type type, HttpRequest request) {
-
-        AsyncHttpRequestHandler handler = (AsyncHttpRequestHandler) Application.Component.newInstance(IAsyncHttpRequestHandler.class);
-        
-        handler.setRequest(request);
-        handler.setType(type);
-
-        System.enqueueJob(handler);
-
-        return HttpResponse.accepted('test');
-    } 
 }

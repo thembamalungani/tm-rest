@@ -24,7 +24,7 @@ public virtual class LeadBatchParser implements ILeadBatchParser {
      */
     public LeadBatchParser() {
 
-        this.factory = (ILeadFactory) Application.Component.newInstance(ILeadFactory.class);
+        this.factory = new BaseLeadFactory();
     }
 
     /**

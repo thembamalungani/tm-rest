@@ -20,7 +20,7 @@ public class CreateOpportunityStage implements IPipelineStage {
      */
     public CreateOpportunityStage() {
 
-        this.opportunityService = (IOpportunityService) Application.Service.newInstance(IOpportunityService.class);
+        this.opportunityService = new OpportunityService();
     }
 
     /**

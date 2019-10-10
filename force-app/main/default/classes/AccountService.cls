@@ -9,7 +9,7 @@ public with sharing class AccountService implements IAccountService {
 
     public AccountService() {
 
-        this.accountSelector = (IAccountSelector) Application.Selector.newInstance(IAccountSelector.class);
+        this.accountSelector = new AccountSelector();
     }
 
     /**
