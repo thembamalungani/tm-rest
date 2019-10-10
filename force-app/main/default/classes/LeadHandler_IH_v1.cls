@@ -22,7 +22,7 @@ global class LeadHandler_IH_v1 {
 
         dispatcher = new RequestDispatcher();
         
-        HttpResponse response = dispatcher.dispatch(LeadsCreateHandler.class);
+        Object response = dispatcher.dispatch(LeadsCreateHandler.class);
 
         return 'test';
     }
