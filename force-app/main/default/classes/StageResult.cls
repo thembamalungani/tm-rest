@@ -36,7 +36,7 @@ public class StageResult {
         };
     }
 
-    public class Builer {
+    public class Builder {
 
         public BaseLead lead;
         public Boolean isSuccess;
