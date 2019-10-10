@@ -70,14 +70,14 @@ public class StageResult {
             return this;
         }
 
-        public StageResult.Builder stageAccount(Opportunity stageOpportunity) {
+        public StageResult.Builder stageOpportunity(Opportunity stageOpportunity) {
 
             this.stageOpportunity = stageOpportunity;
 
             return this;
         }
 
-        public StageResult.Builder stageAccount(Case stageCase) {
+        public StageResult.Builder stageCase(Case stageCase) {
 
             this.stageCase = stageCase;
 
