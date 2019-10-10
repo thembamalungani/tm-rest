@@ -9,7 +9,7 @@ public class HttpResponse {
         this.statusCode = builder.statusCode;
     }
 
-    public static HttpResponse builder() {
+    public static HttpResponse.Builder builder() {
 
         return new HttpResponse.Builder();
     }
@@ -57,6 +57,7 @@ public class HttpResponse {
    public static HttpResponse accepted(String body) {
 
        return HttpResponse.builder()
+                    .statusCode(202)
                     .body(body)
                 .build();
    }
@@ -69,6 +70,7 @@ public class HttpResponse {
    public static HttpResponse badRequest(String body) {
 
        return HttpResponse.builder()
+                    .statusCode(400)
                     .body(body)
                 .build();
    }
