@@ -49,35 +49,35 @@ public class StageResult {
             return new StageResult(this);
         }
 
-        public StageResult.Builer isSuccess(Boolean isSuccess) {
+        public StageResult.Builder isSuccess(Boolean isSuccess) {
 
             this.isSuccess = isSuccess;
 
             return this;
         }
 
-        public StageResult.Builer lead(BaseLead lead) {
+        public StageResult.Builder lead(BaseLead lead) {
 
             this.lead = lead;
 
             return this;
         }
 
-        public StageResult.Builer stageAccount(Account stageAccount) {
+        public StageResult.Builder stageAccount(Account stageAccount) {
 
             this.stageAccount = stageAccount;
 
             return this;
         }
 
-        public StageResult.Builer stageAccount(Opportunity stageOpportunity) {
+        public StageResult.Builder stageAccount(Opportunity stageOpportunity) {
 
             this.stageOpportunity = stageOpportunity;
 
             return this;
         }
 
-        public StageResult.Builer stageAccount(Case stageCase) {
+        public StageResult.Builder stageAccount(Case stageCase) {
 
             this.stageCase = stageCase;
 

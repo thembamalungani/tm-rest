@@ -37,8 +37,8 @@ public class Application {
             }
         );
 
-    public static final Application.LeadMapperFactory Model = 
-        new Application.LeadMapperFactory(
+    public static final Application.ModelFactory Model = 
+        new Application.ModelFactory(
             new Map<LeadType, Type> {
                 LeadType.DOWNLOADED_INFO_PACK => BaseLead.class,
                 LeadType.REQUESTED_A_CALL => BaseLead.class,
