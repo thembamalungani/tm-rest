@@ -39,7 +39,7 @@ public with sharing class AccountService implements IAccountService {
      */
     public Account updateAccount(Id accountId, Map<String, String> parameters){
         
-        Account account = this.accountSelector.find(accountId);
+        Account account = new Account(); //this.accountSelector.find(accountId);
 
         if (Schema.SObjectType.Account.isCreateable()) {
 

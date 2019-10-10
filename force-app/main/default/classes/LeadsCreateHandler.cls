@@ -73,9 +73,9 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
 
         if (isQueued) {
 
-            return HttpResponse.accepted();
+            return HttpResponse.accepted('test');
         }
 
-        return HttpResponse.badRequest();
+        return HttpResponse.badRequest('test');
     }
 }
