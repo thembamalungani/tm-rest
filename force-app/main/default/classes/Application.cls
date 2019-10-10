@@ -49,7 +49,7 @@ public class Application {
         );
 
     public static final Application.Selector Selector = 
-        new Application.Selector(
+        new Application.SelectorFactory(
             new Map<ISelector, Type> {
                 IAccountSelector.class => AccountSelector.class
             }
@@ -120,14 +120,14 @@ public class Application {
          *
          * @param Map<Type, Type> mapperImplementationMapping
          */
-        private Map<Type, Type> mapperImplementationMapping;
+        private Map<LeadType, Type> mapperImplementationMapping;
 
         /**
          * Inject the lead mapper mappings
          *
-         * @param Map<Type, Type> mapperImplementationMapping
+         * @param Map<LeadType, Type> mapperImplementationMapping
          */
-        public LeadMapperFactory(Map<Type, Type> mapperImplementationMapping) {
+        public LeadMapperFactory(Map<LeadType, Type> mapperImplementationMapping) {
 
             this.mapperImplementationMapping = mapperImplementationMapping;
         }
@@ -256,7 +256,7 @@ public class Application {
          *
          * @param Map<Type, Type> leadTypeModelMapping
          */
-        public ServiceFactory(Map<Type, Type> leadTypeModelMapping) {
+        public ModelFactory(Map<Type, Type> leadTypeModelMapping) {
 
             this.leadTypeModelMapping = leadTypeModelMapping;
         }

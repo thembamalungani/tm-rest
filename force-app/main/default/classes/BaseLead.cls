@@ -6,6 +6,11 @@
 public virtual class BaseLead implements IMappable {
 
     /**
+     * @var LeadType type
+     */
+    public LeadType type;
+    
+    /**
      * @param ContactDetails contactDetails
      */
     public ContactDetails contactDetails;
@@ -20,10 +25,20 @@ public virtual class BaseLead implements IMappable {
      */
     public GDPR gdpr;
 
+    public void setType(LeadType type) {
+
+        this.type = type;
+    }
+
+    public LeadType getType() {
+
+        return this.type;
+    }
+
     /**
      * Instatiate a new lead from a json parser instance
      */
-    public BaseLead fromMapper(ILeadMapper mapper) {
+    public BaseLead fromMapper(AbstractLeadMapper mapper) {
 
         this.contactDetails = mapper.mapContactDetails();
         this.tracking = mapper.mapTracking();
