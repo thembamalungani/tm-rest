@@ -36,7 +36,7 @@ public virtual class LeadBatchParser implements ILeadBatchParser {
         
         List<BaseLead> leads = new List<BaseLead>();
 
-        List<Object> events = (List<Object>) JSON.deserializeUntyped(json);
+        List<Object> events = (List<Object>)JSON.deserializeUntyped(json);
 
         for(Object event: events) {
 
