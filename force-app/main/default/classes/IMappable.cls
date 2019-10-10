@@ -11,5 +11,7 @@ public interface IMappable {
      * @param AbstractLeadMapper mapper
      * @return BaseLead
      */
-    BaseLead fromMapper(AbstractLeadMapper mapper);
+    BaseLead fromMapper();
+
+    void setMapper(AbstractLeadMapper mapper);
 }

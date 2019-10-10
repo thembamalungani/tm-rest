@@ -48,7 +48,7 @@ public class Application {
             }
         );
 
-    public static final Application.Selector Selector = 
+    public static final Application.SelectorFactory Selector = 
         new Application.SelectorFactory(
             new Map<ISelector, Type> {
                 IAccountSelector.class => AccountSelector.class
