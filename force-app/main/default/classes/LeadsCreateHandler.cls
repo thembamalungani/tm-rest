@@ -18,7 +18,7 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
         try {
 
             ILeadBatchParser parser = new LeadBatchParser();
-            queueLeads( parser.parse(''), true);
+            queueLeads( parser.parse(''));
             isQueued = true;
 
         } catch(JSONException e) {

@@ -5,7 +5,7 @@ public class HttpRequest {
         return'';
     }
 
-    public HttpRequest fromContext(System.RestRequest request) {
+    public static HttpRequest fromContext(System.RestRequest request) {
 
         return new HttpRequest();
     }
