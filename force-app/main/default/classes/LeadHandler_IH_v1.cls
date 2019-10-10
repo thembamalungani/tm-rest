@@ -3,7 +3,7 @@
  * @description Used to handle leads endpoint
  * @date 2019-10-01
  */
-@RestResource(UrlMapping='/leads/*')
+@RestResource(UrlMapping='/leads/v2/*')
 global class LeadHandler_IH_v1 {
     
     /**
