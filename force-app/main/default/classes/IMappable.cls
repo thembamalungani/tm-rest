@@ -9,7 +9,7 @@ public interface IMappable {
      * Creates an instance of mappable from the mapper
      *
      * @param ILeadMapper mapper
-     * @return IMappable
+     * @return BaseLead
      */
-    IMappable fromMapper(ILeadMapper mapper);
+    BaseLead fromMapper(ILeadMapper mapper);
 }

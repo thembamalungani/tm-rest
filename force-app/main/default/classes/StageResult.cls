@@ -15,7 +15,7 @@ public class StageResult {
         this.stageCase = builder.stageCase;
     }
 
-    public static tageResult.Builder builder() {
+    public static StageResult.Builder builder() {
 
         return new StageResult.Builder();
     }

@@ -5,6 +5,13 @@
  */
 public with sharing class AccountService implements IAccountService {
 
+    private IAccountSelector accountSelector;
+
+    public AccountService() {
+
+        this.accountSelector = (IAccountSelector) Application.Selector.newInstance(IAccountSelector.class);
+    }
+
     /**
      * Creates or update an account based on condition
      *
@@ -40,5 +47,10 @@ public with sharing class AccountService implements IAccountService {
         }
 
         return account;
+    }
+
+    private Account fromParameters(Map<String, String> parameters) {
+
+        return new Account();
     }
 }

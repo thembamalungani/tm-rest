@@ -49,10 +49,10 @@ public class RequestDispatcher implements IRestDispatcher {
     /**
      * Handle the request synchronously
      *
-     * @param IHttpMethodHandler type
+     * @param Type type
      * @return IHttpResponse
      */
-    private HttpResponse handleSync(IHttpMethodHandler type,  HttpRequest request) {
+    private HttpResponse handleSync(Type type,  HttpRequest request) {
 
         IHttpMethodHandler handler = (IHttpMethodHandler) type.newInstance();
 
@@ -62,10 +62,10 @@ public class RequestDispatcher implements IRestDispatcher {
     /**
      * Handle the request synchronously by queuing a brackground job
      *
-     * @param IHttpMethodHandler type
+     * @param Type type
      * @return HttpResponse
      */
-    private HttpResponse handleAsync(IHttpMethodHandler type, HttpRequest request) {
+    private HttpResponse handleAsync(Type type, HttpRequest request) {
 
         AsyncHttpRequestHandler handler = (AsyncHttpRequestHandler) Application.Component.newInstance(IAsyncHttpRequestHandler.class);
         

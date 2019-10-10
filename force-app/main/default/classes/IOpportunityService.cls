@@ -1,4 +1,4 @@
 public interface IOpportunityService {
     
-    Object create(BaseLead lead, Account account);
+    Opportunity create(BaseLead lead, Account account);
 }

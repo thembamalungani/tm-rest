@@ -32,7 +32,7 @@ public class RequestedACallHandler implements ILeadHandler {
 
         Map<String, Object> responseMap = (Map<String, Object>) this.result;
 
-        if ( responseMap.get('account') != null && responseMap.get('opportunity') != null && responseMap.get('case')) {
+        if ( responseMap.get('account') != null && responseMap.get('opportunity') != null && responseMap.get('case') != null) {
 
             return true;
         }

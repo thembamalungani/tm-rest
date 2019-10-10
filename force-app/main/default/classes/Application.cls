@@ -37,7 +37,18 @@ public class Application {
             }
         );
 
-    public static final Application.LeadMapperFactory Selector = 
+    public static final Application.LeadMapperFactory Model = 
+        new Application.LeadMapperFactory(
+            new Map<LeadType, Type> {
+                LeadType.DOWNLOADED_INFO_PACK => BaseLead.class,
+                LeadType.REQUESTED_A_CALL => BaseLead.class,
+                LeadType.SUBMITTED_REGISTRATION_STEP1 => BaseLead.class,
+                LeadType.CALENDLY_RAC_CREATED => BaseLead.class,
+                LeadType.CALENDLY_RAC_CANCELED => BaseLead.class
+            }
+        );
+
+    public static final Application.Selector Selector = 
         new Application.Selector(
             new Map<ISelector, Type> {
                 IAccountSelector.class => AccountSelector.class
@@ -49,7 +60,7 @@ public class Application {
             new Map<Type, Type> {
                 IAccountService.class => AccountService.class,
                 IOpportunityService.class => OpportunityService.class,
-                ICaseService => CaseService.class,
+                ICaseService.class => CaseService.class,
                 IHttpRequestLoggerService.class => SysIntegrationRequestLoggerService.class
             }
         );
@@ -152,7 +163,7 @@ public class Application {
          *
          * @param Map<Type, Type> handleMapping
          */
-        private Map<Type, Type> handleMapping;
+        private Map<LeadType, Type> handleMapping;
 
         /**
          * Inject the lead handler mapping
@@ -217,12 +228,98 @@ public class Application {
 
             Type serviceImplementation = serviceImplementationMapping.get(serviceInterface);
             
-            if (serviceInterface == null) {
+            if (serviceImplementation == null) {
 
                 throw new Exception('No implementation for the service: ' + serviceInterface.getName());
             }
 
             return serviceImplementation.newInstance();
+        }
+    }
+
+    /**
+     * @author Themba Malungani <themba.clarence@gmail.com>
+     * @description Used as a container for models
+     * @date 2019-10-03
+     */
+    public class ModelFactory {
+
+        /**
+         * The mapping for lead type model mapping
+         *
+         * @param Map<Type, Type> leadTypeModelMapping
+         */
+        private Map<Type, Type> leadTypeModelMapping;
+
+        /**
+         * Inject the lead type model mapping
+         *
+         * @param Map<Type, Type> leadTypeModelMapping
+         */
+        public ServiceFactory(Map<Type, Type> leadTypeModelMapping) {
+
+            this.leadTypeModelMapping = leadTypeModelMapping;
+        }
+
+        /**
+         * Create an instance of the model for the lead type
+         *
+         * @param LeadType leadType
+         * @return Object
+         */
+        public Object newInstance(LeadType leadType) {
+
+            Type model = leadTypeModelMapping.get(leadType);
+            
+            if (model == null) {
+
+                throw new Exception('No model for lead type: ' + leadType.getName());
+            }
+
+            return model.newInstance();
+        }
+    }
+
+    /**
+     * @author Themba Malungani <themba.clarence@gmail.com>
+     * @description Used as a container for selectors
+     * @date 2019-10-03
+     */
+    public class SelectorFactory {
+
+        /**
+         * The mapping for service interface to implementation
+         *
+         * @param Map<Type, Type> selectorImplementationMapping
+         */
+        private Map<Type, Type> selectorImplementationMapping;
+
+        /**
+         * Inject the selector mapping
+         *
+         * @param Map<Type, Type> selectorImplementationMapping
+         */
+        public ServiceFactory(Map<Type, Type> selectorImplementationMapping) {
+
+            this.selectorImplementationMapping = selectorImplementationMapping;
+        }
+
+        /**
+         * Create an instance of the selector which is mapped for selector interface
+         *
+         * @param Type selectorInterface
+         * @return Object
+         */
+        public Object newInstance(Type selectorInterface) {
+
+            Type selectorImplementation = selectorImplementationMapping.get(selectorInterface);
+            
+            if (selectorImplementation == null) {
+
+                throw new Exception('No implementation for the service: ' + selectorInterface.getName());
+            }
+
+            return selectorImplementation.newInstance();
         }
     }
 }

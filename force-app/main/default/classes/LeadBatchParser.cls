@@ -36,11 +36,11 @@ public virtual class LeadBatchParser implements ILeadBatchParser {
         
         List<BaseLead> leads = new List<BaseLead>();
 
-        List<Object> events = (List<Map<String, Object>>) JSON.deserializeUntyped(json);
+        List<Object> events = (List<Object>) JSON.deserializeUntyped(json);
 
         for(Object event: events) {
 
-            leads.add( this.factory.createFrom(event) );
+            leads.add( this.factory.createFrom((Map<String, Object>) event));
         }
 
         return leads;

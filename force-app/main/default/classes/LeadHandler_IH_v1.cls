@@ -4,7 +4,7 @@
  * @date 2019-10-01
  */
 @RestResource(UrlMapping='/leads/*')
-public class LeadHandler_IH_v1 {
+global class LeadHandler_IH_v1 {
     
     /**
      * Used to dispatch rest request to specific handler

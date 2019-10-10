@@ -14,12 +14,13 @@ public virtual class BaseLeadFactory implements ILeadFactory {
      */
     public BaseLead createFrom(Map<String, Object> leadMap) {
         
-        LeadType type = (ILeadTypeChecker) Application.Component.newInstance(ILeadTypeChecker.class);
+        ILeadTypeChecker checker = (ILeadTypeChecker) Application.Component.newInstance(ILeadTypeChecker.class);
+        LeadType type = checker.check(leadMap);
         IMappable model = (IMappable) Application.Model.newInstance(type);
         ILeadMapper mapper = (ILeadMapper) Application.LeadMapper.newInstance(type);
 
-        mapper.setLeadMap(leadMap);
+        mapper.setMap(leadMap);
 
-        return model.fromMapper(mapper);
+        return (BaseLead) model.fromMapper(mapper);
     }
 }

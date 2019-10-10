@@ -10,7 +10,7 @@ public class CalendlyLeadMapper  extends BaseLeadMapper {
      *
      * @param Map<String, Object> leadMap
      */
-    public override void setMap(Map<String, Object> leadMap) {
+    public void setMap(Map<String, Object> leadMap) {
 
         super.setMap(leadMap);
     }
@@ -20,7 +20,7 @@ public class CalendlyLeadMapper  extends BaseLeadMapper {
      *
      * @return BaseLead.ContactDetails
      */
-    public override BaseLead.ContactDetails parserContactDetails() {
+    public BaseLead.ContactDetails parserContactDetails() {
 
         return super.parserContactDetails();
     }
@@ -30,7 +30,7 @@ public class CalendlyLeadMapper  extends BaseLeadMapper {
      *
      * @param Tracking
      */
-    public override Tracking parserTracking() {
+    public BaseLead.Tracking parserTracking() {
 
         return super.parserTracking();
     }
@@ -40,7 +40,7 @@ public class CalendlyLeadMapper  extends BaseLeadMapper {
      *
      * @param GDPR
      */
-    public override GDPR parseGDPR() {
+    public BaseLead.GDPR parseGDPR() {
 
         return super.parseGDPR();
     }

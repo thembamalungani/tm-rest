@@ -52,5 +52,7 @@ public class Pipeline implements IPipeline {
     public IPipeline pipe(IPipelineStage stage) {
 
         this.stages.add(stage);
+
+        return this;
     }
 }

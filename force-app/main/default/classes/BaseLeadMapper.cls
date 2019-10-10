@@ -35,7 +35,7 @@ public virtual class BaseLeadMapper implements ILeadMapper {
      *
      * @return ContactDetails
      */
-    public virtual BaseLead.TContactDetails parserContactDetails() {
+    public BaseLead.ContactDetails parserContactDetails() {
 
         BaseLead.ContactDetails contectDetails = new BaseLead.ContactDetails();
 
@@ -47,7 +47,7 @@ public virtual class BaseLeadMapper implements ILeadMapper {
      *
      * @param Tracking
      */
-    public virtual BaseLead.TTracking parserTracking() {
+    public BaseLead.Tracking parserTracking() {
 
         BaseLead.Tracking tracking = new BaseLead.Tracking();
 
@@ -59,7 +59,7 @@ public virtual class BaseLeadMapper implements ILeadMapper {
      *
      * @param GDPR
      */
-    public virtual BaseLead.TGDPR parseGDPR() {
+    public BaseLead.GDPR parseGDPR() {
 
         BaseLead.GDPR gdpr = new BaseLead.GDPR();
 

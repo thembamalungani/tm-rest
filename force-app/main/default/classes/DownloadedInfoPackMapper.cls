@@ -10,7 +10,7 @@ public class DownloadedInfoPackMapper extends BaseLeadMapper {
      *
      * @param Map<String, Object> leadMap
      */
-    public override void setMap(Map<String, Object> leadMap) {
+    public void setMap(Map<String, Object> leadMap) {
 
         super.setMap(leadMap);
     }
@@ -20,7 +20,7 @@ public class DownloadedInfoPackMapper extends BaseLeadMapper {
      *
      * @return BaseLead.ContactDetails
      */
-    public override BaseLead.ContactDetails parserContactDetails() {
+    public BaseLead.ContactDetails parserContactDetails() {
 
         return super.parserContactDetails();
     }
@@ -28,9 +28,9 @@ public class DownloadedInfoPackMapper extends BaseLeadMapper {
     /**
      * Parses tracking info from leadMap
      *
-     * @param Tracking
+     * @param BaseLead.Tracking
      */
-    public override Tracking parserTracking() {
+    public BaseLead.Tracking parserTracking() {
 
         return super.parserTracking();
     }
@@ -38,9 +38,9 @@ public class DownloadedInfoPackMapper extends BaseLeadMapper {
     /**
      * Parses the GDRP data from leadMap
      *
-     * @param GDPR
+     * @param BaseLead.GDPR
      */
-    public override GDPR parseGDPR() {
+    public BaseLead.GDPR parseGDPR() {
 
         return super.parseGDPR();
     }
