@@ -3,7 +3,7 @@
  * @description Used to map a Downloaded Info Pack lead
  * @date 2019-10-03
  */
-public class DownloadedInfoPackMapper extends BaseLeadMapper {
+public class DownloadedInfoPackMapper extends AbstractLeadMapper {
 
     /**
      * Parses the contect details from leadMap

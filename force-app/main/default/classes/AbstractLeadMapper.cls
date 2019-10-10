@@ -3,22 +3,12 @@
  * @description This is a based lead model
  * @date 2019-10-01
  */
-public virtual class BaseLeadMapper implements ILeadMapper {
+public virtual class AbstractLeadMapper {
 
     /**
      * @param Map<String, Object> leadMap
      */
     private final Map<String, Object> leadMap;
-
-    /**
-     * Create the instance from leadMap
-     *
-     * @param Map<String, Object> leadMap
-     */
-    public BaseLeadParser(Map<String, Object> leadMap) {
-
-        this.leadMap = leadMap;
-    }
 
     /**
      * Used to set the json to be parsed
