@@ -57,7 +57,6 @@ public class HttpResponse {
    public static HttpResponse accepted(String body) {
 
        return HttpResponse.builder()
-                    .statusCode(202)
                     .body(body)
                 .build();
    }
@@ -70,7 +69,6 @@ public class HttpResponse {
    public static HttpResponse badRequest(String body) {
 
        return HttpResponse.builder()
-                    .statusCode(400)
                     .body(body)
                 .build();
    }
