@@ -8,16 +8,8 @@ public interface IRestDispatcher {
     /**
      * Dispatch the request to be handled asynchronously
      *
-     * @param IHttpMethodHandler handler
+     * @param Type handler
      * @return Object
      */
-    Object dispatch(IHttpMethodHandler handler);
-
-    /**
-     * Dispatch the request to be handled synchronously
-     *
-     * @param IHttpMethodHandler handler
-     * @return Object
-     */
-    Object dispatchNow(IHttpMethodHandler handler);
+    Object dispatch(Type handler);
 }

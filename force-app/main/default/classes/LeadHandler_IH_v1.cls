@@ -16,13 +16,13 @@ global class LeadHandler_IH_v1 {
     /**
      * Used to handle creating leads
      *
-     * @return String
+     * @return HttpResponse
      */
-    global static IHttpResponse create() {
+    global static HttpResponse create() {
 
         dispatcher = new RequestDispatcher();
         
-        IHttpResponse response = dispatcher.dispatchNow(LeadsCreateHandler.class);
+        HttpResponse response = dispatcher.dispatchNow(LeadsCreateHandler.class);
 
         return response;
     }

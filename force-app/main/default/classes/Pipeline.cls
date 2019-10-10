@@ -19,7 +19,7 @@ public class Pipeline implements IPipeline {
      */
     public Pipeline() {
 
-        this.processor = new Pipeline();
+        this.processor = new FingersCrossedProcessor();
     }
 
     /**
