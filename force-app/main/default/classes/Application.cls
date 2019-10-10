@@ -172,7 +172,7 @@ public class Application {
          */
         public ILeadHandler newInstance(LeadType leadType) {
 
-            Type handler = handleMapping.get(leadType);
+            Type handler = (Type)handleMapping.get(leadType);
 
             if (handler == null) {
 

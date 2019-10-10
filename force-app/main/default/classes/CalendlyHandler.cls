@@ -1,4 +1,4 @@
-public class CalendlyHandler {
+public class CalendlyHandler implements ILeadHandler {
     
     private Object result;
 
