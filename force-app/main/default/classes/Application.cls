@@ -299,7 +299,7 @@ public class Application {
          *
          * @param Map<Type, Type> selectorImplementationMapping
          */
-        public ServiceFactory(Map<Type, Type> selectorImplementationMapping) {
+        public SelectorFactory(Map<Type, Type> selectorImplementationMapping) {
 
             this.selectorImplementationMapping = selectorImplementationMapping;
         }

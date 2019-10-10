@@ -40,9 +40,9 @@ public virtual class BaseLead implements IMappable {
      */
     public BaseLead fromMapper(AbstractLeadMapper mapper) {
 
-        this.contactDetails = mapper.mapContactDetails();
-        this.tracking = mapper.mapTracking();
-        this.gdpr = mapper.mapGDPR();
+        this.contactDetails = (ContactDetails) mapper.mapContactDetails();
+        this.tracking = (Tracking) mapper.mapTracking();
+        this.gdpr = (GDPR) mapper.mapGDPR();
 
         return this;
     }

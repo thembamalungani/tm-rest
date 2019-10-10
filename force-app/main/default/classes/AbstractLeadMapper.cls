@@ -8,7 +8,7 @@ public virtual class AbstractLeadMapper {
     /**
      * @param Map<String, Object> leadMap
      */
-    private final Map<String, Object> leadMap;
+    private Map<String, Object> leadMap;
 
     /**
      * Used to set the json to be parsed
