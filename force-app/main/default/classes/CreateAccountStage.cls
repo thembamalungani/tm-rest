@@ -32,22 +32,7 @@ public class CreateAccountStage implements IPipelineStage {
      */
     public Object call(Object payload) {
 
-        Map<String, Object> payloadMap = (Map<String, Object>) payload;
-        BaseLead lead = (BaseLead) payloadMap.get('lead');
-        Map<String, String> accountParameters = accountParamsFromLead(lead);
-
-        Account account = this.accountSelector.findByEmail(lead.getEmail());
-
-        if (account == null){
-
-            account = this.accountService.create(accountParameters);
-
-        } else {
-
-            account = this.accountService.update(account.getId(), accountParameters);
-        }
-
-        return (Object) response(lead, account);
+        return payload;
     }
 
     /**
