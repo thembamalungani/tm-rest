@@ -56,7 +56,7 @@ public class CreateAccountStage implements IPipelineStage {
         Map<String, Object> accountParameters = LeadHelper.toAccountProperties(lead);
 
         String email            = accountParameters.get('PersonEmail');
-        Account account         = this.accountSelector.selectByEmails(new Set<String>{ email }).get(emails);
+        Account account         = this.accountSelector.selectPersonAccountsByEmails(new Set<String>{ email }).get(emails);
         IAccountMapper mapper   = AccountMapperFactory.getMapper(lead);
 
         List<Database.SaveResult> result;
