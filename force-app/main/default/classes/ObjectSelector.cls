@@ -25,8 +25,17 @@ public virtual class ObjectSelector {
      *
      * @return Set<Schema.SObjectField>
      */
-    protected Set<Schema.SObjectField> getFieldSet()
+    protected Set<String> getFieldNames()
     {
-       return objectType.getDescribe().fields.getMap().keySet();
+        Set<Schema.SObjectField> fieldSet = objectType.getDescribe().fields.getMap().keySet();
+
+        Set<String> fieldNames = new Set<String> ();
+
+        for (Schema.SObjectField field : fieldSet) {
+            
+            fieldNames.add(field.getDescribe().getName());
+        }
+
+       return fieldNames;
     }
 }

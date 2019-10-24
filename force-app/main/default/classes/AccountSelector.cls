@@ -21,17 +21,10 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
      */
     public Map<Id, Account> selectByIds(Set<Id> ids) {
 
-        List<String> fieldNames;
-
-        for (Schema.SObjectField field : this.getFieldSet()) {
-            
-            fieldNames.add(field.getDescribe().getName());
-        }
-
         String template = 'SELECT {0} FROM Account WHERE Id IN :{1}';
-        String query = String.format(template, new List<String>{ String.join(fieldNames, ', '), 'ids' });
-        List<Account> accounts = new List<Account>(Database.query(query));
-        Map<Id, Account> accountsMap = new Map<ID, Account>();
+        String query = String.format(template, new List<String>{ String.join(this.getFieldNames(), ', '), 'ids' });
+        List<Account> accounts = Database.query(query);
+        Map<Id, Account> accountsMap = new Map<Id, Account>();
 
         for (Account account : accounts) {
             
@@ -53,7 +46,7 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
 
         String template = 'SELECT {0} FROM Account WHERE Id IN :{1} AND AND IsPersonAccount=true';
 
-        String query = String.format(template, new List<String>{ fields.join(', '), 'emails' });
+        String query = String.format(template, new List<String>{ this.getFieldNames(), 'emails' });
 
         List<Account> accounts = Database.query(query);
 
