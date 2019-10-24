@@ -23,9 +23,9 @@ public virtual class ObjectSelector {
     /**
      * Used to get fields for the current object
      *
-     * @return Map<String, Schema.SObjectField>
+     * @return Set<Schema.SObjectField>
      */
-    protected Map<String, Schema.SObjectField> getFieldSet()
+    protected Set<Schema.SObjectField> getFieldSet()
     {
        return objectType.getDescribe().fields.getMap().keySet();
     }

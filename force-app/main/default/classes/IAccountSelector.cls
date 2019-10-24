@@ -17,7 +17,7 @@ public interface IAccountSelector {
      * Lookup and account by email
      *
      * @param Set<String> emails
-     * @return Map<Id, Account>
+     * @return Map<PersonEmail, Account>
      */
-    Map<Id, Account> selectPersonAccountsByEmails(Set<String> emails);
+    Map<PersonEmail, Account> selectPersonAccountsByEmails(Set<String> emails);
 }

@@ -12,7 +12,7 @@ public class HttpRequest {
 
         HttpRequest request = new HttpRequest();
 
-        request.body = restRequest.requestBody;
+        request.body = restRequest.requestBody.toString();
 
         return request;
     }

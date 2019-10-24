@@ -64,19 +64,19 @@ public virtual class BaseLead implements IMappable {
     */
     public class ContactDetails {
 
-        private String email { set; get; }
-        private String firstName { set; get; }
-        private String lastName { set; get; }
-        private String languageHome { set; get; }
-        private String jobTitle { set; get; }
-        private String phone { set; get; }
-        private String mobilePhone { set; get; }
-        private String educationHighestLevel { set; get; }
-        private String occupation { set; get; }
-        private String employerCompanyName { set; get; }
-        private String employeeIndustry { set; get; }
-        private String workExperience { set; get; }
-        private String countryOfResidence { set; get; }
+        public String email { set; get; }
+        public String firstName { set; get; }
+        public String lastName { set; get; }
+        public String languageHome { set; get; }
+        public String jobTitle { set; get; }
+        public String phone { set; get; }
+        public String mobilePhone { set; get; }
+        public String educationHighestLevel { set; get; }
+        public String occupation { set; get; }
+        public String employerCompanyName { set; get; }
+        public String employeeIndustry { set; get; }
+        public String workExperience { set; get; }
+        public String countryOfResidence { set; get; }
     }
 
     /**
@@ -86,14 +86,14 @@ public virtual class BaseLead implements IMappable {
     */
     public class Tracking {
 
-        private String countryInferred { set; get; }
-        private String externalId { set; get; }
-        private String leadCaptureFormType { set; get; }
-        private String leadCaptureFormUrl { set; get; }
-        private List<String> productIds { set; get; }
-        private String googleAnalyticsClientId { set; get; }
-        private String segmentAnonymousId { set; get; }
-        private String source { set; get; }
+        public String countryInferred { set; get; }
+        public String externalId { set; get; }
+        public String leadCaptureFormType { set; get; }
+        public String leadCaptureFormUrl { set; get; }
+        public List<String> productIds { set; get; }
+        public String googleAnalyticsClientId { set; get; }
+        public String segmentAnonymousId { set; get; }
+        public String source { set; get; }
     }
 
     /**
@@ -103,10 +103,10 @@ public virtual class BaseLead implements IMappable {
     */
     public class GDPR {
 
-        private Boolean gdprCallOptIn { set; get; }
-        private Boolean gdprEmailOptIn { set; get; }
-        private Boolean gdprSmsOptIn { set; get; }
-        private Boolean gdprProspect2uOptIn { set; get; }
-        private Boolean gdprProspectPartnerOptIn { set; get; }
+        public Boolean gdprCallOptIn { set; get; }
+        public Boolean gdprEmailOptIn { set; get; }
+        public Boolean gdprSmsOptIn { set; get; }
+        public Boolean gdprProspect2uOptIn { set; get; }
+        public Boolean gdprProspectPartnerOptIn { set; get; }
     }
 }

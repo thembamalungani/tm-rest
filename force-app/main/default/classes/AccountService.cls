@@ -11,9 +11,9 @@ public with sharing class AccountService extends SObjectService implements IAcco
      * @param List<Accounts> accounts
      * @return List<Database.SaveResult>
      */
-    public List<Database.SaveResult> createAccounts(List<Accounts> accounts) {
+    public List<Database.SaveResult> createAccounts(List<Account> accounts) {
 
-        return this.insertObjects(accounts);
+        return super().insertObjects(accounts);
     }
 
     /**
@@ -24,6 +24,6 @@ public with sharing class AccountService extends SObjectService implements IAcco
      */
     public List<Database.SaveResult> updateAccounts(Map<Id, SObjectType> objectsMap) {
 
-        return this.updateObjects(objectsMap);
+        return super().updateObjects(objectsMap);
     }
 }

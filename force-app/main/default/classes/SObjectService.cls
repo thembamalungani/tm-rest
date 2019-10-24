@@ -37,7 +37,7 @@ public virtual class SObjectService {
             objectsList.add(object);
         }
 
-        results = Database.update(objects);
+        results = Database.update(objectsList);
 
         return results;
     }

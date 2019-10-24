@@ -1,4 +1,4 @@
-public with sharing class SubmittedRegistrationStep1Handler {
+public class SubmittedRegistrationStep1Handler implements ILeadHandler {
     
     private Object result;
 
@@ -10,13 +10,13 @@ public with sharing class SubmittedRegistrationStep1Handler {
      */
     public Object handle(BaseLead lead) {
 
-        Map<String, String> payload;
+        Map<String, Object> payload;
 
         IPipeline pipeline = (new Pipeline(new FingersCrossedProcessor()))
                                 .pipe(new CreateAccountStage())
                                 .pipe(new CreateOpportunityStage());
 
-        payload = new Map<String, String>{ 'lead' => lead };
+        payload = new Map<String, Object>{ 'lead' => lead };
         result  = pipeline.process(payload);
 
         return result;

@@ -18,12 +18,12 @@ global class LeadHandler_IH_v1 {
      *
      * @return HttpResponsep
      */
-    global static String create() {
+    global static HttpResponse create() {
 
         dispatcher = new RequestDispatcher();
         
         HttpResponse response = dispatcher.dispatch(LeadsCreateHandler.class);
 
-        return HttpResponseSerialiser.serialise(response);
+        return response;
     }
 }
