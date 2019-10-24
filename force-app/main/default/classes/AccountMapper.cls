@@ -1,4 +1,4 @@
-public class AccountMapper implements IAccountMapper {
+public class AccountMapper {
 
     /**
      * Maps account fields to account properties in map
@@ -7,7 +7,7 @@ public class AccountMapper implements IAccountMapper {
      * @param Map<String, String> accountParameters
      * @return Account
      */
-    public Account doMap(Account account, Map<String, String> accountParameters) {
+    public virtual Account doMap(Account account, Map<String, String> accountParameters) {
 
         if ( account == null ) {
 

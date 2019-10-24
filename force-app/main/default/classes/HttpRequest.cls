@@ -1,6 +1,6 @@
 public class HttpRequest {
     
-    public Blob body;
+    public String body;
     public String method;
 
     public String getBody() {

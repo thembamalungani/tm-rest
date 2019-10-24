@@ -40,7 +40,7 @@ public class CreateAccountStage implements IPipelineStage {
         lead       = (BaseLead) payloadMap.get('lead');
         account    = createOrUpdateAccount(lead);
 
-        payload.put('account', account);
+        payloadMap.put('account', account);
 
         return payload;
     }

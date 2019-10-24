@@ -32,9 +32,9 @@ public virtual class SObjectService {
 
         List<Schema.SObjectType> objectsList    = new List<Schema.SObjectType>();
 
-        for (SObject object: objectsMap.values()) {
+        for (SObject value: objectsMap.values()) {
             
-            objectsList.add(object);
+            objectsList.add(value);
         }
 
         results = Database.update(objectsList);

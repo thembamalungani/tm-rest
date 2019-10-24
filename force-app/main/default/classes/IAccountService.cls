@@ -11,7 +11,7 @@ public interface IAccountService {
      * @param List<Accounts> accounts
      * @return List<Database.SaveResult>
      */
-    List<Database.SaveResult> createAccounts(List<Accounts> accounts);
+    List<Database.SaveResult> createAccounts(List<Account> accounts);
 
     /**
      * Updates account with passed id with the parameters

@@ -10,7 +10,7 @@ public class AccountMapperFactory {
     {
         IAccountMapper mapper;
 
-        if ( this.isCalendly(lead) ) {
+        if ( isCalendly(lead) ) {
 
             mapper = new CalendlyAccountMapper();
 

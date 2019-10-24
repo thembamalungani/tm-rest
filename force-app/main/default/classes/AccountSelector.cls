@@ -10,7 +10,7 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
      */
     public AccountSelector() {
 
-        super(Account);
+        super(Account.getSObjectType());
     }
 
     /**
@@ -24,12 +24,16 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
         Set<Schema.SObjectField> fields = this.getFieldSet();
 
         String template = 'SELECT {0} FROM Account WHERE Id IN :{1}';
+        String query = String.format(template, new List<String>{ (new List<String>(fields)).join(', '), 'ids' });
+        List<Account> accounts = new List<Account>(Database.query(query));
+        Map<Id, Account> accountsMap = new Map<ID, Account>();
 
-        String query = String.format(template, new List<String>{ fields.join(', '), 'ids' });
+        for (Account account : accounts) {
+            
+            accountsMap.put(account.Id, account);
+        }
 
-        Map<Id, Account> accounts = new Map<Id, Accounts>(Database.query(query));
-
-        return accounts;
+        return accountsMap;
     }
 
     /**
