@@ -20,11 +20,16 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
      * @return Map<Id, Account>
      */
     public Map<Id, Account> selectByIds(Set<Id> ids) {
-        
-        Set<Schema.SObjectField> fields = this.getFieldSet();
+
+        List<String> fieldNames;
+
+        for (Schema.SObjectField field : this.getFieldSet()) {
+            
+            fieldNames.add(field.getDescribe().getName());
+        }
 
         String template = 'SELECT {0} FROM Account WHERE Id IN :{1}';
-        String query = String.format(template, new List<String>{ (new List<String>(fields)).join(', '), 'ids' });
+        String query = String.format(template, new List<String>{ fieldNames.join(', '), 'ids' });
         List<Account> accounts = new List<Account>(Database.query(query));
         Map<Id, Account> accountsMap = new Map<ID, Account>();
 

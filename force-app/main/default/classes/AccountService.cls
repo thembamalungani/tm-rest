@@ -13,7 +13,7 @@ public with sharing class AccountService extends SObjectService implements IAcco
      */
     public List<Database.SaveResult> createAccounts(List<Account> accounts) {
 
-        return super().insertObjects(accounts);
+        return super.insertObjects(accounts);
     }
 
     /**
@@ -24,6 +24,6 @@ public with sharing class AccountService extends SObjectService implements IAcco
      */
     public List<Database.SaveResult> updateAccounts(Map<Id, SObjectType> objectsMap) {
 
-        return super().updateObjects(objectsMap);
+        return super.updateObjects(objectsMap);
     }
 }
