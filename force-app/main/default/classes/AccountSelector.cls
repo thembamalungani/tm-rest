@@ -29,7 +29,7 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
         }
 
         String template = 'SELECT {0} FROM Account WHERE Id IN :{1}';
-        String query = String.format(template, new List<String>{ fieldNames.join(', '), 'ids' });
+        String query = String.format(template, new List<String>{ String.join(fieldNames, ', '), 'ids' });
         List<Account> accounts = new List<Account>(Database.query(query));
         Map<Id, Account> accountsMap = new Map<ID, Account>();
 

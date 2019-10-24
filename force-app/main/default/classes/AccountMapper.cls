@@ -1,4 +1,4 @@
-public class AccountMapper {
+public virtual class AccountMapper {
 
     /**
      * Maps account fields to account properties in map
