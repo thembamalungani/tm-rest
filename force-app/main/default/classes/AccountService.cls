@@ -3,54 +3,27 @@
  * @description Determines where the to create or update an account
  * @date 2019-10-09
  */
-public with sharing class AccountService implements IAccountService {
-
-    private IAccountSelector accountSelector;
-
-    public AccountService() {
-
-        this.accountSelector = new AccountSelector();
-    }
+public with sharing class AccountService extends SObjectService implements IAccountService {
 
     /**
      * Creates or update an account based on condition
      *
-     * @param Map<String, String> parameters
-     * @return Account
+     * @param List<Accounts> accounts
+     * @return List<Database.SaveResult>
      */
-    public Account createAccount(Map<String, String> parameters){
-        
-        Account account = fromParameters(parameters);
+    public List<Database.SaveResult> createAccounts(List<Accounts> accounts) {
 
-        if (Schema.SObjectType.Account.isCreateable()) {
-
-            insert account;
-        }
-
-        return account;
+        return this.insertObjects(accounts);
     }
 
     /**
-     * Creates or update an account based on condition
+     * Updates account with passed id with the parameters
      *
-     * @param Account account
-     * @param ISpecification specification
-     * @return Account
+     * @param Map<Id, SObjectType> objectsMap
+     * @return List<Database.SaveResult>
      */
-    public Account updateAccount(Id accountId, Map<String, String> parameters){
-        
-        Account account = new Account(); //this.accountSelector.find(accountId);
+    public List<Database.SaveResult> updateAccounts(Map<Id, SObjectType> objectsMap) {
 
-        if (Schema.SObjectType.Account.isCreateable()) {
-
-            insert account;
-        }
-
-        return account;
-    }
-
-    private Account fromParameters(Map<String, String> parameters) {
-
-        return new Account();
+        return this.updateObjects(objectsMap);
     }
 }

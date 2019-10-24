@@ -22,8 +22,8 @@ global class LeadHandler_IH_v1 {
 
         dispatcher = new RequestDispatcher();
         
-        Object response = dispatcher.dispatch(LeadsCreateHandler.class);
+        HttpResponse response = dispatcher.dispatch(LeadsCreateHandler.class);
 
-        return 'test';
+        return HttpResponseSerialiser.serialise(response);
     }
 }

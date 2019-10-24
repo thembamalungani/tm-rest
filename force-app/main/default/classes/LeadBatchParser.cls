@@ -34,9 +34,8 @@ public virtual class LeadBatchParser implements ILeadBatchParser {
      */
     public List<BaseLead> parse(String json) {
         
-        List<BaseLead> leads = new List<BaseLead>();
-
-        List<Object> events = new List<object>();
+        List<BaseLead> leads    = new List<BaseLead>();
+        List<Object> events     = new List<object>();
 
         for(Object event: events) {
 

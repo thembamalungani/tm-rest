@@ -9,7 +9,7 @@ public interface IRestDispatcher {
      * Dispatch the request to be handled asynchronously
      *
      * @param Type handler
-     * @return Object
+     * @return HttpResponse
      */
-    Object dispatch(Type handler);
+    HttpResponse dispatch(Type handler);
 }

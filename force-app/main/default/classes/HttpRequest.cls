@@ -1,13 +1,20 @@
 public class HttpRequest {
     
+    public Blob body;
+    public String method;
+
     public String getBody() {
 
-        return'';
+        return this.body;
     }
 
-    public static HttpRequest fromContext(System.RestRequest request) {
+    public static HttpRequest fromContext(System.RestRequest restRequest) {
 
-        return new HttpRequest();
+        HttpRequest request = new HttpRequest();
+
+        request.body = restRequest.requestBody;
+
+        return request;
     }
 
 }

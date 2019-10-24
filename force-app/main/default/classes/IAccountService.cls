@@ -8,17 +8,16 @@ public interface IAccountService {
     /**
      * Creates or update an account based on condition
      *
-     * @param Map<String, String> parameters
-     * @return Account
+     * @param List<Accounts> accounts
+     * @return List<Database.SaveResult>
      */
-    Account createAccount(Map<String, String> parameters);
+    List<Database.SaveResult> createAccounts(List<Accounts> accounts);
 
     /**
      * Updates account with passed id with the parameters
      *
-     * @param Id accountId
-     * @param Map<String, String> parameters
-     * @return Account
+     * @param Map<Id, SObjectType> objectsMap
+     * @return List<Database.SaveResult>
      */
-    Account updateAccount(Id accountId, Map<String, String> parameters);
+    List<Database.SaveResult> updateAccounts(Map<Id, SObjectType> objectsMap);
 }

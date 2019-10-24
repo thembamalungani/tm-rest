@@ -14,11 +14,12 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
     public HttpResponse handle(HttpRequest request) {
 
         Boolean isQueued;
+        ILeadBatchParser parser;
 
         try {
 
-            ILeadBatchParser parser = new LeadBatchParser();
-            queueLeads( parser.parse(''));
+            parser = new LeadBatchParser();
+            queueLeads( parser.parse( request.body ));
             isQueued = true;
 
         } catch(JSONException e) {
@@ -27,14 +28,6 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
         }
 
         return response(isQueued);
-    }
-
-    public void fail(HttpRequest request, HttpResponse response) {
-
-    }
-
-    public void complete(HttpRequest request, HttpResponse response) {
-
     }
 
     /**

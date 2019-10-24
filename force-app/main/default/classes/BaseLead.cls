@@ -67,7 +67,6 @@ public virtual class BaseLead implements IMappable {
         private String email { set; get; }
         private String firstName { set; get; }
         private String lastName { set; get; }
-        private String countryInferred { set; get; }
         private String languageHome { set; get; }
         private String jobTitle { set; get; }
         private String phone { set; get; }
@@ -87,6 +86,7 @@ public virtual class BaseLead implements IMappable {
     */
     public class Tracking {
 
+        private String countryInferred { set; get; }
         private String externalId { set; get; }
         private String leadCaptureFormType { set; get; }
         private String leadCaptureFormUrl { set; get; }

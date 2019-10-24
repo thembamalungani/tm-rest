@@ -10,7 +10,7 @@ public class RequestDispatcher implements IRestDispatcher {
      *
      * @param Type handler
      */
-    public Object dispatch(Type type) {
+    public HttpResponse dispatch(Type type) {
 
         return process(type);
     }

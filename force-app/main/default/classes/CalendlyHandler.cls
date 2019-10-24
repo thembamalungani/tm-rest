@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Handler for calendly events
+ * @date 2019-10-01
+ */
 public class CalendlyHandler implements ILeadHandler {
     
     private Object result;
@@ -5,21 +10,23 @@ public class CalendlyHandler implements ILeadHandler {
     /**
      * Called when the stage is run
      * 
-     * @param Object payload
+     * @param BaseLead lead
      * @return Object
      */
-    public Object handle(Object payload) {
+    public Object handle(BaseLead lead) {
 
-        BaseLead lead = (BaseLead) payload;
+        Map<String, String> payload;
 
         IPipeline pipeline = (new Pipeline(new FingersCrossedProcessor()))
                                 .pipe(new CreateAccountStage())
-                                .pipe(new CreateOpportunityStage());
+                                .pipe(new CreateOpportunityStage())
+                                .pipe(new CreateRequestACallStage());
 
 
-        this.result = pipeline.process(payload);
+        payload = new Map<String, String>{ 'lead' => lead };
+        result  = pipeline.process(payload);
 
-        return this.result;
+        return result;
     }
 
     /**

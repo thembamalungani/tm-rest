@@ -27,25 +27,10 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
      */
     public void execute(QueueableContext context) {
         
-        ILeadHandler handler = handler();
-        Object result = handler.handle(lead);
-        Boolean isSuccess = handler.isSuccess();
-    }
-
-    /**
-     * Gets a registered handle for the current lead type
-     * 
-     * @return ILeadHandler
-     */
-    private ILeadHandler handler() {
-
+        Object result;
         ILeadHandler handler;
 
-        if (lead.getType() == LeadType.DOWNLOADED_INFO_PACK) {
-
-            handler = new DownloadedInfoPackHandler();
-        }
-
-        return handler;
+        handler = LeadHandlerFactory.getHandler(lead);
+        result  = handler.handle(lead);
     }
 }

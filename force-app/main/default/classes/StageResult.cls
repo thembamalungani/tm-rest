@@ -8,11 +8,11 @@ public class StageResult {
 
     public StageResult(StageResult.Builder builder) {
 
-        this.lead = builder.lead;
-        this.isSuccess = builder.isSuccess;
-        this.stageAccount = builder.stageAccount;
-        this.stageOpportunity = builder.stageOpportunity;
-        this.stageCase = builder.stageCase;
+        this.lead               = builder.lead;
+        this.isSuccess          = builder.isSuccess;
+        this.stageAccount       = builder.stageAccount;
+        this.stageOpportunity   = builder.stageOpportunity;
+        this.stageCase          = builder.stageCase;
     }
 
     public static StageResult.Builder builder() {

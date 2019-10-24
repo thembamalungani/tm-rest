@@ -5,21 +5,21 @@ public with sharing class SubmittedRegistrationStep1Handler {
     /**
      * Called when the stage is run
      * 
-     * @param Object payload
+     * @param BaseLead lead
      * @return Object
      */
-    public Object handle(Object payload) {
+    public Object handle(BaseLead lead) {
 
-        BaseLead lead = (BaseLead) payload;
+        Map<String, String> payload;
 
         IPipeline pipeline = (new Pipeline(new FingersCrossedProcessor()))
                                 .pipe(new CreateAccountStage())
                                 .pipe(new CreateOpportunityStage());
 
+        payload = new Map<String, String>{ 'lead' => lead };
+        result  = pipeline.process(payload);
 
-        this.result = pipeline.process(payload);
-
-        return this.result;
+        return result;
     }
 
     /**

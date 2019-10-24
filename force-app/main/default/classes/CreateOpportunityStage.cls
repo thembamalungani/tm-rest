@@ -31,9 +31,10 @@ public class CreateOpportunityStage implements IPipelineStage {
      */
     public Object call(Object payload) {
 
-        Map<String, Object> payloadMap = (Map<String, Object>) payload;
-        BaseLead lead = (BaseLead) payloadMap.get('lead');
-        Account account = (Account) payloadMap.get('account');
+        Map<String, Object> payloadMap  = (Map<String, Object>) payload;
+
+        BaseLead lead    = (BaseLead) payloadMap.get('lead');
+        Account account  = (Account) payloadMap.get('account');
 
         Opportunity opportunity = createFromLead(lead, account);
 
@@ -42,6 +43,14 @@ public class CreateOpportunityStage implements IPipelineStage {
         return (Object) response(lead, account, opportunity);
     }
 
+    /**
+     * Creates a opportunity from a lead
+     *
+     * @param BaseLead lead
+     * @param Account account
+     *
+     * @return Opportunity
+     */
     public Opportunity createFromLead(BaseLead lead, Account account) {
 
         return new Opportunity();
