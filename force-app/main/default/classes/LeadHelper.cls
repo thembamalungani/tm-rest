@@ -6,9 +6,9 @@ public class LeadHelper {
      * @param BaseLead lead
      * @return Map<String, String>
      */
-    public static Map<String, String> toAccountProperties(BaseLead lead) {
+    public static Map<String, Object> toAccountProperties(BaseLead lead) {
 
-        Map<String, String> accountParameters = new  Map<String, String>{
+        Map<String, Object> accountParameters = new  Map<String, Object>{
             'PersonEmail'                           => lead.contactDetails.email,
             'FirstName'                             => lead.contactDetails.firstname,
             'LastName'                              => lead.contactDetails.lastname,

@@ -15,13 +15,13 @@ public class CalendlyHandler implements ILeadHandler {
      */
     public Object handle(BaseLead lead) {
 
+        IPipeline pipeline;
         Map<String, Object> payload;
 
-        IPipeline pipeline = (new Pipeline(new FingersCrossedProcessor()))
-                                .pipe(new CreateAccountStage())
-                                .pipe(new CreateOpportunityStage())
-                                .pipe(new CreateRequestACallStage());
-
+        pipeline = (new Pipeline(new FingersCrossedProcessor()))
+            .pipe(new CreateAccountStage())
+            .pipe(new CreateOpportunityStage())
+            .pipe(new CreateRequestACallStage());
 
         payload = new Map<String, Object>{ 'lead' => lead };
         result  = pipeline.process(payload);

@@ -35,12 +35,10 @@ public class CreateAccountStage implements IPipelineStage {
         BaseLead lead;
         Account account;
         Map<String, Object> payloadMap;
-        Map<String, String> accountParameters;
 
-        payloadMap          = (Map<String, Object>) payload;
-        lead                = (BaseLead) payloadMap.get('lead');
-        accountParameters   = LeadHelper.toAccountProperties(lead);
-        account             = createOrUpdateAccount(accountParameters);
+        payloadMap = (Map<String, Object>) payload;
+        lead       = (BaseLead) payloadMap.get('lead');
+        account    = createOrUpdateAccount(lead);
 
         payload.put('account', account);
 
@@ -50,24 +48,27 @@ public class CreateAccountStage implements IPipelineStage {
     /**
      * Creates or updates an account based on person email existence
      *
-     * @param Map<String, String> accountParameters
      * @param BaseLead lead
      * @return Account
      */
-    private Account createOrUpdateAccount(Map<String, String> accountParameters, BaseLead lead) {
+    private Account createOrUpdateAccount(BaseLead lead) {
+        
+        Map<String, String> accountParameters = LeadHelper.toAccountProperties(lead);
 
         String email            = accountParameters.get('PersonEmail');
         Account account         = this.accountSelector.selectByEmails(new Set<String>{ email }).get(emails);
-        IAccountMapper mapper   = AccountMapperFactory.getMapper(lead.tracking.source);
+        IAccountMapper mapper   = AccountMapperFactory.getMapper(lead);
+
+        List<Database.SaveResult> result;
 
         if ( account != null ) {
 
             account = mapper.doMap(account, accountParameters); 
-            this.accountService.updateAccounts(new Map<Id, Account>{account.Id => account});
+            result  = this.accountService.updateAccounts(new Map<Id, Account>{account.Id => account});
             
         } else {
 
-            this.accountService.createAccounts(new List<Account>{account});
+            result = this.accountService.createAccounts(new List<Account>{account});
         }
         
         return account;

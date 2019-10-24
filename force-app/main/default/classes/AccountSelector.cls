@@ -36,9 +36,9 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
      * Lookup and account by email
      *
      * @param Set<String> emails
-     * @return Map<PersonEmail, Account>
+     * @return Map<String, Account>
      */
-    public Map<PersonEmail, Account> selectPersonAccountsByEmails(Set<String> emails) {
+    public Map<String, Account> selectPersonAccountsByEmails(Set<String> emails) {
 
         Set<Schema.SObjectField> fields = this.getFieldSet();
 
@@ -46,8 +46,15 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
 
         String query = String.format(template, new List<String>{ fields.join(', '), 'emails' });
 
-        Map<PersonEmail, Account> accounts = new Map<PersonEmail, Accounts>(Database.query(query));
+        List<Account> accounts = Database.query(query);
 
-        return accounts;
+        Map<String, Account> accountsMap = new Map<String, Account>();
+
+        for (Account account : accounts) {
+            
+            accountsMap.put(account.PersonEmail, account);
+        }
+
+        return accountsMap;
     }
 }

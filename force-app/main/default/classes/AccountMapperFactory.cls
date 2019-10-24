@@ -28,7 +28,7 @@ public class AccountMapperFactory {
      * @param BaseLead lead
      * @return Boolean
      */
-    private Boolean isCalendly(BaseLead lead)
+    public static Boolean isCalendly(BaseLead lead)
     {
         return (lead.getType() == LeadType.CALENDLY_RAC_CREATED)
                 || (lead.getType() == LeadType.CALENDLY_RAC_CANCELED);

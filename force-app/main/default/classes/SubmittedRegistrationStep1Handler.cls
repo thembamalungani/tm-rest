@@ -10,11 +10,12 @@ public class SubmittedRegistrationStep1Handler implements ILeadHandler {
      */
     public Object handle(BaseLead lead) {
 
+        IPipeline pipeline;
         Map<String, Object> payload;
 
-        IPipeline pipeline = (new Pipeline(new FingersCrossedProcessor()))
-                                .pipe(new CreateAccountStage())
-                                .pipe(new CreateOpportunityStage());
+        pipeline = (new Pipeline(new FingersCrossedProcessor()))
+            .pipe(new CreateAccountStage())
+            .pipe(new CreateOpportunityStage());
 
         payload = new Map<String, Object>{ 'lead' => lead };
         result  = pipeline.process(payload);
