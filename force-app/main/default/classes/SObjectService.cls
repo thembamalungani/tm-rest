@@ -10,7 +10,7 @@ public virtual class SObjectService {
      *
      * @param List<Schema.SObjectType> objects
      */
-    public void insertObjects(List<Schema.SObjectType> objects){
+    public void insertObjects(List<SObject> objects){
         
         insert objects;
     }
