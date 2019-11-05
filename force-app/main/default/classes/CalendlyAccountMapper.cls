@@ -7,7 +7,7 @@ public class CalendlyAccountMapper extends AccountMapper {
      * @param Map<String, String> accountParameters
      * @return Map<String, String>
      */
-    public override Account doMap(Account account, Map<String, String> accountParameters) {
+    public override Account doMap(Account account, Map<String, Object> accountParameters) {
 
         if ( account == null ) {
 
@@ -23,7 +23,7 @@ public class CalendlyAccountMapper extends AccountMapper {
      * @param Map<String, String> accountParameters
      * @return Map<String, String>
      */
-    private Map<String, String> removeGDPRFields(Map<String, String> accountParameters) {
+    private Map<String, String> removeGDPRFields(Map<String, Object> accountParameters) {
         
         accountParameters.remove('PersonDoNotCall');
         accountParameters.remove('PersonHasOptedOutOfEmail');

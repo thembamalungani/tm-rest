@@ -18,17 +18,17 @@ public virtual class SObjectService {
     /**
      * Creates or update an account based on condition
      *
-     * @param Map<Id, SObjectType> objectsMap
+     * @param Map<Id, SObject> objectsMap
      */
-    public void updateObjects(Map<Id, SObjectType> objectsMap){
+    public void updateObjects(Map<Id, SObject> objectsMap){
         
         List<Database.SaveResult> results;
 
-        List<Schema.SObjectType> objectsList  = new List<Schema.SObjectType>();
+        List<SObject> objectsList  = new List<SObject>();
 
         for (SObject value: objectsMap.values()) {
             
-            objectsList.add(object);
+            objectsList.add(value);
         }
 
         update objectsList;
