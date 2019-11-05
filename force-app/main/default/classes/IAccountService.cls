@@ -15,7 +15,7 @@ public interface IAccountService {
     /**
      * Updates account with passed id with the parameters
      *
-     * @param Map<Id, SObjectType> objectsMap
+     * @param Map<Id, Account> objectsMap
      */
-    void updateAccounts(Map<Id, SObjectType> objectsMap);
+    void updateAccounts(Map<Id, Account> objectsMap);
 }

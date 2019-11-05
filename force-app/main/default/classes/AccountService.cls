@@ -18,9 +18,9 @@ public with sharing class AccountService extends SObjectService implements IAcco
     /**
      * Updates account with passed id with the parameters
      *
-     * @param Map<Id, SObject> objectsMap
+     * @param Map<Id, Account> objectsMap
      */
-    public void updateAccounts(Map<Id, SObject> objectsMap) {
+    public void updateAccounts(Map<Id, Account> objectsMap) {
 
         super.updateObjects(objectsMap);
     }
