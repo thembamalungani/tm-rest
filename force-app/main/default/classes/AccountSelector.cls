@@ -42,8 +42,6 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
      */
     public Map<String, Account> selectPersonAccountsByEmails(Set<String> emails) {
 
-        Set<Schema.SObjectField> fields = this.getFieldSet();
-
         String template = 'SELECT {0} FROM Account WHERE Id IN :{1} AND AND IsPersonAccount=true';
 
         String query = String.format(template, new List<String>{ (Iterable<String>)this.getFieldNames(), 'emails' });
