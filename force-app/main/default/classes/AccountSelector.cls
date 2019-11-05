@@ -21,9 +21,9 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
      */
     public Map<Id, Account> selectByIds(Set<Id> ids) {
 
-        String template = 'SELECT {0} FROM Account WHERE Id IN :{1}';
-        String query = String.format(template, new List<String>{ String.join(this.getFieldNames(), ', '), 'ids' });
-        List<Account> accounts = Database.query(query);
+        String template              = 'SELECT {0} FROM Account WHERE Id IN :{1}';
+        String query                 = String.format(template, new List<String>{ String.join(this.getFieldNames(), ', '), 'ids' });
+        List<Account> accounts       = Database.query(query);
         Map<Id, Account> accountsMap = new Map<Id, Account>();
 
         for (Account account : accounts) {
