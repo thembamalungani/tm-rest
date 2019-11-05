@@ -9,21 +9,19 @@ public with sharing class AccountService extends SObjectService implements IAcco
      * Creates or update an account based on condition
      *
      * @param List<Accounts> accounts
-     * @return List<Database.SaveResult>
      */
-    public List<Database.SaveResult> createAccounts(List<Account> accounts) {
+    public void createAccounts(List<Account> accounts) {
 
-        return super.insertObjects(accounts);
+        super.insertObjects(accounts);
     }
 
     /**
      * Updates account with passed id with the parameters
      *
      * @param Map<Id, SObjectType> objectsMap
-     * @return List<Database.SaveResult>
      */
-    public List<Database.SaveResult> updateAccounts(Map<Id, SObjectType> objectsMap) {
+    public void updateAccounts(Map<Id, SObjectType> objectsMap) {
 
-        return super.updateObjects(objectsMap);
+        super.updateObjects(objectsMap);
     }
 }

@@ -9,36 +9,28 @@ public virtual class SObjectService {
      * Creates objects 
      *
      * @param List<Schema.SObjectType> objects
-     * @return List<Database.SaveResult>
      */
-    public List<Database.SaveResult> insertObjects(List<Schema.SObjectType> objects){
+    public void insertObjects(List<Schema.SObjectType> objects){
         
-        List<Database.SaveResult> results;
-
-        results = Database.insert(objects);
-
-        return results;
+        insert objects;
     }
 
     /**
      * Creates or update an account based on condition
      *
      * @param Map<Id, SObjectType> objectsMap
-     * @return List<Database.SaveResult> 
      */
-    public List<Database.SaveResult> updateObjects(Map<Id, SObjectType> objectsMap){
+    public void updateObjects(Map<Id, SObjectType> objectsMap){
         
         List<Database.SaveResult> results;
 
-        List<Schema.SObjectType> objectsList    = new List<Schema.SObjectType>();
+        List<Schema.SObjectType> objectsList  = new List<Schema.SObjectType>();
 
         for (SObject value: objectsMap.values()) {
             
-            objectsList.add(value);
+            objectsList.add(object);
         }
 
-        results = Database.update(objectsList);
-
-        return results;
+        update objectsList;
     }
 }
