@@ -44,7 +44,7 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
 
         String template = 'SELECT {0} FROM Account WHERE Id IN :{1} AND AND IsPersonAccount=true';
 
-        String query = String.format(template, new List<String>{ (Iterable<String>)this.getFieldNames(), 'emails' });
+        String query = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'emails' });
 
         List<Account> accounts = Database.query(query);
 
