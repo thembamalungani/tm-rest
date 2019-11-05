@@ -27,11 +27,11 @@ public virtual class ObjectSelector {
      */
     protected Set<String> getFieldNames()
     {
-        List<Schema.SObjectField> fieldSet = objectType.getDescribe().fieldSets.getMap().values();
+        List<Schema.SObjectField> fields = objectType.getDescribe().fields.getMap().values();
 
         Set<String> fieldNames = new Set<String> ();
 
-        for (Schema.SObjectField field : fieldSet) {
+        for (Schema.SObjectField field : fields) {
             
             fieldNames.add(field.getDescribe().getName());
         }
