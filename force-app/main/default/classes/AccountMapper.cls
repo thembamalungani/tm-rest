@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Account mapper
+ * @date 2019-11-11
+ */
 public virtual class AccountMapper {
 
     /**

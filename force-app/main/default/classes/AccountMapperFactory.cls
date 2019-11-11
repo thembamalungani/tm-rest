@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Account mapper factory
+ * @date 2019-10-09
+ */
 public class AccountMapperFactory {
     
     /**

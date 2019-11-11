@@ -11,9 +11,9 @@ public class CreateOpportunityStage implements IPipelineStage {
     private IOpportunityService opportunityService;
 
     /**
-     * @param IAccountSelector accountSelector
+     * @param IOpportunitySelector accountSelector
      */
-    private IAccountSelector accountSelector;
+    private IOpportunitySelector accountSelector;
 
     /**
      * Wire dependencies
@@ -21,6 +21,7 @@ public class CreateOpportunityStage implements IPipelineStage {
     public CreateOpportunityStage() {
 
         this.opportunityService = new OpportunityService();
+        this.accountSelector    = new OpportunitySelector();
     }
 
     /**
@@ -39,9 +40,11 @@ public class CreateOpportunityStage implements IPipelineStage {
         payloadMap  = (Map<String, Object>) payload;
         lead        = (BaseLead) payloadMap.get('lead');
         account     = (Account) payloadMap.get('account');
-        opportunity = createFromLead(lead, account);
+        opportunity = this.accountSelector.selectByAccountIdAndPresentationId(account.Id, lead.tracking.productIds.get(0));
 
-        opportunity = this.opportunityService.create(lead, account);
+        if (opportunity == null) {
+            opportunity = this.createFromLead(lead, account);
+        }
 
         return (Object) response(lead, account, opportunity);
     }
@@ -56,7 +59,11 @@ public class CreateOpportunityStage implements IPipelineStage {
      */
     public Opportunity createFromLead(BaseLead lead, Account account) {
 
-        return new Opportunity();
+        OpportunityMapper mapper = OpportunityMapperFactory.getMapper(lead);
+
+        Opportunity opportunity = this.opportunityService.create(lead, account);
+
+        return opportunity;
     }
 
     /**

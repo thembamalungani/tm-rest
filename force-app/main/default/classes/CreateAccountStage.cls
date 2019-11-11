@@ -20,8 +20,8 @@ public class CreateAccountStage implements IPipelineStage {
      */
     public CreateAccountStage() {
 
-        this.accountService = new AccountService();
-        this.accountSelector = new AccountSelector();
+        this.accountService     = new AccountService();
+        this.accountSelector    = new AccountSelector();
     }
 
     /**
@@ -64,11 +64,11 @@ public class CreateAccountStage implements IPipelineStage {
         if ( account != null ) {
 
             account = mapper.doMap(account, accountParameters); 
-            //this.accountService.updateAccounts(new Map<Id, Account>{account.Id => account});
+            this.accountService.updateAccounts(new Map<Id, Account>{account.Id => account});
             
         } else {
 
-            //this.accountService.createAccounts(new List<Account>{account});
+            this.accountService.createAccounts(new List<Account>{account});
         }
         
         return account;

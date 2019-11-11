@@ -31,4 +31,30 @@ public class LeadHelper {
 
         return accountParameters;
     }
+
+    
+    /**
+     * Creates a map of opportunity fields to lead values
+     *
+     * @param BaseLead lead
+     * @param Account account
+     * @return Map<String, String>
+     */
+    public static Map<String, Object> toOpportunityProperties(BaseLead lead, Account account) {
+
+        Map<String, Object> opportunityProperties = new  Map<String, Object>{
+            'Name'                          => lead.contactDetails.firstName + ' ' + lead.contactDetails.lastName,
+            'StageName'                     => 'New Interest',
+            'CloseDate'                     => Date.today().addMonths(1),
+            'Google_Analytics_Client_Id__c' => lead.tracking.googleAnalyticsClientId,
+            'Segment_Anonymous_Id__c'       => lead.tracking.segmentAnonymousId,
+            'Lead_Capture_Form_URL__c'      => lead.tracking.leadCaptureFormUrl,
+            'Lead_Capture_Form_Type__c'     => lead.tracking.leadCaptureFormType,
+            'AccountId'                     => account.Id,
+            'Segment_Sync_Status__c'        => 'New Opportunity Pending Synchronisation',
+            'Inferred_Presentation__c'      => lead.tracking.productIds.get(0)
+        };
+
+        return opportunityProperties;
+    }
 }
