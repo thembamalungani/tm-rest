@@ -41,7 +41,7 @@ public class CreateOpportunityStage implements IPipelineStage {
         account     = (Account) payloadMap.get('account');
         opportunity = createFromLead(lead, account);
 
-        this.opportunityService.create(new List<Opportunity>{ OpportunityHelper.createFor(lead, account) });
+        this.opportunityService.create(new List<Opportunity>{ OpportunityHelper.prepareFor(lead, account) });
 
         return (Object) response(lead, account, opportunity);
     }
