@@ -13,6 +13,8 @@ public class OpportunityHelper {
             AccountId                       = account.Id,
             Segment_Sync_Status__c          = 'New Opportunity Pending Synchronisation'
         );
+
+        return opportunity;
     }
 
     /**
