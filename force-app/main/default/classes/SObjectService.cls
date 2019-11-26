@@ -12,7 +12,7 @@ public virtual class SObjectService {
      */
     public void insertObjects(List<SObject> objects){
         
-        insert objects;
+        List<Database.SaveResult> results = Database.insert(objects);
     }
 
     /**
@@ -22,15 +22,13 @@ public virtual class SObjectService {
      */
     public void updateObjects(Map<Id, SObject> objectsMap){
         
-        List<Database.SaveResult> results;
-
-        List<SObject> objectsList  = new List<SObject>();
+        List<SObject> objects  = new List<SObject>();
 
         for (SObject value: objectsMap.values()) {
             
-            objectsList.add(value);
+            objects.add(value);
         }
 
-        update objectsList;
+        List<Database.SaveResult> results = Database.update(objects);
     }
 }

@@ -11,15 +11,16 @@ public class Pipeline implements IPipeline {
      * Pipeline processor
      *
      * @param IPipelineProcessor processor
-     */
+     */ 
     private IPipelineProcessor processor;
 
     /**
      * Fetch pipeline processor if instantiated without one
      */
     public Pipeline() {
-
-        this.processor = new FingersCrossedProcessor();
+		
+        this.stages		= new List<IPipelineStage>();
+        this.processor 	= new FingersCrossedProcessor();
     }
 
     /**
@@ -51,6 +52,11 @@ public class Pipeline implements IPipeline {
      */
     public IPipeline pipe(IPipelineStage stage) {
 
+        if (this.stages == null) {
+            
+            this.stages	= new List<IPipelineStage>();
+        }
+        
         this.stages.add(stage);
 
         return this;

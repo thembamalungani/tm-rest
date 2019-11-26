@@ -28,9 +28,11 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
     public void execute(QueueableContext context) {
         
         Object result;
-        ILeadHandler handler;
-
-        handler = LeadHandlerFactory.getHandler(lead);
-        result  = handler.handle(lead);
+        ILeadHandler handler = LeadHandlerFactory.getHandler(lead);
+        System.debug('Type: ' + lead.getType());
+        if (handler != null) {
+            
+            result  = handler.handle(lead);
+        }
     }
 }

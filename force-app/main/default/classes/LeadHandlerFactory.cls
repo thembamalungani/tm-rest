@@ -21,7 +21,6 @@ public with sharing class LeadHandlerFactory {
             handler = new CalendlyHandler();
         }
 
-    return handler;
-
+    	return handler;
     }
 }

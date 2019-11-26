@@ -14,13 +14,13 @@ public class LeadTypeChecker implements ILeadTypeChecker {
      * This is a map of the incoming event types to an enum value
      */
     protected Map<String, LeadType> types = new Map<String, LeadType>{
-        'Download Info Pack'            => LeadType.DOWNLOADED_INFO_PACK,
+        'Downloaded Info Pack'          => LeadType.DOWNLOADED_INFO_PACK,
         'Requested a Call'              => LeadType.REQUESTED_A_CALL,
         'Submitted Registration Step 1' => LeadType.SUBMITTED_REGISTRATION_STEP1,
         'invitee.created'               => LeadType.CALENDLY_RAC_CREATED,
         'invitee.created'               => LeadType.CALENDLY_RAC_CANCELED
     };
-
+  
     /**
      * Gets the type of lead by inspecting the json payload
      * 
@@ -29,13 +29,13 @@ public class LeadTypeChecker implements ILeadTypeChecker {
      */
     public LeadType check(Map<String, Object> leadMap) {
         
-        String type = (String)leadMap.get('leadCaptureFormType');
+        String leadTypeString = (String)leadMap.get('leadCaptureFormType');
 
-		if (String.isBlank(type)) {
+		if (String.isBlank(leadTypeString)) {
 
-			type = (String)leadMap.get('event');
+			leadTypeString = (String)leadMap.get('event');
 		}
 
-        return types.get(type);
+        return types.get(leadTypeString);
     }
 }

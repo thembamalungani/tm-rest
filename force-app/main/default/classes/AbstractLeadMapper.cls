@@ -3,12 +3,12 @@
  * @description This is a based lead model
  * @date 2019-10-01
  */
-public virtual class AbstractLeadMapper {
+public abstract class AbstractLeadMapper {
 
     /**
      * @param Map<String, Object> leadMap
      */
-    private Map<String, Object> leadMap;
+    protected Map<String, Object> leadMap;
 
     /**
      * Used to set the json to be parsed
@@ -25,34 +25,19 @@ public virtual class AbstractLeadMapper {
      *
      * @return ContactDetails
      */
-    public virtual BaseLead.ContactDetails parserContactDetails() {
-
-        BaseLead.ContactDetails contectDetails = new BaseLead.ContactDetails();
-
-        return contectDetails;
-    }
+    public abstract BaseLead.ContactDetails mapContactDetails();
 
     /**
      * Parses tracking info from leadMap
      *
      * @param Tracking
      */
-    public virtual BaseLead.Tracking parserTracking() {
-
-        BaseLead.Tracking tracking = new BaseLead.Tracking();
-
-        return tracking;
-    }
+    public abstract BaseLead.Tracking mapTracking();
 
     /**
      * Parses the GDRP data from leadMap
      *
      * @param GDPR
      */
-    public virtual BaseLead.GDPR parseGDPR() {
-
-        BaseLead.GDPR gdpr = new BaseLead.GDPR();
-
-        return gdpr;
-    }
+    public abstract BaseLead.GDPR mapGDPR();
 }

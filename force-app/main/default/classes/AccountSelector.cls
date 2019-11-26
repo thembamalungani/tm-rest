@@ -42,7 +42,7 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
      */
     public Map<String, Account> selectPersonAccountsByEmails(Set<String> emails) {
 
-        String template = 'SELECT {0} FROM Account WHERE Id IN :{1} AND AND IsPersonAccount=true';
+        String template = 'SELECT {0} FROM Account WHERE Id IN :{1} AND IsPersonAccount=true';
 
         String query = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'emails' });
 

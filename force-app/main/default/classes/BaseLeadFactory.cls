@@ -5,7 +5,7 @@
  */
 public virtual class BaseLeadFactory implements ILeadFactory {
 
-    /**
+    /** 
      * Create a lead instance from a lead map
      *
      * @param Map<String, Object> leadMap
@@ -14,23 +14,23 @@ public virtual class BaseLeadFactory implements ILeadFactory {
      */
     public BaseLead createFrom(Map<String, Object> leadMap) {
         
-        LeadType type;
+        LeadType leadType;
         BaseLead lead;
         IMappable model;
         ILeadTypeChecker checker;
         AbstractLeadMapper mapper;
 
         checker = new LeadTypeChecker();
-        type    = checker.check(leadMap);
+        leadType= checker.check(leadMap);
         model   = new BaseLead();
-        mapper  = new AbstractLeadMapper();
+        mapper  = LeadMapperFactory.getMapper(leadType);
 
         mapper.setMap(leadMap);
         model.setMapper(mapper);
 
         lead = (BaseLead) model.fromMapper();
 
-        lead.setType(type);
+        lead.setType(leadType);
         
         return lead;
     }

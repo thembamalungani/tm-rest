@@ -1,7 +1,6 @@
-public class OpportunityService implements IOpportunityService {
-    
-    public Opportunity create(BaseLead lead, Account account) {
+public class OpportunityService extends SObjectService implements IOpportunityService {
 
-        return new Opportunity();
+    public void create(List<Opportunity> opportunities) {
+        super.insertObjects(opportunities);
     }
 }

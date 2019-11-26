@@ -37,10 +37,10 @@ public virtual class BaseLead implements IMappable {
 
     public LeadType getType() {
 
-        return this.type;
+        return this.type; 
     }
 
-    public void setMapper(AbstractLeadMapper mapper) {
+    public void setMapper(AbstractLeadMapper mapper) { 
 
         this.mapper = mapper;
     }
@@ -50,9 +50,9 @@ public virtual class BaseLead implements IMappable {
      */
     public BaseLead fromMapper() {
 
-        //this.contactDetails = (ContactDetails)mapper.mapContactDetails();
-        //this.tracking = (Tracking)mapper.mapTracking();
-        //this.gdpr = (GDPR)mapper.mapGDPR();
+        this.contactDetails = (ContactDetails)mapper.mapContactDetails();
+        this.tracking = (Tracking)mapper.mapTracking();
+        this.gdpr = (GDPR)mapper.mapGDPR();
 
         return this;
     }

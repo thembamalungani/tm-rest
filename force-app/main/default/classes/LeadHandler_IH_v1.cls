@@ -18,6 +18,7 @@ global class LeadHandler_IH_v1 {
      *
      * @return HttpResponsep
      */
+   	@HttpPost
     global static String create() {
 
         dispatcher = new RequestDispatcher();

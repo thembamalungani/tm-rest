@@ -15,15 +15,17 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
 
         Boolean isQueued;
         ILeadBatchParser parser;
-
+		
         try {
-
+			
             parser = new LeadBatchParser();
+            
             queueLeads( parser.parse( request.body ));
+            
             isQueued = true;
 
         } catch(JSONException e) {
-
+			
             isQueued = false;
         }
 
@@ -53,7 +55,7 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
         IAsyncLeadHandler handler = new AsyncLeadHandler();
             
         handler.setLead(lead);
-
+			
         System.enqueueJob((Queueable)handler);
     }
 

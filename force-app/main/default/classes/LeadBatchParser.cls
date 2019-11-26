@@ -4,13 +4,6 @@
  * @date 2019-10-01
  */
 public virtual class LeadBatchParser implements ILeadBatchParser {
-    
-    /**
-     * The json string to be parsed
-     *
-     * @param String json
-     */
-    protected final String json;
 
     /**
      * The lead factory used to create lead objects
@@ -30,12 +23,12 @@ public virtual class LeadBatchParser implements ILeadBatchParser {
     /**
      * Parses the json data a returns a list of BaseLead objects
      *
-     * @param List<BaseLead>
+     * @param List<BaseLead>    
      */
-    public List<BaseLead> parse(String json) {
+    public List<BaseLead> parse(String jsonData) {
         
-        List<BaseLead> leads    = new List<BaseLead>();
-        List<Object> events     = new List<object>();
+        List<BaseLead> leads	= new List<BaseLead>();
+        List<Object> events 	= (List<Object>)JSON.deserializeUntyped(jsonData);
 
         for(Object event: events) {
 
