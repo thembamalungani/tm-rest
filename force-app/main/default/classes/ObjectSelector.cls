@@ -4,7 +4,6 @@
  * @date 2019-10-21
  */
 public virtual class ObjectSelector {
-    
     /**
      * @var Schema.SObjectType objectType
      */
@@ -16,7 +15,6 @@ public virtual class ObjectSelector {
      * @param Schema.SObjectType objectType
      */
     public ObjectSelector(Schema.SObjectType objectType) {
-
         this.objectType = objectType;
     }
 

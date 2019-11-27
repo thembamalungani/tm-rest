@@ -4,7 +4,6 @@
  * @date 2019-10-21
  */
 public interface IAccountSelector {
-
     /**
      * Lookup an account by account id
      *

@@ -4,7 +4,6 @@
  * @date 2019-10-03
  */
 public class LeadsCreateHandler implements IHttpMethodHandler {
-
     /**
      * Handles create leads
      *

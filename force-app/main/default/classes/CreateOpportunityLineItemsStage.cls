@@ -1,13 +1,8 @@
-/**
- * @author Themba Malungani <themba.clarence@gmail.com>
- * @description This stage is used to create an opportunity
- * @date 2019-10-09
- */
-public class CreateOpportunityStage implements IPipelineStage {
+public class CreateOpportunityLineItemsStage implements IPipelineStage {
     /**
-     * @param IOpportunityService opportunityService
+     * @param IOpportunityLineItemsService opportunityLineItemsService
      */
-    private IOpportunityService opportunityService;
+    private IOpportunityLineItemsService opportunityLineItemsService;
 
     /**
      * @param IAccountSelector accountSelector
@@ -17,8 +12,8 @@ public class CreateOpportunityStage implements IPipelineStage {
     /**
      * Wire dependencies
      */
-    public CreateOpportunityStage() {
-        this.opportunityService = new OpportunityService();
+    public CreateOpportunityLineItemsStage() {
+        this.opportunityLineItemsService = new OpportunityLineItemsService();
     }
 
     /**
@@ -28,23 +23,22 @@ public class CreateOpportunityStage implements IPipelineStage {
      * @return Object
      */
     public Object call(Object payload) {
-
+        
         BaseLead lead;
         Account account;
         Opportunity opportunity;
         Map<String, Object> payloadMap;
+        List<OpportunityLineItem> lineItems;
 
         payloadMap  = (Map<String, Object>) payload;
         lead        = (BaseLead) payloadMap.get('lead');
         account     = (Account) payloadMap.get('account');
-        opportunity = OpportunityHelper.checkOpportunity(lead, account);
+        opportunity = (Opportunity) payloadMap.get('opportunity');
+        lineItems   = OpportunityLineItemHelper.prepareFor(lead, account, opportunity);
 
-        if (opportunity == null) {
-            opportunity = OpportunityHelper.prepareFor(lead, account);
-            this.opportunityService.create(new List<Opportunity>{ opportunity });
-        }
+        this.opportunityLineItemsService.createLineItems(lineItems);
 
-        return (Object)response(lead, account, opportunity);
+        return response(lead, account, opportunity, lineItems);
     }
 
     /**
@@ -55,11 +49,12 @@ public class CreateOpportunityStage implements IPipelineStage {
      * @param Opportunity opportunity
      * @return Object
      */
-    private Object response(BaseLead lead, Account account, Opportunity opportunity) {
+    private Object response(BaseLead lead, Account account, Opportunity opportunity, List<OpportunityLineItem> lineItems) {
         return StageResult.builder()
                 .lead(lead)
                 .stageAccount(account)
                 .stageOpportunity(opportunity)
+                .stageOpportunityLineItems(lineItems)
                 .build()
                 .toMap();
     }

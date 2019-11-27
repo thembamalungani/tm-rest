@@ -1,5 +1,4 @@
 public interface IHttpMethodHandler {
-    
     /**
      * Handles create leads
      *

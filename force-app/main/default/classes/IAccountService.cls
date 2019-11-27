@@ -4,7 +4,6 @@
  * @date 2019-10-09
  */
 public interface IAccountService {
-
     /**
      * Creates or update an account based on condition
      *

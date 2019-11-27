@@ -4,7 +4,6 @@
  * @date 2019-10-09
  */
 public class CreateAccountStage implements IPipelineStage {
-    
     /**
      * @param IAccountService accountService
      */
@@ -19,9 +18,8 @@ public class CreateAccountStage implements IPipelineStage {
      * Wire dependencies
      */
     public CreateAccountStage() {
-
-        this.accountService = new AccountService();
-        this.accountSelector = new AccountSelector();
+        this.accountService     = new AccountService();
+        this.accountSelector    = new AccountSelector();
     }
 
     /**
@@ -40,9 +38,7 @@ public class CreateAccountStage implements IPipelineStage {
         lead       = (BaseLead) payloadMap.get('lead');
         account    = createOrUpdateAccount(lead);
 
-        payloadMap.put('account', account);
-
-        return payload;
+        return response(lead, account);
     }
 
     /**

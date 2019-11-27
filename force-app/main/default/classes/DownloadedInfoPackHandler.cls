@@ -20,7 +20,8 @@ public class DownloadedInfoPackHandler implements ILeadHandler {
 
         pipeline = (new Pipeline(new FingersCrossedProcessor()))
                     .pipe(new CreateAccountStage())
-                    .pipe(new CreateOpportunityStage());
+                    .pipe(new CreateOpportunityStage())
+                    .pipe(new CreateOpportunityLineItemsStage());
 
         payload = new Map<String, Object>{ 'lead' => lead };
 

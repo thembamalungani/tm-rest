@@ -16,12 +16,10 @@ public class AsyncHttpRequestHandler implements Queueable {
     private Type type;
 
     public void setType(Type type) {
-
         this.type = type;
     }
 
     public void setRequest(HttpRequest request) {
-
         this.request = request;
     }
 
@@ -31,7 +29,6 @@ public class AsyncHttpRequestHandler implements Queueable {
      * @param QueueableContext context
      */
     public void execute(QueueableContext context) {
-        
         handler().handle(request);
     }
 
@@ -41,7 +38,6 @@ public class AsyncHttpRequestHandler implements Queueable {
      * @return IHttpMethodHandler
      */
     private IHttpMethodHandler handler() {
-
         return (IHttpMethodHandler) type.newInstance();
     }
 }

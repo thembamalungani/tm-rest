@@ -16,28 +16,42 @@ public abstract class AbstractLeadMapper {
      * @param Map<String, Object> leadMap
      */
     public void setMap(Map<String, Object> leadMap) {
-
         this.leadMap = leadMap;
     }
 
     /**
-     * Parses the contect details from leadMap
+     * Maps the contect details from leadMap
      *
      * @return ContactDetails
      */
-    public abstract BaseLead.ContactDetails mapContactDetails();
+    public virtual BaseLead.ContactDetails mapContactDetails() {
+
+        BaseLead.ContactDetails contectDetails = new BaseLead.ContactDetails();
+
+        return contectDetails;
+    }
 
     /**
-     * Parses tracking info from leadMap
+     * Maps tracking info from leadMap
      *
      * @param Tracking
      */
-    public abstract BaseLead.Tracking mapTracking();
+    public virtual BaseLead.Tracking mapTracking() {
+
+        BaseLead.Tracking tracking = new BaseLead.Tracking();
+
+        return tracking;
+    }
 
     /**
-     * Parses the GDRP data from leadMap
+     * Maps the GDRP data from leadMap
      *
      * @param GDPR
      */
-    public abstract BaseLead.GDPR mapGDPR();
+    public virtual BaseLead.GDPR mapGDPR() {
+
+        BaseLead.GDPR gdpr = new BaseLead.GDPR();
+
+        return gdpr;
+    }
 }

@@ -4,7 +4,6 @@
  * @date 2019-10-03
  */
 public class CalendlyLeadMapper extends AbstractLeadMapper {
-    
     /**
      * Parses the contect details from leadMap
      *

@@ -4,7 +4,6 @@ public class HttpRequest {
     public String method;
 
     public String getBody() {
-
         return this.body;
     }
 

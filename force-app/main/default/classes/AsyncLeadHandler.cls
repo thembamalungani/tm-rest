@@ -15,8 +15,7 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
      *
      * @param BaseLead lead
      */
-    public void setLead(BaseLead lead) {
-        
+    public void setLead(BaseLead lead) {   
         this.lead = lead;
     }
 
@@ -25,14 +24,12 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
      *
      * @param QueueableContext context
      */
-    public void execute(QueueableContext context) {
+    public void execute(QueueableContext context) { 
         
-        Object result;
         ILeadHandler handler = LeadHandlerFactory.getHandler(lead);
-        System.debug('Type: ' + lead.getType());
+        
         if (handler != null) {
-            
-            result  = handler.handle(lead);
+            Object result = handler.handle(lead);
         }
     }
 }

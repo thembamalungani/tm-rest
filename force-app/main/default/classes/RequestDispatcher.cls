@@ -4,14 +4,12 @@
  * @date 2019-09-06
  */
 public class RequestDispatcher implements IRestDispatcher {
-
     /**
      * Dispatch the request to be handled asynchronously
      *
      * @param Type handler
      */
     public HttpResponse dispatch(Type type) {
-
         return process(type);
     }
 

@@ -4,14 +4,12 @@
  * @date 2019-10-09
  */
 public with sharing class AccountService extends SObjectService implements IAccountService {
-
     /**
      * Creates or update an account based on condition
      *
      * @param List<Accounts> accounts
      */
     public void createAccounts(List<Account> accounts) {
-
         super.insertObjects(accounts);
     }
 
@@ -21,7 +19,6 @@ public with sharing class AccountService extends SObjectService implements IAcco
      * @param Map<Id, Account> objectsMap
      */
     public void updateAccounts(Map<Id, Account> objectsMap) {
-
         super.updateObjects(objectsMap);
     }
 }

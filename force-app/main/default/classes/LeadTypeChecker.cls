@@ -4,7 +4,6 @@
  * @date 2019-10-01
  */
 public class LeadTypeChecker implements ILeadTypeChecker {
-
     /**
      * @param LeadType type
      */

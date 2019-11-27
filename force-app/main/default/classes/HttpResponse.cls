@@ -10,17 +10,14 @@ public class HttpResponse {
     }
 
     public static HttpResponse.Builder builder() {
-
         return new HttpResponse.Builder();
     }
 
     public void setStatusCode(Integer statusCode) {
-
         this.statusCode = statusCode;
     }
 
     public void setBody(String body) {
-
         this.body = body;
     }
 
@@ -57,8 +54,8 @@ public class HttpResponse {
    public static HttpResponse accepted(String body) {
 
        return HttpResponse.builder()
-                    .statusCode(202)
-                    .body(body)
+                .statusCode(202)
+                .body(body)
                 .build();
    }
 
@@ -70,8 +67,8 @@ public class HttpResponse {
    public static HttpResponse badRequest(String body) {
 
        return HttpResponse.builder()
-                    .statusCode(400)
-                    .body(body)
+                .statusCode(400)
+                .body(body)
                 .build();
    }
 }

@@ -4,7 +4,6 @@
  * @date 2019-10-01
  */
 public virtual class LeadBatchParser implements ILeadBatchParser {
-
     /**
      * The lead factory used to create lead objects
      *
@@ -16,7 +15,6 @@ public virtual class LeadBatchParser implements ILeadBatchParser {
      * Pass the json to be parsed
      */
     public LeadBatchParser() {
-
         this.factory = new BaseLeadFactory();
     }
 

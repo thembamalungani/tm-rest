@@ -4,7 +4,6 @@
  * @date 2019-10-01
  */
 public interface IMappable {
-    
     /**
      * Creates an instance of mappable from the mapper
      *

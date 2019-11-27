@@ -1,5 +1,4 @@
 public class Pipeline implements IPipeline {
-    
     /**
      * Pipeline stages
      * 
@@ -18,7 +17,6 @@ public class Pipeline implements IPipeline {
      * Fetch pipeline processor if instantiated without one
      */
     public Pipeline() {
-		
         this.stages		= new List<IPipelineStage>();
         this.processor 	= new FingersCrossedProcessor();
     }
@@ -29,7 +27,6 @@ public class Pipeline implements IPipeline {
      * @param IPipelineProcessor processor
      */
     public Pipeline(IPipelineProcessor processor) {
-
         this.processor = processor;
     }
 
@@ -40,7 +37,6 @@ public class Pipeline implements IPipeline {
      * @return Object
      */
     public Object process(Object lead) {
-
         return this.processor.process(lead, this.stages);
     }
 

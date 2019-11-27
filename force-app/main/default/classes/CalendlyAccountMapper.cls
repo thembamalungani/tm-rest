@@ -1,5 +1,4 @@
 public class CalendlyAccountMapper extends AccountMapper {
-    
     /**
      * Creates a map of account fields to lead values
      *
@@ -10,7 +9,6 @@ public class CalendlyAccountMapper extends AccountMapper {
     public override Account doMap(Account account, Map<String, Object> accountParameters) {
 
         if ( account == null ) {
-
             accountParameters = this.removeGDPRFields(accountParameters);
         }
        

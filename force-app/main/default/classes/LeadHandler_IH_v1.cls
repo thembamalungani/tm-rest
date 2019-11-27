@@ -5,7 +5,6 @@
  */
 @RestResource(UrlMapping='/v2/leads/*')
 global class LeadHandler_IH_v1 {
-    
     /**
      * Used to dispatch rest request to specific handler
      *

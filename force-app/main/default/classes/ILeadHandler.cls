@@ -4,7 +4,6 @@
  * @date 2019-10-01
  */
 public interface ILeadHandler {
-
     /**
      * Handles the lead and return handle results
      *

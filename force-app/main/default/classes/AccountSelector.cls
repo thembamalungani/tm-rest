@@ -4,12 +4,10 @@
  * @date 2019-10-21
  */
 public class AccountSelector extends ObjectSelector implements IAccountSelector {
-    
     /**
      * AccountSelector cosntructor
      */
     public AccountSelector() {
-
         super(Account.getSObjectType());
     }
 
@@ -27,7 +25,6 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
         Map<Id, Account> accountsMap = new Map<Id, Account>();
 
         for (Account account : accounts) {
-            
             accountsMap.put(account.Id, account);
         }
 
@@ -42,16 +39,12 @@ public class AccountSelector extends ObjectSelector implements IAccountSelector 
      */
     public Map<String, Account> selectPersonAccountsByEmails(Set<String> emails) {
 
-        String template = 'SELECT {0} FROM Account WHERE Id IN :{1} AND IsPersonAccount=true';
-
-        String query = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'emails' });
-
-        List<Account> accounts = Database.query(query);
-
+        String template                  = 'SELECT {0} FROM Account WHERE Id IN :{1} AND IsPersonAccount=true';
+        String query                     = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'emails' });
+        List<Account> accounts           = Database.query(query);
         Map<String, Account> accountsMap = new Map<String, Account>();
 
         for (Account account : accounts) {
-            
             accountsMap.put(account.PersonEmail, account);
         }
 

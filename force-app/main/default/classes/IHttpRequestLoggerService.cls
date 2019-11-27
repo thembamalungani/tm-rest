@@ -1,5 +1,4 @@
 public interface IHttpRequestLoggerService {
-    
     /**
      * handles logging of http request and response
      * 

@@ -4,7 +4,6 @@
  * @date 2019-10-01
  */
 public interface ILeadMapper {
-    
     /**
      * Used to set the json to be parsed
      *

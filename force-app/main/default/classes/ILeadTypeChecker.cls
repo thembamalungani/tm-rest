@@ -4,7 +4,6 @@
  * @date 2019-10-01
  */
 public interface ILeadTypeChecker {
-
     /**
      * Gets the lead event type by inspecting the properties of the map
      *

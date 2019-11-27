@@ -4,7 +4,6 @@
  * @date 2019-10-03
  */
 public class FingersCrossedProcessor implements IPipelineProcessor {
-    
     /**
      * Processes the pipeline using the stages provided
      *
@@ -15,7 +14,6 @@ public class FingersCrossedProcessor implements IPipelineProcessor {
     public Object process(Object payload, List<IPipelineStage> stages) {
         
         for (IPipelineStage stage: stages) {
-            
             payload = stage.call(payload);
         }
 

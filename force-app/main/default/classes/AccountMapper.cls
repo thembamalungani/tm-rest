@@ -9,15 +9,12 @@ public virtual class AccountMapper {
      */
     public virtual Account doMap(Account account, Map<String, Object> accountParameters) {
 
-        if ( account == null ) {
-
-            account = new Account();
-        }
+        account = (account == null) ? new Account() : account;
 
         for (String key : accountParameters.keySet()) {
             
             if ( booleanFields().contains(key) ) {
-                
+
                 account.put(key, (Boolean)accountParameters.get(key));
                 
             } else {
@@ -30,7 +27,7 @@ public virtual class AccountMapper {
     }
     
     protected List<String> booleanFields() {
-        
+            
         List<String> booleanFields = new List<String>{
           'PersonDoNotCall',
           'PersonHasOptedOutOfEmail',

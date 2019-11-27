@@ -1,5 +1,4 @@
 public class LeadHelper {
-    
     /**
      * Creates a map of account fields to lead values
      *

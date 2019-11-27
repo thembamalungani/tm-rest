@@ -4,19 +4,19 @@ public class StageResult {
     private Boolean isSuccess;
     private Account stageAccount;
     private Opportunity stageOpportunity;
+    private List<OpportunityLineItem> opportunityLineItems;
     private Case stageCase;
 
     public StageResult(StageResult.Builder builder) {
-
         this.lead               = builder.lead;
         this.isSuccess          = builder.isSuccess;
         this.stageAccount       = builder.stageAccount;
         this.stageOpportunity   = builder.stageOpportunity;
         this.stageCase          = builder.stageCase;
+        this.opportunityLineItems = builder.opportunityLineItems;
     }
 
     public static StageResult.Builder builder() {
-
         return new StageResult.Builder();
     }
 
@@ -26,12 +26,12 @@ public class StageResult {
      * @return Map<String, Object>
      */
     public Map<String, Object> toMap(){
-
         return new Map<String, Object>{
             'lead'          => lead,
             'isSuccess'     => isSuccess,
             'account'       => stageAccount,
             'opportunity'   => stageOpportunity,
+            'opportunityLineItems' => opportunityLineItems,
             'case'          => stageCase
         };
     }
@@ -42,10 +42,10 @@ public class StageResult {
         public Boolean isSuccess;
         public Account stageAccount;
         public Opportunity stageOpportunity;
+        private List<OpportunityLineItem> opportunityLineItems;
         public Case stageCase;
 
         public StageResult build() {
-
             return new StageResult(this);
         }
 
@@ -73,6 +73,13 @@ public class StageResult {
         public StageResult.Builder stageOpportunity(Opportunity stageOpportunity) {
 
             this.stageOpportunity = stageOpportunity;
+
+            return this;
+        }
+
+        public StageResult.Builder stageOpportunityLineItems(List<OpportunityLineItem> lineItems) {
+
+            this.opportunityLineItems = lineItems;
 
             return this;
         }

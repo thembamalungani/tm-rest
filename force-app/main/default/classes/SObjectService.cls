@@ -4,14 +4,12 @@
  * @date 2019-10-01
  */
 public virtual class SObjectService {
-
     /**
      * Creates objects 
      *
      * @param List<Schema.SObjectType> objects
      */
     public void insertObjects(List<SObject> objects){
-        
         List<Database.SaveResult> results = Database.insert(objects);
     }
 

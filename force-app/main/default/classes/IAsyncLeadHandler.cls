@@ -4,7 +4,6 @@
  * @date 2019-10-04
  */
 public interface IAsyncLeadHandler {
-
     /**
      * Sets the lead to be handled.
      *
