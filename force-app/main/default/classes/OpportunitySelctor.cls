@@ -1,12 +1,17 @@
 public class OpportunitySelctor extends ObjectSelector implements IOpportunitySelector {
-
     /**
-     * OpportunitySelctor cosntructor
+     * OpportunitySelctorCreateOpportunityLineItemsStage cosntructor
      */
     public OpportunitySelctor() {
         super(Opportunity.getSObjectType());
     }
 
+    /**
+     * Selects accounts by account ids
+     *
+     * @param Set<Id> accountIds
+     * @return Map<Id, Opportunity>
+     */
     public Map<Id, Opportunity> selectByAccountIds(Set<Id> accountIds) {
 
         String template                         = 'SELECT {0} FROM Opportunity WHERE Id IN :{1}';

@@ -4,7 +4,6 @@
  * @date 2019-10-03
  */
 public class AsyncHttpRequestHandler implements Queueable {
-    
     /**
      * @param HttpRequest request
      */

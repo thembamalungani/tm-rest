@@ -5,11 +5,6 @@ public class CreateOpportunityLineItemsStage implements IPipelineStage {
     private IOpportunityLineItemsService opportunityLineItemsService;
 
     /**
-     * @param IAccountSelector accountSelector
-     */
-    private IAccountSelector accountSelector;
-
-    /**
      * Wire dependencies
      */
     public CreateOpportunityLineItemsStage() {

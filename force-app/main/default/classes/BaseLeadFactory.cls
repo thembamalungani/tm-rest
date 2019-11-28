@@ -4,7 +4,6 @@
  * @date 2019-10-01
  */
 public virtual class BaseLeadFactory implements ILeadFactory {
-
     /** 
      * Create a lead instance from a lead map
      *

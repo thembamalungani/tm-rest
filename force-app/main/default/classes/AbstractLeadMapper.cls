@@ -4,7 +4,6 @@
  * @date 2019-10-01
  */
 public abstract class AbstractLeadMapper {
-
     /**
      * @param Map<String, Object> leadMap
      */

@@ -4,7 +4,6 @@
  * @date 2019-10-01
  */
 public virtual class BaseLead implements IMappable {
-
     /**
      * @var LeadType type
      */
@@ -60,7 +59,6 @@ public virtual class BaseLead implements IMappable {
     * @date 2019-10-01
     */
     public class ContactDetails {
-
         public String email { set; get; }
         public String firstName { set; get; }
         public String lastName { set; get; }
@@ -82,12 +80,13 @@ public virtual class BaseLead implements IMappable {
     * @date 2019-10-01
     */
     public class Tracking {
-
         public String countryInferred { set; get; }
         public String externalId { set; get; }
         public String leadCaptureFormType { set; get; }
         public String leadCaptureFormUrl { set; get; }
         public List<String> productIds { set; get; }
+        public List<String> productUuids { set; get; }
+        public List<String> productParentUuids { set; get; }
         public String googleAnalyticsClientId { set; get; }
         public String segmentAnonymousId { set; get; }
         public String source { set; get; }
@@ -99,7 +98,6 @@ public virtual class BaseLead implements IMappable {
     * @date 2019-10-01
     */
     public class GDPR {
-
         public Boolean gdprCallOptIn { set; get; }
         public Boolean gdprEmailOptIn { set; get; }
         public Boolean gdprSmsOptIn { set; get; }

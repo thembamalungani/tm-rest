@@ -10,11 +10,6 @@ public class CreateOpportunityStage implements IPipelineStage {
     private IOpportunityService opportunityService;
 
     /**
-     * @param IAccountSelector accountSelector
-     */
-    private IAccountSelector accountSelector;
-
-    /**
      * Wire dependencies
      */
     public CreateOpportunityStage() {
@@ -33,7 +28,8 @@ public class CreateOpportunityStage implements IPipelineStage {
         Account account;
         Opportunity opportunity;
         Map<String, Object> payloadMap;
-
+        List<OpportunityLineItem> lineItems;
+        
         payloadMap  = (Map<String, Object>) payload;
         lead        = (BaseLead) payloadMap.get('lead');
         account     = (Account) payloadMap.get('account');

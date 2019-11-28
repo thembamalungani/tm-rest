@@ -1,3 +1,3 @@
 public interface ICaseService {
-    Case createCase(BaseLead lead, Account account, Opportunity opportunity);  
+    void createCases(List<Case> cases);  
 }

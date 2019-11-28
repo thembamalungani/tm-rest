@@ -1,7 +1,10 @@
-public with sharing class CaseService implements ICaseService {
-
-    public Case createCase(BaseLead lead, Account account, Opportunity opportunity) {
-
-        return new Case();
+public with sharing class CaseService extends SObjectService implements ICaseService {
+    /**
+     * Creates cases
+     * 
+     * @param List<Case> cases
+     */
+    public void createCases(List<Case> cases) {
+        super.insertObjects(cases);
     }
 }
