@@ -1,5 +1,4 @@
 public class CaseHelper {
-    
     /**
      * Prepares a requested a call case
      *
@@ -33,7 +32,7 @@ public class CaseHelper {
      */
     public static String subject(BaseLead lead) {
         
-        Course__c course  = [SELECT Name FROM Course__c WHERE UUID__c=:lead.tracking.externalId LIMIT 1];
+        Course__c course  = (new CourseSelector()).selectByCourseId(lead.tracking.externalId);
 
         return String.format('Request a Call | {0}', new String[]{ course.Name });
     }
@@ -46,10 +45,10 @@ public class CaseHelper {
      */
     public static String description(BaseLead lead) {
 
-        Course__c course            = [SELECT Id, Course_Name__c, University__c, Faculty__c, School__c FROM Course__c WHERE Id IN (SELECT Course__c FROM Product2 WHERE Id=:lead.tracking.externalId) LIMIT 1];
-        University__c university    = [SELECT Id, University_Name__c FROM University__c WHERE Id IN (SELECT University__c FROM Course__c WHERE Id=:course.Id) LIMIT 1];
-        School__c school            = [SELECT Id, Name FROM School__c WHERE Id IN (SELECT School__c FROM Course__c WHERE Id=:course.Id) LIMIT 1];
-        Faculty__c faculty          = [SELECT Id, Name FROM Faculty__c WHERE Id IN (SELECT Faculty__c FROM Course__c WHERE Id=:course.Id) LIMIT 1];
+        Course__c course            = (new CourseSelector()).selectByCourseId(lead.tracking.externalId);
+        University__c university    = (new UniversitySelector()).selectByCourseId(lead.tracking.externalId);
+        School__c school            = (new SchoolSelector()).selectByCourseId(lead.tracking.externalId);
+        Faculty__c faculty          = (new FacultySelector()).selectByCourseId(lead.tracking.externalId);
 
         Map<String, Object> values = new Map<String, Object>{
             'First Name' => lead.contactDetails.firstname,
