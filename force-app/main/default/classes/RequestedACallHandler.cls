@@ -12,7 +12,7 @@ public class RequestedACallHandler implements ILeadHandler {
 
         IPipeline pipeline;
         Map<String, Object> payload;
-
+        System.debug('Handling RAC');
         pipeline = (new Pipeline(new FingersCrossedProcessor()))
             .pipe(new CreateAccountStage())
             .pipe(new CreateOpportunityStage()) 

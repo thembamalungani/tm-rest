@@ -17,6 +17,10 @@ public class CaseSelector extends ObjectSelector implements ICaseSelector {
         String template = 'SELECT {0} FROM Case WHERE Id=:{1}';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'id' });
 
-        return Database.query(query);
+        try {
+            return Database.query(query);
+        } catch(QueryException e){
+            return null;
+        }
     }
 }

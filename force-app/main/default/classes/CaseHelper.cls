@@ -34,7 +34,7 @@ public class CaseHelper {
         
         Course__c course  = (new CourseSelector()).selectByCourseId(lead.tracking.externalId);
 
-        return String.format('Request a Call | {0}', new String[]{ course.Name });
+        return String.format('Request a Call | {0}', new String[]{  ( course != null ) ? course.Name : 'Unknown' });
     }
 
     /**
@@ -57,9 +57,9 @@ public class CaseHelper {
             'Telephone'  => lead.contactDetails.phone,
             'Email'      => lead.contactDetails.email,
             'Date/Time'  => calltime(lead),
-            'University' => university.Name,
-            'Faculty'    => faculty.Name,
-            'School'     => school.Name
+            'University' => (university != null) ? university.Name : 'Unknown',
+            'Faculty'    => (faculty != null) ? faculty.Name : 'Unknown',
+            'School'     => (school != null) ? school.Name : 'Unknown'
         };
 
         return description(values);

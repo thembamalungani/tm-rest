@@ -9,6 +9,8 @@ public class OpportunityHelper {
      */
     public static Opportunity prepareFor(BaseLead lead, Account account){
 
+        Pricebook2 pricebook = (new PricebookSelector()).selectByName('Standard Price Book');
+
         Opportunity opportunity = new Opportunity(
             Name                            = OpportunityHelper.nameFor(lead),
             StageName                       = 'New Interest',
@@ -18,7 +20,9 @@ public class OpportunityHelper {
             Lead_Capture_Form_URL__c        = lead.tracking.leadCaptureFormUrl,
             Lead_Capture_Form_Type__c       = lead.tracking.leadCaptureFormType,
             AccountId                       = account.Id,
-            Segment_Sync_Status__c          = 'New Opportunity Pending Synchronisation'
+            Segment_Sync_Status__c          = 'New Opportunity Pending Synchronisation',
+            CurrencyIsoCode                 = 'USD',
+            Pricebook2Id                    = pricebook.Id
         );
 
         return opportunity;
@@ -44,7 +48,7 @@ public class OpportunityHelper {
     public static Opportunity checkOpportunity(BaseLead lead, Account account) {
         
         for (Opportunity opportunity : getAccountOpportunities(account)) {
-            if (lead.tracking.productIds.equals( getOpportunityLineItemsProductsIds(opportunity) )) {
+            if (lead.tracking.productIds.equals( getOpportunityLineItemsProductUUIDs(opportunity) )) {
                 return opportunity;
             }
         }
@@ -68,15 +72,23 @@ public class OpportunityHelper {
      * @param Opportunity opportunity
      * @return List<String>
      */
-    public static List<String> getOpportunityLineItemsProductsIds(Opportunity opportunity) {
+    public static List<String> getOpportunityLineItemsProductUUIDs(Opportunity opportunity) {
 
         List<OpportunityLineItem> lineItems = (new OpportunityLineItemSelctor()).selectByOpportunityIds(new Set<Id>{ opportunity.Id }).values();
-        List<String> lineItemsProductIds    = new List<String>();
+        
+        Set<Id> lineItemsProductIds        = new Set<Id>();
+        List<String> lineItemsProductUUIDs  = new List<String>();
 
         for (OpportunityLineItem lineItem: lineItems) {
             lineItemsProductIds.add(lineItem.Product2Id);
         }
 
-        return lineItemsProductIds;
+        Map<Id, Product2> presentations = (new PresentationSelector()).selectByIDs(lineItemsProductIds);
+
+        for (Product2 presentation : presentations.values()) {
+            lineItemsProductUUIDs.add(presentation.UUID__c);
+        }
+
+        return lineItemsProductUUIDs;
     }
 }

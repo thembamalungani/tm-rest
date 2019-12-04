@@ -23,7 +23,7 @@ public virtual class BaseLeadFactory implements ILeadFactory {
         leadType= checker.check(leadMap);
         model   = new BaseLead();
         mapper  = LeadMapperFactory.getMapper(leadType);
-
+        System.debug(leadType);
         mapper.setMap(leadMap);
         model.setMapper(mapper);
 

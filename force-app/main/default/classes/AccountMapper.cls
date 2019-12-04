@@ -13,12 +13,9 @@ public virtual class AccountMapper {
 
         for (String key : accountParameters.keySet()) {
             
-            if ( booleanFields().contains(key) ) {
-
+            if ( booleanFields().contains(key) && accountParameters.get(key) != null ) {
                 account.put(key, (Boolean)accountParameters.get(key));
-                
             } else {
-                
                 account.put(key, (String)accountParameters.get(key));
             }
         }
@@ -27,7 +24,7 @@ public virtual class AccountMapper {
     }
     
     protected List<String> booleanFields() {
-            
+
         List<String> booleanFields = new List<String>{
           'PersonDoNotCall',
           'PersonHasOptedOutOfEmail',
