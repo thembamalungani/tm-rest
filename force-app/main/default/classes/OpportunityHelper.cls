@@ -47,13 +47,22 @@ public class OpportunityHelper {
      */
     public static Opportunity checkOpportunity(BaseLead lead, Account account) {
         
+        Opportunity tmpOpportunity = null;
+
         for (Opportunity opportunity : getAccountOpportunities(account)) {
-            if (lead.tracking.productIds.equals( getOpportunityLineItemsProductUUIDs(opportunity) )) {
-                return opportunity;
+            
+            tmpOpportunity = opportunity;
+            List<String> oppLineItemsProductUUIDs = getOpportunityLineItemsProductUUIDs(opportunity);
+
+            for (String productUuid: lead.tracking.productIds) {
+                
+                if (!oppLineItemsProductUUIDs.contains(productUuid)){
+                    return null;
+                }
             }
         }
-
-        return null;
+        
+        return tmpOpportunity;
     }
 
     /**
