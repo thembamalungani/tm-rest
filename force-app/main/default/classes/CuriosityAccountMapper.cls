@@ -1,4 +1,4 @@
-public class AccountMapper extends BaseAccountMapper implements IAccountMapper{
+public class CuriosityAccountMapper extends BaseAccountMapper implements IAccountMapper {
 
     /**
      * Maps account fields to account properties in map

@@ -10,12 +10,9 @@ public class AccountMapperFactory {
         IAccountMapper mapper;
 
         if ( isCalendly(lead) ) {
-
             mapper = new CalendlyAccountMapper();
-
         } else {
-            
-            mapper = new AccountMapper();
+            mapper = new CuriosityAccountMapper();
         }
 
         return mapper;
