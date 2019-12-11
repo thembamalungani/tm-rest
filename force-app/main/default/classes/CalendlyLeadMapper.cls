@@ -40,7 +40,7 @@ public class CalendlyLeadMapper extends AbstractLeadMapper {
         tracking.externalId 				= (String)((Map<String, Object>)payload.get('event')).get('uuid');
         tracking.leadCaptureFormType 		= (String)leadMap.get('event');
         tracking.productIds 				= new List<String>{
-            //(String)((Map<String, Object>)payload.get('tracking')).get('salesforce_uuid')
+            (String)((Map<String, Object>)payload.get('tracking')).get('salesforce_uuid')
         };
 
         return tracking;

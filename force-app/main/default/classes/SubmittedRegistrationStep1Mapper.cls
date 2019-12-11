@@ -3,4 +3,4 @@
  * @description Used to map a Submitted Registratrion Step 1 lead
  * @date 2019-10-03
  */
-public class SubmittedRegistrationStep1Mapper extends AbstractLeadMapper {}
+public class SubmittedRegistrationStep1Mapper extends CuriosityLeadMapper {}
