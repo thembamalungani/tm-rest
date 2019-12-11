@@ -95,11 +95,8 @@ public class CaseHelper {
     public static Datetime calltime(BaseLead lead){
         
         try{
-
-            return Datetime.valueOf('some time');
-
+            return Datetime.valueOf(lead.callTime);
         } catch (Exception ex) {
-
             return System.now();
         }
     }

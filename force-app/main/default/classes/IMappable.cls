@@ -12,5 +12,5 @@ public interface IMappable {
      */
     BaseLead fromMapper();
 
-    void setMapper(AbstractLeadMapper mapper);
+    void setMapper(ILeadMapper mapper);
 }

@@ -1,8 +1,8 @@
 public class LeadMapperFactory {
 	
-    public static AbstractLeadMapper getMapper(LeadType lead) {
+    public static ILeadMapper getMapper(LeadType lead) {
         
-        AbstractLeadMapper mapper;
+        ILeadMapper mapper;
         
         if (isCuriosityLead(lead)) {
             mapper = new CuriosityLeadMapper();

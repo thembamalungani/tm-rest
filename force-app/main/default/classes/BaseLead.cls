@@ -12,7 +12,7 @@ public virtual class BaseLead implements IMappable {
     /**
      * Mapper
      */
-    public AbstractLeadMapper mapper;
+    public ILeadMapper mapper;
     
     /**
      * @param ContactDetails contactDetails
@@ -37,18 +37,18 @@ public virtual class BaseLead implements IMappable {
         return this.type; 
     }
 
-    public void setMapper(AbstractLeadMapper mapper) { 
+    public void setMapper(ILeadMapper mapper) { 
         this.mapper = mapper;
     }
 
     /**
      * Instatiate a new lead from a json parser instance
      */
-    public BaseLead fromMapper() {
+    public virtual BaseLead fromMapper() {
 
         this.contactDetails = (ContactDetails)mapper.mapContactDetails();
-        this.tracking = (Tracking)mapper.mapTracking();
-        this.gdpr = (GDPR)mapper.mapGDPR();
+        this.tracking       = (Tracking)mapper.mapTracking();
+        this.gdpr           = (GDPR)mapper.mapGDPR();
 
         return this;
     }
@@ -72,6 +72,8 @@ public virtual class BaseLead implements IMappable {
         public String employeeIndustry { set; get; }
         public String workExperience { set; get; }
         public String countryOfResidence { set; get; }
+        public String callTime { set; get; }
+        public String dateOfBirth { set; get; }
     }
 
     /**

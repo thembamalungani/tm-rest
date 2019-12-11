@@ -1,4 +1,4 @@
-public class CuriosityLeadMapper extends AbstractLeadMapper {
+public class CuriosityLeadMapper implements ILeadMapper {
     
     /**
      * Parses the contect details from leadMap
@@ -21,6 +21,8 @@ public class CuriosityLeadMapper extends AbstractLeadMapper {
         contactDetails.educationHighestLevel    = (String)leadMap.get('educationHighestLevel');
         contactDetails.workExperience	        = (String)leadMap.get('workExperience');
         contactDetails.jobTitle                 = (String)leadMap.get('jobTitle');
+        contactDetails.callTime                 = (String)leadMap.get('callTime');
+        contactDetails.dateOfBirth              = (String)leadMap.get('dateOfBirth');
         
         return contactDetails;
     }
@@ -40,6 +42,7 @@ public class CuriosityLeadMapper extends AbstractLeadMapper {
         tracking.leadCaptureFormType        = (String)leadMap.get('leadCaptureFormType');
         tracking.leadCaptureFormUrl         = (String)leadMap.get('leadCaptureFormUrl');
         tracking.productIds                 = new List<String>();
+        tracking.source                     = 'Curiosity';
         
         for(Object item: (List<Object>)leadMap.get('productIds')){
             tracking.productIds.add((String)item);

@@ -3,7 +3,7 @@
  * @description Used to map a Calendly lead
  * @date 2019-10-03
  */
-public class CalendlyLeadMapper extends AbstractLeadMapper {
+public class CalendlyLeadMapper extends ILeadMapper {
     /**
      * Parses the contect details from leadMap
      *
@@ -11,9 +11,9 @@ public class CalendlyLeadMapper extends AbstractLeadMapper {
      */
     public override BaseLead.ContactDetails mapContactDetails() {
         
-        BaseLead.ContactDetails contactDetails = new BaseLead.ContactDetails();
-        
-        Map<String, Object> payload = (Map<String, Object>)leadMap.get('payload');
+        BaseLead.ContactDetails contactDetails  = new BaseLead.ContactDetails();
+        Map<String, Object> payload             = (Map<String, Object>)leadMap.get('payload');
+        Datetime callTime                       = DateTime.valueOf(payload.event.start_time.replace('T', ' '));
 
         contactDetails.countryOfResidence 	= (String)((Map<String, Object>)payload.get('tracking')).get('utm_term');
         contactDetails.email 				= (String)((Map<String, Object>)payload.get('invitee')).get('email');
@@ -21,6 +21,7 @@ public class CalendlyLeadMapper extends AbstractLeadMapper {
         contactDetails.lastName 			= (String)((Map<String, Object>)payload.get('invitee')).get('last_name');
         contactDetails.mobilePhone 			= (String)((Map<String, Object>)payload.get('questions_and_responses')).get('response_1');
         contactDetails.phone 				= (String)((Map<String, Object>)payload.get('questions_and_responses')).get('response_1');
+        contactDetails.callTime             = callTime.format('yyyy-MM-dd HH:mm:ss.SSS');
 
         return contactDetails;
     }
@@ -39,6 +40,8 @@ public class CalendlyLeadMapper extends AbstractLeadMapper {
         tracking.countryInferred 			= (String)((Map<String, Object>)payload.get('tracking')).get('utm_term');
         tracking.externalId 				= (String)((Map<String, Object>)payload.get('event')).get('uuid');
         tracking.leadCaptureFormType 		= (String)leadMap.get('event');
+        tracking.source                     = 'Calendly';
+        
         tracking.productIds 				= new List<String>{
             (String)((Map<String, Object>)payload.get('tracking')).get('salesforce_uuid')
         };
