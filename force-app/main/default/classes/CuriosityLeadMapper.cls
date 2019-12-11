@@ -57,11 +57,11 @@ public class CuriosityLeadMapper extends AbstractLeadMapper {
         
         BaseLead.GDPR gdpr = new BaseLead.GDPR();
         
-        gdpr.gdprCallOptIn 		        = (Boolean)leadMap.get('gdprCallOptIn');
+        gdpr.gdprCallOptIn              = (Boolean)leadMap.get('gdprCallOptIn');
         gdpr.gdprEmailOptIn 	        = (Boolean)leadMap.get('gdprEmailOptIn');
         gdpr.gdprProspect2uOptIn        = (Boolean)leadMap.get('gdprProspect2uOptIn');
         gdpr.gdprProspectPartnerOptIn   = (Boolean)leadMap.get('gdprProspectPartnerOptIn');
-        gdpr.gdprSmsOptIn 		        = (Boolean)leadMap.get('gdprSmsOptIn');
+        gdpr.gdprSmsOptIn               = (Boolean)leadMap.get('gdprSmsOptIn');
 	
         return gdpr;         
     }
