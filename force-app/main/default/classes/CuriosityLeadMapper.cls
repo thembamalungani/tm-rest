@@ -10,17 +10,17 @@ public class CuriosityLeadMapper extends AbstractLeadMapper {
         BaseLead.ContactDetails contactDetails = new BaseLead.ContactDetails();
         
         contactDetails.countryOfResidence       = (String)leadMap.get('countryOfResidence');
-        contactDetails.email 		            = (String)leadMap.get('email');
-        contactDetails.firstName 	            = (String)leadMap.get('firstName');
-        contactDetails.lastName 		        = (String)leadMap.get('lastName');
-        contactDetails.mobilePhone 		        = (String)leadMap.get('mobilePhone');
-        contactDetails.phone 			        = (String)leadMap.get('phone');
+        contactDetails.email                    = (String)leadMap.get('email');
+        contactDetails.firstName                = (String)leadMap.get('firstName');
+        contactDetails.lastName                 = (String)leadMap.get('lastName');
+        contactDetails.mobilePhone              = (String)leadMap.get('mobilePhone');
+        contactDetails.phone                    = (String)leadMap.get('phone');
         contactDetails.employeeIndustry	        = (String)leadMap.get('employeeIndustry');
         contactDetails.employerCompanyName      = (String)leadMap.get('employerCompanyName');
-        contactDetails.occupation		        = (String)leadMap.get('occupation');
+        contactDetails.occupation               = (String)leadMap.get('occupation');
         contactDetails.educationHighestLevel    = (String)leadMap.get('educationHighestLevel');
         contactDetails.workExperience	        = (String)leadMap.get('workExperience');
-        contactDetails.jobTitle			        = (String)leadMap.get('jobTitle');
+        contactDetails.jobTitle                 = (String)leadMap.get('jobTitle');
         
         return contactDetails;
     }
