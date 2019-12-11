@@ -3,11 +3,11 @@ public class AccountMapperFactory {
      * Gets an account mapper based on lead
      *
      * @param BaseLead lead
-     * @return AccountMapper
+     * @return IAccountMapper
      */
-    public static AccountMapper getMapper(BaseLead lead) {
+    public static IAccountMapper getMapper(BaseLead lead) {
         
-        AccountMapper mapper;
+        IAccountMapper mapper;
 
         if ( isCalendly(lead) ) {
 

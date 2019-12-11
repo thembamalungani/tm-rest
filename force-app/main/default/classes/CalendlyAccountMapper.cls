@@ -1,4 +1,4 @@
-public class CalendlyAccountMapper extends AccountMapper {
+public class CalendlyAccountMapper extends BaseAccountMapper implements IAccountMapper {
     /**
      * Creates a map of account fields to lead values
      *

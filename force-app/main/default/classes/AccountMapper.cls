@@ -1,4 +1,4 @@
-public virtual class AccountMapper {
+public class AccountMapper extends BaseAccountMapper implements IAccountMapper{
 
     /**
      * Maps account fields to account properties in map
@@ -7,32 +7,32 @@ public virtual class AccountMapper {
      * @param Map<String, Object> accountParameters
      * @return Account
      */
-    public virtual Account doMap(Account account, Map<String, Object> accountParameters) {
+    public override Account doMap(Account account, Map<String, Object> accountParameters) {
 
-        account = (account == null) ? new Account() : account;
+        account = super.doMap(account, accountParameters);
 
-        for (String key : accountParameters.keySet()) {
-            
-            if ( booleanFields().contains(key) && accountParameters.get(key) != null ) {
-                account.put(key, (Boolean)accountParameters.get(key));
-            } else {
-                account.put(key, (String)accountParameters.get(key));
-            }
+        if (account.Id == null) {
+            account = applyGDPRValues(account, accountParameters);
         }
 
         return account;
     }
-    
-    protected List<String> booleanFields() {
 
-        List<String> booleanFields = new List<String>{
-          'PersonDoNotCall',
-          'PersonHasOptedOutOfEmail',
-          'Do_Not_SMS__pc',
-          'Do_Not_Share_2U_Marketing__pc',
-          'Do_Not_Share_Partner_Marketing__pc'
-        };
+    /**
+     * Applies the GDPR business logic 
+     *
+     * @param Account account
+     * @param Map<String, Object> accountParameters
+     * @return Account
+     */
+    public static Account applyGDPRValues(Account account, Map<String, Object> accountParameters) {
         
-        return booleanFields;
+        account.PersonDoNotCall                     = (accountParameters.get('PersonDoNotCall') != null ) ? !(Boolean)accountParameters.get('PersonDoNotCall') : false;
+        account.PersonHasOptedOutOfEmail            = (accountParameters.get('PersonHasOptedOutOfEmail') != null) ? !(Boolean)accountParameters.get('PersonHasOptedOutOfEmail') : false;
+        account.Do_Not_SMS__pc                      = (accountParameters.get('Do_Not_SMS__pc') != null) ? !(Boolean)accountParameters.get('Do_Not_SMS__pc') : false;
+        account.Do_Not_Share_2U_Marketing__pc       = (accountParameters.get('Do_Not_Share_2U_Marketing__pc') != null) ? !(Boolean)accountParameters.get('Do_Not_Share_2U_Marketing__pc') : false;
+        account.Do_Not_Share_Partner_Marketing__pc  = (accountParameters.get('Do_Not_Share_Partner_Marketing__pc') != null) ? !(Boolean)accountParameters.get('Do_Not_Share_Partner_Marketing__pc') : false;
+
+        return account;
     }
 }

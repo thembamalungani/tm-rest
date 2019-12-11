@@ -20,13 +20,17 @@ public class LeadHelper {
             'Employer_Company_Name__pc'             => lead.contactDetails.employerCompanyName,
             'Employee_Industry__pc'                 => lead.contactDetails.employeeIndustry,
             'Work_Experience__pc'                   => lead.contactDetails.workExperience, 
-            'PersonOtherCountry'                    => lead.contactDetails.countryOfResidence
-            //'PersonDoNotCall'                       => lead.gdpr.gdprCallOptIn,
-            //'PersonHasOptedOutOfEmail'              => lead.gdpr.gdprEmailOptIn,
-            //'Do_Not_SMS__pc'                        => lead.gdpr.gdprSmsOptIn,
-            //'Do_Not_Share_2U_Marketing__pc'         => lead.gdpr.gdprProspect2uOptIn,
-            //'Do_Not_Share_Partner_Marketing__pc'    => lead.gdpr.gdprProspectPartnerOptIn
+            'PersonOtherCountry'                    => lead.contactDetails.countryOfResidence,
+            'PersonDoNotCall'                       => lead.gdpr.gdprCallOptIn,
+            'PersonHasOptedOutOfEmail'              => lead.gdpr.gdprEmailOptIn,
+            'Do_Not_SMS__pc'                        => lead.gdpr.gdprSmsOptIn,
+            'Do_Not_Share_2U_Marketing__pc'         => lead.gdpr.gdprProspect2uOptIn,
+            'Do_Not_Share_Partner_Marketing__pc'    => lead.gdpr.gdprProspectPartnerOptIn
         };
+
+        try {
+            accountParameters.put('Language_Home__pc', [SELECT Id, Name FROM Language__c WHERE Name = :lead.contactDetails.languageHome LIMIT 1].Id);
+        }catch(Exception e){}
 
         return accountParameters;
     }

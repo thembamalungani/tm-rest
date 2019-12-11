@@ -6,5 +6,5 @@ public interface IAccountMapper {
      * @param Map<String, String> accountParameters
      * @return Account
      */
-    Account doMap(Account account, Map<String, String> accountParameters);
+    Account doMap(Account account, Map<String, Object> accountParameters);
 }
