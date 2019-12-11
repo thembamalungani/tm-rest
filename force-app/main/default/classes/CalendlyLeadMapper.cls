@@ -39,6 +39,7 @@ public class CalendlyLeadMapper extends ILeadMapper {
 
         tracking.countryInferred 			= (String)((Map<String, Object>)payload.get('tracking')).get('utm_term');
         tracking.externalId 				= (String)((Map<String, Object>)payload.get('event')).get('uuid');
+        tracking.oldExternalId 				= (String)((Map<String, Object>)payload.get('old_event  ')).get('uuid');
         tracking.leadCaptureFormType 		= (String)leadMap.get('event');
         tracking.source                     = 'Calendly';
         

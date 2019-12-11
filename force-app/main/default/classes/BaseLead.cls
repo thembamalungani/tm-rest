@@ -84,6 +84,7 @@ public virtual class BaseLead implements IMappable {
     public class Tracking {
         public String countryInferred { set; get; }
         public String externalId { set; get; }
+        public String oldExternalId { set; get; }
         public String leadCaptureFormType { set; get; }
         public String leadCaptureFormUrl { set; get; }
         public List<String> productIds { set; get; }
