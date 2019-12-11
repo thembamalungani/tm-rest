@@ -17,7 +17,7 @@ public virtual class BaseLeadFactory implements ILeadFactory {
         BaseLead lead;
         IMappable model;
         ILeadTypeChecker checker;
-        AbstractLeadMapper mapper;
+        ILeadMapper mapper;
 
         checker = new LeadTypeChecker();
         leadType= checker.check(leadMap);

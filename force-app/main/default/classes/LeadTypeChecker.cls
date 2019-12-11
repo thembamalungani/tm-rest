@@ -17,7 +17,7 @@ public class LeadTypeChecker implements ILeadTypeChecker {
         'Requested a Call'              => LeadType.REQUESTED_A_CALL,
         'Submitted Registration Step 1' => LeadType.SUBMITTED_REGISTRATION_STEP1,
         'invitee.created'               => LeadType.CALENDLY_RAC_CREATED,
-        'invitee.created'               => LeadType.CALENDLY_RAC_CANCELED
+        'invitee.canceled'              => LeadType.CALENDLY_RAC_CANCELED
     };
   
     /**
@@ -31,7 +31,6 @@ public class LeadTypeChecker implements ILeadTypeChecker {
         String leadTypeString = (String)leadMap.get('leadCaptureFormType');
 
 		if (String.isBlank(leadTypeString)) {
-
 			leadTypeString = (String)leadMap.get('event');
 		}
 

@@ -18,10 +18,17 @@ public class CalendlyHandler implements ILeadHandler {
         IPipeline pipeline;
         Map<String, Object> payload;
 
-        pipeline = (new Pipeline(new FingersCrossedProcessor()))
-            .pipe(new CreateAccountStage())
-            .pipe(new CreateOpportunityStage())
-            .pipe(new CreateRequestACallStage());
+        pipeline = (new Pipeline(new FingersCrossedProcessor()));
+
+        if (lead.type == LeadType.CALENDLY_RAC_CREATED) {
+            pipeline.pipe(new CreateRequestACallStage())
+                    .pipe(new CreateAccountStage())
+                    .pipe(new CreateOpportunityStage())
+                    .pipe(new CreateOpportunityLineItemsStage());
+                    
+        } else if(lead.type == LeadType.CALENDLY_RAC_CANCELED) {
+            pipeline.pipe(new CancelRequestACallStage());
+        }
 
         payload = new Map<String, Object>{ 'lead' => lead };
         result  = pipeline.process(payload);

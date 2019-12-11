@@ -9,17 +9,50 @@ public class CaseHelper {
      */
     public static Case prepareFor(BaseLead lead, Account account, Opportunity opportunity) {
 
-        String productId    = (lead.tracking.productIds != null && lead.tracking.productIds.size() == 1) ? lead.tracking.productIds.get(0) : 'Unknown';  
-        String subject      = subject(lead);
-        String description  = description(lead);
-        Datetime calltime   = calltime(lead);
-
-        Case newCase = (new CaseSelector()).selectByExternalId( lead.tracking.externalId );
+        Datetime callTime   = calltime(lead);
+        Case newCase        = (new CaseSelector()).selectByExternalId(lead.tracking.oldExternalId);
 
         newCase = (newCase == null) ? new Case() : newCase;
 
-        newCase.Description = description;
-        newCase.subject     = subject;
+        newCase.Description             = description(lead);
+        newCase.subject                 = subject(lead);
+        newCase.Status                  = newCase.Id == null ? 'New' : 'Rescheduled';
+        newCase.Priority                = 'High';
+        newCase.Origin                  = 'Web';
+        newCase.RecordTypeId            = [SELECT Id FROM RecordType WHERE DeveloperName = 'Sales_Case' LIMIT 1].Id;
+        newCase.AccountId               = account.Id;
+        newCase.Type                    = 'Request a Call';
+        newCase.Calendly_Event_Uuid__c  = lead.tracking.externalId;
+        newCase.Requested_Call_Date__c  = callTime.date();
+        newCase.Requested_Call_Time__c  = callTime.time();
+
+        newCase = setOwner(newCase, lead);
+
+        return newCase;
+    }
+
+    /**
+     * Sets the assignment rules for the case
+     *
+     * @param Case newCase
+     * @param BaseLead lead
+     *
+     * @return Case
+     */
+    public static Case setOwner(Case newCase, BaseLead lead) {
+
+        if (!String.isBlank(lead.tracking.owner)) {
+            newCase.OwnerId = [SELECT Id FROM User WHERE Email = :lead.tracking.owner LIMIT 1].Id;
+        } else {
+
+            try {
+                Id salesCaseAssignmentRuleId    = [select id from AssignmentRule where SobjectType = 'Case' and Active = true limit 1].Id;
+                Database.DMLOptions dmlOpts     = new Database.DMLOptions();
+                dmlOpts.assignmentRuleHeader.assignmentRuleId = salesCaseAssignmentRuleId;
+                newCase.setOptions(dmlOpts);
+                
+            }catch(Exception e){}
+        }
 
         return newCase;
     }
@@ -95,7 +128,7 @@ public class CaseHelper {
     public static Datetime calltime(BaseLead lead){
         
         try{
-            return Datetime.valueOf(lead.callTime);
+            return Datetime.valueOf(lead.contactDetails.callTime);
         } catch (Exception ex) {
             return System.now();
         }

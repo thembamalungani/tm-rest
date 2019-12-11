@@ -1,11 +1,11 @@
-public class CuriosityLeadMapper implements ILeadMapper {
+public class CuriosityLeadMapper extends AbstractLeadMapper implements ILeadMapper {
     
     /**
      * Parses the contect details from leadMap
      *
      * @return ContactDetails
      */
-    public override BaseLead.ContactDetails mapContactDetails() {
+    public BaseLead.ContactDetails mapContactDetails() {
         
         BaseLead.ContactDetails contactDetails = new BaseLead.ContactDetails();
         
@@ -32,7 +32,7 @@ public class CuriosityLeadMapper implements ILeadMapper {
      *
      * @param Tracking
      */
-    public override BaseLead.Tracking mapTracking() {
+    public BaseLead.Tracking mapTracking() {
         
         BaseLead.Tracking tracking = new BaseLead.Tracking();
         
@@ -56,7 +56,7 @@ public class CuriosityLeadMapper implements ILeadMapper {
      *
      * @param GDPR
      */
-    public override BaseLead.GDPR mapGDPR() {
+    public BaseLead.GDPR mapGDPR() {
         
         BaseLead.GDPR gdpr = new BaseLead.GDPR();
         

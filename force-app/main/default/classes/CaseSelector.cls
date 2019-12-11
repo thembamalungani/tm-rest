@@ -14,7 +14,7 @@ public class CaseSelector extends ObjectSelector implements ICaseSelector {
      */
     public Case selectByExternalId(String id){
 
-        String template = 'SELECT {0} FROM Case WHERE Id=:{1}';
+        String template = 'SELECT {0} FROM Case WHERE Calendly_Event_Uuid__c=:{1} LIMIT 1';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'id' });
 
         try {
