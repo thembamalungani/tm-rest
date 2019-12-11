@@ -34,8 +34,8 @@ public class CuriosityLeadMapper extends AbstractLeadMapper {
         
         BaseLead.Tracking tracking = new BaseLead.Tracking();
         
-        tracking.countryInferred 		    = (String)leadMap.get('countryInferred');
-        tracking.externalId 			    = (String)leadMap.get('externalId');
+        tracking.countryInferred            = (String)leadMap.get('countryInferred');
+        tracking.externalId                 = (String)leadMap.get('externalId');
         tracking.googleAnalyticsClientId    = (String)leadMap.get('googleAnalyticsClientId');
         tracking.leadCaptureFormType        = (String)leadMap.get('leadCaptureFormType');
         tracking.leadCaptureFormUrl         = (String)leadMap.get('leadCaptureFormUrl');
@@ -55,7 +55,7 @@ public class CuriosityLeadMapper extends AbstractLeadMapper {
      */
     public override BaseLead.GDPR mapGDPR() {
         
-		BaseLead.GDPR gdpr = new BaseLead.GDPR();
+        BaseLead.GDPR gdpr = new BaseLead.GDPR();
         
         gdpr.gdprCallOptIn 		        = (Boolean)leadMap.get('gdprCallOptIn');
         gdpr.gdprEmailOptIn 	        = (Boolean)leadMap.get('gdprEmailOptIn');
@@ -63,6 +63,6 @@ public class CuriosityLeadMapper extends AbstractLeadMapper {
         gdpr.gdprProspectPartnerOptIn   = (Boolean)leadMap.get('gdprProspectPartnerOptIn');
         gdpr.gdprSmsOptIn 		        = (Boolean)leadMap.get('gdprSmsOptIn');
 	
-		return gdpr;         
+        return gdpr;         
     }
 }
