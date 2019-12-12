@@ -1,4 +1,4 @@
-public with sharing class LeadHandlerFactory {
+public class LeadHandlerFactory {
     
     public static ILeadHandler getHandler(BaseLead lead) {
 

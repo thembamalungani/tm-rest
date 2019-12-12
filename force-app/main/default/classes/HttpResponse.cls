@@ -21,7 +21,6 @@ public class HttpResponse {
     }
 
     public class Builder {
-
         public String body;
         public Integer statusCode;
 

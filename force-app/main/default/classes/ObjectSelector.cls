@@ -36,4 +36,19 @@ public virtual class ObjectSelector {
 
        return fieldNames;
     }
+
+    /**
+     * Runs the query
+     *
+     * @param String query
+     * @return SObject
+     */
+    public SObject query(String query) {
+
+        try {
+            return Database.query(query);
+        } catch(QueryException e){
+            return null;
+        }
+    }
 }

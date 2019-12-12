@@ -30,9 +30,9 @@ public class LeadTypeChecker implements ILeadTypeChecker {
         
         String leadTypeString = (String)leadMap.get('leadCaptureFormType');
 
-		if (String.isBlank(leadTypeString)) {
-			leadTypeString = (String)leadMap.get('event');
-		}
+        if (String.isBlank(leadTypeString)) {
+            leadTypeString = (String)leadMap.get('event');
+        }
 
         return types.get(leadTypeString);
     }

@@ -17,10 +17,6 @@ public class CaseSelector extends ObjectSelector implements ICaseSelector {
         String template = 'SELECT {0} FROM Case WHERE Calendly_Event_Uuid__c=:{1} LIMIT 1';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'id' });
 
-        try {
-            return Database.query(query);
-        } catch(QueryException e){
-            return null;
-        }
+        return super.query(query);
     }
 }

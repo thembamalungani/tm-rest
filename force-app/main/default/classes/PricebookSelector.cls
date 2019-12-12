@@ -17,6 +17,6 @@ public class PricebookSelector extends ObjectSelector {
         String template = 'SELECT {0} FROM Pricebook2 WHERE Name=:{1}';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'name' });
 
-        return Database.query(query);
+        return super.query(query);
     }
 }
