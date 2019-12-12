@@ -3,15 +3,8 @@
  * @description Used to handle leads endpoint
  * @date 2019-10-01
  */
-@RestResource(UrlMapping='/v2/leads/*')
+@RestResource(UrlMapping='/leads/*')
 global class LeadHandler_IH_v1 {
-    /**
-     * Used to dispatch rest request to specific handler
-     *
-     * @param IRestDispatcher dispatcher
-     */
-    global static IRestDispatcher dispatcher;
-
     /**
      * Used to handle creating leads
      *
@@ -20,10 +13,10 @@ global class LeadHandler_IH_v1 {
    	@HttpPost
     global static String create() {
 
-        dispatcher = new RequestDispatcher();
-        
-        HttpResponse response = dispatcher.dispatch(LeadsCreateHandler.class);
+        HttpResponse response = (new RequestDispatcher()).dispatch(LeadsCreateHandler.class);
 
-        return 'test';
+        RestContext.response.statusCode = response.statusCode;
+
+        return response.body;
     }
 }

@@ -18,13 +18,10 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
         try {
 			
             parser = new LeadBatchParser();
-            
             queueLeads( parser.parse( request.body ));
-            
             isQueued = true;
 
         } catch(JSONException e) {
-			
             isQueued = false;
         }
 
@@ -39,7 +36,6 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
     private void queueLeads(List<BaseLead> leads) {
         
         for (BaseLead lead: leads) {
-
             queueLead(lead);
         }
     }
@@ -52,9 +48,7 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
     private void queueLead(BaseLead lead) {
         
         IAsyncLeadHandler handler = new AsyncLeadHandler();
-            
         handler.setLead(lead);
-			
         System.enqueueJob((Queueable)handler);
     }
 
@@ -66,10 +60,9 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
     private HttpResponse response(Boolean isQueued) {
 
         if (isQueued) {
-
-            return HttpResponse.accepted('test');
+            return HttpResponse.accepted('Accepted');
         }
 
-        return HttpResponse.badRequest('test');
+        return HttpResponse.badRequest('Failed');
     }
 }

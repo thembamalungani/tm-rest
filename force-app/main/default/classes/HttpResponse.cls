@@ -1,10 +1,9 @@
 public class HttpResponse {
     
-    private String body;
-    private Integer statusCode;
+    public String body;
+    public Integer statusCode;
 
     public HttpResponse(HttpResponse.Builder builder) {
-
         this.body = builder.body;
         this.statusCode = builder.statusCode;
     }
@@ -27,21 +26,16 @@ public class HttpResponse {
         public Integer statusCode;
 
         public HttpResponse build() {
-
             return new HttpResponse(this);
         }
 
         public Builder statusCode(Integer statusCode) {
-
             this.statusCode = statusCode;
-
             return this;
         }
 
         public Builder body(String body) {
-
             this.body = body;
-
             return this;
         }
     }
