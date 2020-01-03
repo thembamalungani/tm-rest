@@ -53,16 +53,13 @@ public class CreateAccountStage implements IPipelineStage {
 
         String email            = ((String)accountParameters.get('PersonEmail')).toLowerCase();
         Account account         = this.accountSelector.selectPersonAccountsByEmails(new Set<String>{ email }).get(email);
-        IAccountMapper mapper    = AccountMapperFactory.getMapper(lead);
+        IAccountMapper mapper   = AccountMapperFactory.getMapper(lead);
 
-        List<Database.SaveResult> result;
+        account = mapper.doMap(account, accountParameters);
 
-        if ( account != null ) {
-            account = mapper.doMap(account, accountParameters); 
+        if ( account.Id != null ) {
             this.accountService.updateAccounts(new Map<Id, Account>{account.Id => account});
-            
         } else {
-            account = mapper.doMap(account, accountParameters);
             this.accountService.createAccounts(new List<Account>{account});
         }
         

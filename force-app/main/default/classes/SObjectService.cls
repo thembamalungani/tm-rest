@@ -23,7 +23,6 @@ public virtual class SObjectService {
         List<SObject> objects  = new List<SObject>();
 
         for (SObject value: objectsMap.values()) {
-            
             objects.add(value);
         }
 

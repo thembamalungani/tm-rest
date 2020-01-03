@@ -1,5 +1,10 @@
 public class LeadHandlerFactory {
-    
+    /**
+     * Get the handler for the specific lead type
+     *
+     * @param LeadType leadType
+     * @return ILeadHandler
+     */
     public static ILeadHandler getHandler(BaseLead lead) {
 
         ILeadHandler handler;

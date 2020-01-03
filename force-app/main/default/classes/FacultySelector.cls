@@ -7,16 +7,16 @@ public class FacultySelector extends ObjectSelector {
     }
 
     /**
-     * Selects a faculty by course id
+     * Selects a school by presentation id
      *
-     * @param String courseId
-     * @return Faculty__c
+     * @param String presentationId
+     * @return School__c
      */
-    public Faculty__c selectByCourseId(String courseId) {
+    public Faculty__c selectByPresentationId(String presentationId) {
 
-        String template = 'SELECT {0} FROM Faculty__c WHERE Id IN (SELECT Faculty__c FROM Course__c WHERE Id=:{1}) LIMIT 1]';
-        String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'courseId' });
+        String template = 'SELECT {0}, Faculty__r.Name FROM Course__c WHERE Id IN (SELECT Course__c FROM Product2 WHERE Id IN ({1})) LIMIT 1';
+        String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'presentationId' });
 
-        return super.query(query);
+        return (Faculty__c)super.query(query);
     }
 }

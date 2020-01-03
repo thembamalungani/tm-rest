@@ -10,53 +10,55 @@ public class OpportunityLineItemHelper {
     public static List<OpportunityLineItem> prepareFor(BaseLead lead, Account account, Opportunity opportunity) {
 
         List<OpportunityLineItem> lineItems = new List<OpportunityLineItem>();
+        Map<String, Product2> presentations = (new PresentationSelector()).selectByUuid(new Set<String>(lead.tracking.productIds));
 
-        Set<String> presentationUUIDs = new Set<String>();
-
-        for (String presentationUUID : lead.tracking.productIds) {
-            presentationUUIDs.add(presentationUUID);
-        }
-
-        Map<String, Product2> presentations = (new PresentationSelector()).selectByUuid(presentationUUIDs);
-
-        for (String productId : getPresentationIds(presentations)) {
-            
-            Double totalPrice = 0;
-
-            for (Product2 presentation: presentations.values()) {
-                
-                if (presentation.Id == productId) {
-                    totalPrice = presentation.Price__c;
-                }
-            }
-
-            OpportunityLineItem lineItem = new OpportunityLineItem(
-                OpportunityId=opportunity.Id,
-                Product2Id=productId,
-                Quantity=1,
-                TotalPrice=totalPrice
-            );  
-
-            lineItems.add(lineItem);
+        for (String productId : lead.tracking.productIds) {
+            lineItems.add(new OpportunityLineItem(
+                OpportunityId   = opportunity.Id,
+                Product2Id      = productId,
+                Quantity        = 1,
+                PricebookEntryId= getPriceBookEntryId(productId),
+                TotalPrice      = getPresentationPrice(productId, presentations.values())
+            ));
         }
 
         return lineItems;
     }
 
     /**
-     * Gets presentation IDs via uuids
+     * Gets the price of the presentation with the passed product ids
      *
-     * @param Map<String, Product2> presentations
-     * @return Set<Id>
+     * @param String productId
+     * @param List<Product2> presentations
+     * @return Double
      */
-    public static Set<Id> getPresentationIds(Map<String, Product2> presentations) {
+    public static Double getPresentationPrice(String productId, List<Product2> presentations){
+        
+        Double totalPrice = 0;
 
-        Set<Id> presentationIds = new Set<Id>();
-
-        for (Product2 presentantion : presentations.values()) {
-            presentationIds.add(presentantion.Id);
+        for (Product2 presentation: presentations) {
+            if (presentation.Id == productId) {
+                totalPrice = presentation.Price__c;
+            }
         }
 
-        return presentationIds;
+        return totalPrice;
+    }
+
+    /**
+     * Gets the price book entry id for the product
+     *
+     * @param String productId
+     * @return Id
+     */
+    public static Id getPriceBookEntryId(String productId){
+        
+        PricebookEntry entry = (new PricebookEntrySelector()).selectByProductId(productId);
+
+        if (entry != null) {
+            return entry.Id;
+        }
+        
+        return null;
     }
 }

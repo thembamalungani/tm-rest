@@ -30,7 +30,6 @@ public virtual class ObjectSelector {
         Set<String> fieldNames = new Set<String> ();
 
         for (Schema.SObjectField field : fields) {
-            
             fieldNames.add(field.getDescribe().getName());
         }
 
@@ -43,7 +42,7 @@ public virtual class ObjectSelector {
      * @param String query
      * @return SObject
      */
-    public SObject query(String query) {
+    public Object query(String query) {
 
         try {
             return Database.query(query);

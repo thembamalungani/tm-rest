@@ -51,7 +51,7 @@ public class CaseHelper {
                 dmlOpts.assignmentRuleHeader.assignmentRuleId = salesCaseAssignmentRuleId;
                 newCase.setOptions(dmlOpts);
                 
-            }catch(Exception e){}
+            } catch(Exception e){}
         }
 
         return newCase;
@@ -65,7 +65,7 @@ public class CaseHelper {
      */
     public static String subject(BaseLead lead) {
         
-        Course__c course  = (new CourseSelector()).selectByCourseId(lead.tracking.externalId);
+        Course__c course = (new CourseSelector()).selectByPresentationId(lead.tracking.productIds.get(0));
 
         return String.format('Request a Call | {0}', new String[]{  ( course != null ) ? course.Name : 'Unknown' });
     }
@@ -78,10 +78,8 @@ public class CaseHelper {
      */
     public static String description(BaseLead lead) {
 
-        Course__c course            = (new CourseSelector()).selectByCourseId(lead.tracking.externalId);
-        University__c university    = (new UniversitySelector()).selectByCourseId(lead.tracking.externalId);
-        School__c school            = (new SchoolSelector()).selectByCourseId(lead.tracking.externalId);
-        Faculty__c faculty          = (new FacultySelector()).selectByCourseId(lead.tracking.externalId);
+        String presentationId   = lead.tracking.productIds.get(0);
+        Course__c course        = (Course__c)((new CourseSelector()).selectByPresentationId(presentationId));
 
         Map<String, Object> values = new Map<String, Object>{
             'First Name' => lead.contactDetails.firstname,
@@ -90,9 +88,9 @@ public class CaseHelper {
             'Telephone'  => lead.contactDetails.phone,
             'Email'      => lead.contactDetails.email,
             'Date/Time'  => calltime(lead),
-            'University' => (university != null) ? university.Name : 'Unknown',
-            'Faculty'    => (faculty != null) ? faculty.Name : 'Unknown',
-            'School'     => (school != null) ? school.Name : 'Unknown'
+            'University' => (course != null) ? course.University__r.Name : 'Unknown',
+            'Faculty'    => (course != null) ? course.Faculty__r.Name : 'Unknown',
+            'School'     => (course != null) ? course.School__r.Name : 'Unknown'
         };
 
         return description(values);
@@ -109,6 +107,7 @@ public class CaseHelper {
         String description = '';
 
         for (String key : values.keySet()) {
+            
             String value = String.valueOf(values.get(key));
 
             if (!String.isBlank(value)) {
@@ -126,7 +125,6 @@ public class CaseHelper {
      * @return Datetime
      */
     public static Datetime calltime(BaseLead lead){
-        
         try{
             return Datetime.valueOf(lead.contactDetails.callTime);
         } catch (Exception ex) {
