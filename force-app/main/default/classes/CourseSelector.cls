@@ -14,7 +14,7 @@ public class CourseSelector extends ObjectSelector {
      */
     public Course__c selectByUuid(String uuid) {
         
-        String template = 'SELECT {0}, University__r.Name, School__r.Name, Faculty__r.Name FROM Course__c WHERE UUID__c = :{1}';
+        String template = 'SELECT {0}, University__r.University_Name__c, School__r.Name, Faculty__r.Name FROM Course__c WHERE UUID__c = :{1}';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'uuid' });
 
         return (Course__c)Database.query(query);
@@ -28,7 +28,7 @@ public class CourseSelector extends ObjectSelector {
      */
     public Course__c selectByPresentationId(String presentationId) {
         
-        String template = 'SELECT {0}, University__r.Name, School__r.Name, Faculty__r.Name FROM Course__c WHERE Id IN (SELECT Course__c FROM Product2 WHERE Id IN (:{1})) LIMIT 1';
+        String template = 'SELECT {0}, University__r.University_Name__c, School__r.Name, Faculty__r.Name FROM Course__c WHERE Id IN (SELECT Course__c FROM Product2 WHERE Id IN (:{1})) LIMIT 1';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'presentationId' });
 
         return (Course__c)Database.query(query);

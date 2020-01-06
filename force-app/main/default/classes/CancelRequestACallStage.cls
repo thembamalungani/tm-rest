@@ -32,9 +32,11 @@ public class CancelRequestACallStage implements IPipelineStage {
         payloadMap      = (Map<String, Object>) payload;
         lead            = (BaseLead) payloadMap.get('lead');
         
-        Case cancelCase = this.caseSelector.selectByExternalId(lead.tracking.externalId);
+        Case cancelCase = this.caseSelector.selectByExternalIds(new List<String>{lead.tracking.externalId});
         
-        this.caseService.cancelCases(new List<Case>{ cancelCase });
+        if (cancelCase != null) {
+            this.caseService.cancelCases(new List<Case>{ cancelCase });
+        }
 		
         return response(lead, cancelCase);
     }

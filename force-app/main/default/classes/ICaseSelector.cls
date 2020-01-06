@@ -1,3 +1,3 @@
 public interface ICaseSelector {
-    Case selectByExternalId(String id);
+    Case selectByExternalIds(List<String> ids);
 }

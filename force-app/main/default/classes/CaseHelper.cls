@@ -10,13 +10,18 @@ public class CaseHelper {
     public static Case prepareFor(BaseLead lead, Account account, Opportunity opportunity) {
 
         Datetime callTime   = calltime(lead);
-        Case newCase        = (new CaseSelector()).selectByExternalId(lead.tracking.oldExternalId);
+        Case newCase;
 
-        newCase = (newCase == null) ? new Case() : newCase;
+        try {
+            newCase = (new CaseSelector()).selectByExternalIds(new List<String>{lead.tracking.externalId, lead.tracking.oldExternalId});
+            newCase = (newCase == null) ? new Case() : newCase;
+        }catch(Exception e){
+            newCase = new Case();
+        }
 
         newCase.Description             = description(lead);
         newCase.subject                 = subject(lead);
-        newCase.Status                  = newCase.Id == null ? 'New' : 'Rescheduled';
+        newCase.Status                  = String.isBlank(lead.tracking.oldExternalId) ? 'New' : 'Rescheduled';
         newCase.Priority                = 'High';
         newCase.Origin                  = 'Web';
         newCase.RecordTypeId            = [SELECT Id FROM RecordType WHERE DeveloperName = 'Sales_Case' LIMIT 1].Id;
@@ -42,10 +47,15 @@ public class CaseHelper {
     public static Case setOwner(Case newCase, BaseLead lead) {
 
         if (!String.isBlank(lead.tracking.owner)) {
-            newCase.OwnerId = [SELECT Id FROM User WHERE Email = :lead.tracking.owner LIMIT 1].Id;
+
+            try {
+                newCase.OwnerId = [SELECT Id FROM User WHERE Email = :lead.tracking.owner LIMIT 1].Id;
+            }catch(Exception e){}
+            
         } else {
 
             try {
+
                 Id salesCaseAssignmentRuleId    = [select id from AssignmentRule where SobjectType = 'Case' and Active = true limit 1].Id;
                 Database.DMLOptions dmlOpts     = new Database.DMLOptions();
                 dmlOpts.assignmentRuleHeader.assignmentRuleId = salesCaseAssignmentRuleId;
@@ -67,7 +77,7 @@ public class CaseHelper {
         
         Course__c course = (new CourseSelector()).selectByPresentationId(lead.tracking.productIds.get(0));
 
-        return String.format('Request a Call | {0}', new String[]{  ( course != null ) ? course.Name : 'Unknown' });
+        return String.format('Request a Call | {0}', new String[]{  ( course != null ) ? course.Course_Name__c : 'Unknown' });
     }
 
     /**
@@ -88,7 +98,7 @@ public class CaseHelper {
             'Telephone'  => lead.contactDetails.phone,
             'Email'      => lead.contactDetails.email,
             'Date/Time'  => calltime(lead),
-            'University' => (course != null) ? course.University__r.Name : 'Unknown',
+            'University' => (course != null) ? course.University__r.University_Name__c : 'Unknown',
             'Faculty'    => (course != null) ? course.Faculty__r.Name : 'Unknown',
             'School'     => (course != null) ? course.School__r.Name : 'Unknown'
         };
@@ -111,7 +121,7 @@ public class CaseHelper {
             String value = String.valueOf(values.get(key));
 
             if (!String.isBlank(value)) {
-                description += Key + ': ' + value + '\n';
+                description += String.format('{0}: {1}\n', new String[]{key, value});
             }
         }
 

@@ -5,7 +5,13 @@ public with sharing class CaseService extends SObjectService implements ICaseSer
      * @param List<Case> cases
      */
     public void createCases(List<Case> cases) {
-        super.insertObjects(cases);
+        for (Case newCase: cases) {
+            if (newCase.Status == 'Rescheduled') {
+                update newCase;
+            } else {
+                insert newCase;
+            }
+        }
     }
 
     /**
@@ -17,7 +23,7 @@ public with sharing class CaseService extends SObjectService implements ICaseSer
 
         Map<Id, Case> cancelCases = new Map<Id, Case>();
 
-        for (Case cancelCase : cases) {
+        for (Case cancelCase :cases) {
             cancelCase.Status = 'Cancelled';
             cancelCases.put(cancelCase.Id, cancelCase);
         }

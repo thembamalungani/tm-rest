@@ -36,7 +36,7 @@ public class PresentationSelector extends ObjectSelector {
         
         String template              = 'SELECT {0} FROM Product2 WHERE Id IN :{1}';
         String query                 = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'ids' });
-        List<Product2> presentations = (List<Product2>)super.query(query);
+        List<Product2> presentations = (List<Product2>)Database.query(query);
 
         if (presentations != null) {
             Map<Id, Product2> presentationsMap = new Map<Id, Product2>();
@@ -58,10 +58,10 @@ public class PresentationSelector extends ObjectSelector {
      */
     public List<Product2> selectPublishedPresentationsByCourseId(String courseId) {
         
-        String template = 'SELECT {0} FROM Product2 WHERE Course__c = {1} AND Published__c = true AND Start_Date__c < TODAY ORDER BY Start_Date__c ASC';
+        String template = 'SELECT {0} FROM Product2 WHERE Course__c = :{1} AND Published__c = true AND Start_Date__c > TODAY ORDER BY Start_Date__c ASC';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'courseId' });
         
-        return (List<Product2>)super.query(query);
+        return (List<Product2>)Database.query(query);
     }
 
     /**
@@ -75,7 +75,7 @@ public class PresentationSelector extends ObjectSelector {
         String template = 'SELECT {0} FROM Product2 WHERE Course__c = {1} AND Published__c = false ORDER BY Start_Date__c ASC';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'courseId' });
         
-        return (List<Product2>)super.query(query);
+        return (List<Product2>)Database.query(query);
     }
 
     /**
@@ -89,6 +89,6 @@ public class PresentationSelector extends ObjectSelector {
         String template = 'SELECT {0} FROM Product2 WHERE Course__c = {1} AND Published__c = false ORDER BY Start_Date__c ASC';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'courseId' });
         
-        return (List<Product2>)super.query(query);
+        return (List<Product2>)Database.query(query);
     }
 }

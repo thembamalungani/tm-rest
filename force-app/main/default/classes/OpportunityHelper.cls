@@ -51,13 +51,13 @@ public class OpportunityHelper {
 
         for (Opportunity opportunity : getAccountOpportunities(account)) {
             
-            tmpOpportunity = opportunity;
             List<String> oppLineItemsProductUUIDs = getOpportunityLineItemsProductUUIDs(opportunity);
 
             for (String productUuid: lead.tracking.productIds) {
-                
                 if (!oppLineItemsProductUUIDs.contains(productUuid)){
-                    return null;
+                    tmpOpportunity = null;
+                } else {
+                    tmpOpportunity = opportunity;
                 }
             }
         }
@@ -94,8 +94,10 @@ public class OpportunityHelper {
 
         Map<Id, Product2> presentations = (new PresentationSelector()).selectByIDs(lineItemsProductIds);
 
-        for (Product2 presentation : presentations.values()) {
-            lineItemsProductUUIDs.add(presentation.UUID__c);
+        if (presentations != null) {
+            for (Product2 presentation : presentations.values()) {
+                lineItemsProductUUIDs.add(presentation.Id);
+            }
         }
 
         return lineItemsProductUUIDs;

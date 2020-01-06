@@ -53,10 +53,15 @@ public class OpportunityLineItemHelper {
      */
     public static Id getPriceBookEntryId(String productId){
         
-        PricebookEntry entry = (new PricebookEntrySelector()).selectByProductId(productId);
+        try {
 
-        if (entry != null) {
-            return entry.Id;
+            PricebookEntry entry = (new PricebookEntrySelector()).selectByProductId(productId);
+
+            if (entry != null) return entry.Id;
+
+        } catch(Exception e){
+            
+            System.debug('Error while getting price book entry for: ' + productId);
         }
         
         return null;

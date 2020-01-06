@@ -21,10 +21,10 @@ public class CalendlyHandler implements ILeadHandler {
         pipeline = (new Pipeline(new FingersCrossedProcessor()));
 
         if (lead.type == LeadType.CALENDLY_RAC_CREATED) {
-            pipeline.pipe(new CreateRequestACallStage())
-                    .pipe(new CreateAccountStage())
+            pipeline.pipe(new CreateAccountStage())
                     .pipe(new CreateOpportunityStage())
-                    .pipe(new CreateOpportunityLineItemsStage());
+                    .pipe(new CreateOpportunityLineItemsStage())
+                    .pipe(new CreateRequestACallStage());
                     
         } else if(lead.type == LeadType.CALENDLY_RAC_CANCELED) {
             pipeline.pipe(new CancelRequestACallStage());

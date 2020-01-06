@@ -42,7 +42,14 @@ public class CalendlyLeadMapper extends AbstractLeadMapper implements ILeadMappe
         tracking.owner                  = (String)((Map<String, Object>)((List<Object>)((Map<String, Object>)payload.get('event')).get('extended_assigned_to'))[0]).get('email');
         tracking.leadCaptureFormType    = (String)leadMap.get('event');
         tracking.source                 = 'Calendly';
-        tracking.productIds             = new List<String>{ (String)((Map<String, Object>)payload.get('tracking')).get('salesforce_uuid') };
+
+        String productId                = (String)((Map<String, Object>)payload.get('tracking')).get('salesforce_uuid');
+
+        if (Pattern.compile('[a-zA-Z0-9]{15,18}').matcher(productId).matches()){
+            tracking.productIds             = new List<String>{ productId };
+        } else {
+            tracking.productParentUuids     = new List<String>{ productId };
+        }
 
         if (payload.get('old_event') != null) {
             tracking.oldExternalId  = (String)((Map<String, Object>)payload.get('old_event')).get('uuid');

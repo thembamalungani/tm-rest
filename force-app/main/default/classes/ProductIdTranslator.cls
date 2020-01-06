@@ -46,16 +46,14 @@ public class ProductIdTranslator {
                              .pipe(new EligibleProductFinder());
 
         for (String parentProductUuid : lead.tracking.productParentUuids) {
-
-            try {
                 
-                Product2 presentation = (Product2)((Map<String, Object>)pipeline.process(parentProductUuid)).get('presentation');
-                lead.tracking.productIds.add(presentation.Id);
+            Map<String, Object> payload = new Map<String, Object>{'courseId' => parentProductUuid};
+            Map<String, Object> response= (Map<String, Object>)pipeline.process(payload);
+            Product2 presentation       = (Product2)response.get('presentation');
+            
+            if (lead.tracking.productIds == null) lead.tracking.productIds = new List<String>();
+            if (presentation != null) lead.tracking.productIds.add(presentation.Id);
 
-            } catch(Exception e) {
-                
-                System.debug(e.getMessage());
-            }
         }
 
         return lead;
