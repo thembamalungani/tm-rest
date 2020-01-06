@@ -41,11 +41,33 @@ public class CuriosityLeadMapper extends AbstractLeadMapper implements ILeadMapp
         tracking.googleAnalyticsClientId    = (String)leadMap.get('googleAnalyticsClientId');
         tracking.leadCaptureFormType        = (String)leadMap.get('leadCaptureFormType');
         tracking.leadCaptureFormUrl         = (String)leadMap.get('leadCaptureFormUrl');
-        tracking.productIds                 = new List<String>();
         tracking.source                     = 'Curiosity';
         
-        for(Object item: (List<Object>)leadMap.get('productIds')){
-            tracking.productIds.add((String)item);
+        if (leadMap.get('productIds') != null) {
+            
+            tracking.productIds = new List<String>();
+            
+            for(Object item: (List<Object>)leadMap.get('productIds')){
+                tracking.productIds.add((String)item);
+            }
+        }
+
+        if (leadMap.get('productUuids') != null) {
+            
+            tracking.productUuids  = new List<String>();
+
+            for(Object item: (List<Object>)leadMap.get('productUuids')){
+                tracking.productUuids.add((String)item);
+            }
+        }
+
+        if (leadMap.get('productParentUuids') != null) {
+            
+            tracking.productParentUuids  = new List<String>();
+
+            for(Object item: (List<Object>)leadMap.get('productParentUuids')){
+                tracking.productParentUuids.add((String)item);
+            }
         }
         
         return tracking;

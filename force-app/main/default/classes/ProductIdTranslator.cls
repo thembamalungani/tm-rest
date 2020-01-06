@@ -24,6 +24,8 @@ public class ProductIdTranslator {
 
         Set<String> productUuids = new Set<String>(lead.tracking.productUuids);
 
+        lead.tracking.productIds = new List<String>();
+
         for (Product2 presentation : (new PresentationSelector()).selectByUuid(productUuids).values()) {
             lead.tracking.productIds.add(presentation.Id);
         }

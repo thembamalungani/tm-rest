@@ -6,7 +6,7 @@ public with sharing class CaseService extends SObjectService implements ICaseSer
      */
     public void createCases(List<Case> cases) {
         for (Case newCase: cases) {
-            if (newCase.Status == 'Rescheduled') {
+            if (newCase.Status == 'Rescheduled' || newCase.Id != null) {
                 update newCase;
             } else {
                 insert newCase;
