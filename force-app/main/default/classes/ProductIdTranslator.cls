@@ -24,10 +24,17 @@ public class ProductIdTranslator {
 
         Set<String> productUuids = new Set<String>(lead.tracking.productUuids);
 
-        lead.tracking.productIds = new List<String>();
+        try {
 
-        for (Product2 presentation : (new PresentationSelector()).selectByUuid(productUuids).values()) {
-            lead.tracking.productIds.add(presentation.Id);
+            lead.tracking.productIds = new List<String>();
+
+            for (Product2 presentation : (new PresentationSelector()).selectByUuid(productUuids).values()) {
+                lead.tracking.productIds.add(presentation.Id);
+            }
+
+        } catch (Exception e) {
+
+            System.debug('Error while translating presentation: ' + e.getMessage());
         }
 
         return lead;
@@ -49,12 +56,19 @@ public class ProductIdTranslator {
 
         for (String parentProductUuid : lead.tracking.productParentUuids) {
                 
-            Map<String, Object> payload = new Map<String, Object>{'courseId' => parentProductUuid};
-            Map<String, Object> response= (Map<String, Object>)pipeline.process(payload);
-            Product2 presentation       = (Product2)response.get('presentation');
-            
-            if (lead.tracking.productIds == null) lead.tracking.productIds = new List<String>();
-            if (presentation != null) lead.tracking.productIds.add(presentation.Id);
+            try {
+
+                Map<String, Object> payload = new Map<String, Object>{'courseId' => parentProductUuid};
+                Map<String, Object> response= (Map<String, Object>)pipeline.process(payload);
+                Product2 presentation       = (Product2)response.get('presentation');
+                
+                if (lead.tracking.productIds == null) lead.tracking.productIds = new List<String>();
+                if (presentation != null) lead.tracking.productIds.add(presentation.Id);
+
+            }catch(Exception e){
+                
+                System.debug('Error while translating parent products: ' + e.getMessage());
+            }
 
         }
 
