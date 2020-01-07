@@ -22,13 +22,16 @@ public class RequestDispatcher implements IRestDispatcher {
      */
     private BaseHttpResponse process(Type type) {
 
-        BaseHttpRequest request = BaseHttpRequest.fromContext(RestContext.request);
+        BaseHttpRequest request                 = BaseHttpRequest.fromContext(RestContext.request);
+        IHttpMethodHandler handler              = (IHttpMethodHandler) type.newInstance();
+        BaseHttpResponse response               = handler.handle(request);
         IHttpRequestLoggerService loggerService = new SysIntegrationRequestLoggerService();
-        IHttpMethodHandler handler = (IHttpMethodHandler) type.newInstance();
 
-        BaseHttpResponse response = handler.handle(request);
-
-        loggerService.log(request, response);
+        try {
+            loggerService.log(request, response);
+        } catch (Exception e) {
+            System.debug('ERROR: ' + e.getMessage());
+        }
 
         return response;
     }

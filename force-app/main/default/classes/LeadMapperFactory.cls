@@ -1,5 +1,11 @@
 public class LeadMapperFactory {
 	
+    /**
+     * Determines the mapper for the passed lead type
+     * 
+     * @param LeadType lead
+     * @return ILeadMapper
+     */
     public static ILeadMapper getMapper(LeadType lead) {
         
         ILeadMapper mapper;
@@ -13,6 +19,12 @@ public class LeadMapperFactory {
         return mapper;
     }
     
+    /**
+     * Determines if the passed lead type is a calendly lead
+     *
+     * @param LeadType lead
+     * @return Boolean
+     */
     public static Boolean isCalendlyLead(LeadType lead) {
         
         Boolean isCalendlyLead;
@@ -23,6 +35,12 @@ public class LeadMapperFactory {
         return isCalendlyLead;
     }
     
+    /**
+     * Determines if the passed lead type is a curiosity lead
+     *
+     * @param LeadType lead
+     * @return Boolean
+     */
     public static Boolean isCuriosityLead(LeadType lead){
         
         Boolean isCuriosityLead;

@@ -20,6 +20,24 @@ public virtual class BaseAccountMapper implements IAccountMapper{
             }
         }
 
+        return setGDPRValues(account, accountParameters);
+    }
+
+    /**
+     * Sets the gdpr values 
+     *
+     * @param Account account
+     * @param BaseLead lead
+     * @return Account
+     */
+    public virtual Account setGDPRValues(Account account, Map<String, Object> accountParameters) {
+
+        account.PersonDoNotCall                     = (accountParameters.get('PersonDoNotCall') != null )                       ? !(Boolean)accountParameters.get('PersonDoNotCall') : false;
+        account.PersonHasOptedOutOfEmail            = (accountParameters.get('PersonHasOptedOutOfEmail') != null )              ? !(Boolean)accountParameters.get('PersonHasOptedOutOfEmail') : false;
+        account.Do_Not_SMS__pc                      = (accountParameters.get('Do_Not_SMS__pc') != null )                        ? !(Boolean)accountParameters.get('Do_Not_SMS__pc') : true;
+        account.Do_Not_Share_2U_Marketing__pc       = (accountParameters.get('Do_Not_Share_2U_Marketing__pc') != null )         ? !(Boolean)accountParameters.get('Do_Not_Share_2U_Marketing__pc') : true;
+        account.Do_Not_Share_Partner_Marketing__pc  = (accountParameters.get('Do_Not_Share_Partner_Marketing__pc') != null )    ? !(Boolean)accountParameters.get('Do_Not_Share_Partner_Marketing__pc') : true;
+
         return account;
     }
 
