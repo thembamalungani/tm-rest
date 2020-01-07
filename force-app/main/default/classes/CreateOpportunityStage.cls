@@ -37,7 +37,12 @@ public class CreateOpportunityStage implements IPipelineStage {
 
         if (opportunity == null) {
             opportunity = OpportunityHelper.prepareFor(lead, account);
-            this.opportunityService.create(new List<Opportunity>{ opportunity });
+            
+            try {
+                this.opportunityService.create(new List<Opportunity>{ opportunity });
+            } catch (Exception e) {
+                System.debug('ERROR: ' + e.getMessage());
+            }
         }
 
         return (Object)response(lead, account, opportunity);

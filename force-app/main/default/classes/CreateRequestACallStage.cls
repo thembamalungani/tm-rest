@@ -33,7 +33,11 @@ public with sharing class CreateRequestACallStage implements IPipelineStage {
         newCase     = CaseHelper.prepareFor(lead, account, opportunity);
         lineItems   = (List<OpportunityLineItem>) payloadMap.get('opportunityLineItems');
 
-        this.caseService.createCases(new List<Case>{ newCase });
+        try {
+            this.caseService.createCases(new List<Case>{ newCase });
+        } catch (Exception e) {
+            System.debug('ERROR: ' + e.getMessage());
+        }
 
         return response(lead, account, opportunity, lineItems, newCase);
     }
