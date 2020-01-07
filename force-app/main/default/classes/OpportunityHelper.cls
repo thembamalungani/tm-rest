@@ -18,7 +18,7 @@ public class OpportunityHelper {
             Google_Analytics_Client_Id__c   = lead.tracking.googleAnalyticsClientId,
             Segment_Anonymous_Id__c         = lead.tracking.segmentAnonymousId,
             Lead_Capture_Form_URL__c        = lead.tracking.leadCaptureFormUrl,
-            Lead_Capture_Form_Type__c       = lead.tracking.leadCaptureFormType,
+            Lead_Capture_Form_Type__c       = getLeadCapturType(lead),
             AccountId                       = account.Id,
             Segment_Sync_Status__c          = Strings.SEGMENT_PENDING_SYNC,
             CurrencyIsoCode                 = Strings.CURRENCY_USD,
@@ -40,6 +40,21 @@ public class OpportunityHelper {
      */
     public static String nameFor(BaseLead lead) {
         return String.format('{0} {1}', new String[]{ lead.contactDetails.firstName, lead.contactDetails.lastName });
+    }
+
+    /**
+     * Gets a lead capture type string by using api value
+     *
+     * @param String leadCaptureFormType
+     * @return String
+     */
+    public static String getLeadCapturType(BaseLead lead) {
+
+        if (lead.getType().equals(LeadType.CALENDLY_RAC_CREATED) || lead.getType().equals(LeadType.CALENDLY_RAC_CANCELED)) {
+            return Strings.REQUEST_A_CALL;
+        }
+
+        return lead.tracking.leadCaptureFormType;
     }
 
     /**

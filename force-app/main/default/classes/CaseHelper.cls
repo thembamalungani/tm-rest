@@ -26,7 +26,7 @@ public class CaseHelper {
         newCase.Origin                  = 'Web';
         newCase.RecordTypeId            = [SELECT Id FROM RecordType WHERE DeveloperName = 'Sales_Case' LIMIT 1].Id;
         newCase.AccountId               = account.Id;
-        newCase.Type                    = 'Request a call';
+        newCase.Type                    = Strings.REQUEST_A_CALL;
         newCase.Item__c                 = 'None';
         newCase.Calendly_Event_Uuid__c  = lead.tracking.externalId;
         newCase.Requested_Call_Date__c  = callTime.date();

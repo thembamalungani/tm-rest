@@ -3,4 +3,5 @@ public class Strings {
   public static String OP_STANE_NEW_INTEREST    = 'New Interest';
   public static String SEGMENT_PENDING_SYNC     = 'New Opportunity Pending Synchronisation';
   public static String CURRENCY_USD             = 'USD';
+  public static String REQUEST_A_CALL           = 'Request a call';
 }
