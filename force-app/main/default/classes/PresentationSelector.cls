@@ -72,7 +72,7 @@ public class PresentationSelector extends ObjectSelector {
      */
     public List<Product2> selectUnPublishedPresentationsByCourseId(String courseId) {
         
-        String template = 'SELECT {0} FROM Product2 WHERE Course__c = {1} AND Published__c = false ORDER BY Start_Date__c ASC';
+        String template = 'SELECT {0} FROM Product2 WHERE Course__c = {1} AND Published__c = false AND Start_Date__c > ORDER BY Start_Date__c ASC';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'courseId' });
         
         return (List<Product2>)Database.query(query);
@@ -86,7 +86,7 @@ public class PresentationSelector extends ObjectSelector {
      */
     public List<Product2> selectEligiblePresentationsByCourseId(String courseId) {
         
-        String template = 'SELECT {0} FROM Product2 WHERE Course__c = {1} AND Published__c = false ORDER BY Start_Date__c ASC';
+        String template = 'SELECT {0} FROM Product2 WHERE Course__c = {1} AND Published__c = false ORDER BY Start_Date__c DESC';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'courseId' });
         
         return (List<Product2>)Database.query(query);

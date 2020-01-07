@@ -1,4 +1,4 @@
-public class HttpRequest {
+public class BaseHttpRequest {
     
     public String body;
     public String method;
@@ -7,13 +7,12 @@ public class HttpRequest {
         return this.body;
     }
 
-    public static HttpRequest fromContext(System.RestRequest restRequest) {
+    public static BaseHttpRequest fromContext(System.RestRequest restRequest) {
 
-        HttpRequest request = new HttpRequest();
+        BaseHttpRequest request = new BaseHttpRequest();
 
         request.body = restRequest.requestBody.toString();
 
         return request;
     }
-
 }

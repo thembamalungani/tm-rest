@@ -7,10 +7,10 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
     /**
      * Handles create leads
      *
-     * @param HttpRequest request
-     * @return HttpRequest
+     * @param BaseHttpRequest request
+     * @return BaseHttpResponse
      */
-    public HttpResponse handle(HttpRequest request) {
+    public BaseHttpResponse handle(BaseHttpRequest request) {
 
         Boolean isQueued;
         ILeadBatchParser parser;
@@ -55,14 +55,14 @@ public class LeadsCreateHandler implements IHttpMethodHandler {
     /**
      * Create a response based on whether the leads are queued for processing or not
      *
-     * @return HttpResponse
+     * @return BaseHttpResponse
      */
-    private HttpResponse response(Boolean isQueued) {
+    private BaseHttpResponse response(Boolean isQueued) {
 
         if (isQueued) {
-            return HttpResponse.accepted('Accepted');
+            return BaseHttpResponse.accepted('Accepted');
         }
 
-        return HttpResponse.badRequest('Failed');
+        return BaseHttpResponse.badRequest('Failed');
     }
 }

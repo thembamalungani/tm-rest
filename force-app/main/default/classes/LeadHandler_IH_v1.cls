@@ -13,7 +13,7 @@ global class LeadHandler_IH_v1 {
    	@HttpPost
     global static String create() {
 
-        HttpResponse response = (new RequestDispatcher()).dispatch(LeadsCreateHandler.class);
+        BaseHttpResponse response = (new RequestDispatcher()).dispatch(LeadsCreateHandler.class);
 
         RestContext.response.statusCode = response.statusCode;
 

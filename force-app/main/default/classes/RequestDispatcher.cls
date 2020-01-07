@@ -9,7 +9,7 @@ public class RequestDispatcher implements IRestDispatcher {
      *
      * @param Type handler
      */
-    public HttpResponse dispatch(Type type) {
+    public BaseHttpResponse dispatch(Type type) {
         return process(type);
     }
 
@@ -20,13 +20,13 @@ public class RequestDispatcher implements IRestDispatcher {
      * @param Type type
      * @return HttpResponse
      */
-    private HttpResponse process(Type type) {
+    private BaseHttpResponse process(Type type) {
 
-        HttpRequest request = HttpRequest.fromContext(RestContext.request);
+        BaseHttpRequest request = BaseHttpRequest.fromContext(RestContext.request);
         IHttpRequestLoggerService loggerService = new SysIntegrationRequestLoggerService();
         IHttpMethodHandler handler = (IHttpMethodHandler) type.newInstance();
 
-        HttpResponse response = handler.handle(request);
+        BaseHttpResponse response = handler.handle(request);
 
         loggerService.log(request, response);
 

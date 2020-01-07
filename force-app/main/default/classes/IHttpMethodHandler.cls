@@ -5,5 +5,5 @@ public interface IHttpMethodHandler {
      * @param HttpRequest request
      * @return HttpRequest
      */
-    HttpResponse handle(HttpRequest request);
+    BaseHttpResponse handle(BaseHttpRequest request);
 }

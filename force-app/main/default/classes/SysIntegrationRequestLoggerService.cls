@@ -1,6 +1,6 @@
 public class SysIntegrationRequestLoggerService implements IHttpRequestLoggerService{
     
-    public void log(HttpRequest request, HttpResponse response) {
+    public void log(BaseHttpRequest request, BaseHttpResponse response) {
         
     }
 }

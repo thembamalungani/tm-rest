@@ -10,5 +10,5 @@ public interface IRestDispatcher {
      * @param Type handler
      * @return HttpResponse
      */
-    HttpResponse dispatch(Type handler);
+    BaseHttpResponse dispatch(Type handler);
 }

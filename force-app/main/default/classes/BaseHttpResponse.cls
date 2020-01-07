@@ -1,15 +1,15 @@
-public class HttpResponse {
+public class BaseHttpResponse {
     
     public String body;
     public Integer statusCode;
 
-    public HttpResponse(HttpResponse.Builder builder) {
+    public BaseHttpResponse(BaseHttpResponse.Builder builder) {
         this.body = builder.body;
         this.statusCode = builder.statusCode;
     }
 
-    public static HttpResponse.Builder builder() {
-        return new HttpResponse.Builder();
+    public static BaseHttpResponse.Builder builder() {
+        return new BaseHttpResponse.Builder();
     }
 
     public void setStatusCode(Integer statusCode) {
@@ -24,8 +24,8 @@ public class HttpResponse {
         public String body;
         public Integer statusCode;
 
-        public HttpResponse build() {
-            return new HttpResponse(this);
+        public BaseHttpResponse build() {
+            return new BaseHttpResponse(this);
         }
 
         public Builder statusCode(Integer statusCode) {
@@ -44,9 +44,8 @@ public class HttpResponse {
     *
     * @return IHttpResponse
     */
-   public static HttpResponse accepted(String body) {
-
-       return HttpResponse.builder()
+   public static BaseHttpResponse accepted(String body) {
+       return BaseHttpResponse.builder()
                 .statusCode(202)
                 .body(body)
                 .build();
@@ -57,9 +56,8 @@ public class HttpResponse {
     *
     * @return IHttpResponse
     */
-   public static HttpResponse badRequest(String body) {
-
-       return HttpResponse.builder()
+   public static BaseHttpResponse badRequest(String body) {
+       return BaseHttpResponse.builder()
                 .statusCode(400)
                 .body(body)
                 .build();

@@ -9,21 +9,25 @@ public class OpportunityHelper {
      */
     public static Opportunity prepareFor(BaseLead lead, Account account){
 
-        Pricebook2 pricebook = (new PricebookSelector()).selectByName('Standard Price Book');
+        Pricebook2 pricebook = (new PricebookSelector()).selectByName(Strings.STANDARD_PRICE_BOOK);
 
         Opportunity opportunity = new Opportunity(
             Name                            = OpportunityHelper.nameFor(lead),
-            StageName                       = 'New Interest',
+            StageName                       = Strings.OP_STANE_NEW_INTEREST,
             CloseDate                       = Date.today().addMonths(1),
             Google_Analytics_Client_Id__c   = lead.tracking.googleAnalyticsClientId,
             Segment_Anonymous_Id__c         = lead.tracking.segmentAnonymousId,
             Lead_Capture_Form_URL__c        = lead.tracking.leadCaptureFormUrl,
             Lead_Capture_Form_Type__c       = lead.tracking.leadCaptureFormType,
             AccountId                       = account.Id,
-            Segment_Sync_Status__c          = 'New Opportunity Pending Synchronisation',
-            CurrencyIsoCode                 = 'USD',
+            Segment_Sync_Status__c          = Strings.SEGMENT_PENDING_SYNC,
+            CurrencyIsoCode                 = Strings.CURRENCY_USD,
             Pricebook2Id                    = pricebook.Id
         );
+
+        if (lead.tracking.productIds.size() == 1){
+            opportunity.Inferred_Presentation__c = lead.tracking.productIds.get(0);
+        }
 
         return opportunity;
     }

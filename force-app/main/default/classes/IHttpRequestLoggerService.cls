@@ -6,5 +6,5 @@ public interface IHttpRequestLoggerService {
      * @param HttpResponse response
      * @return 
      */
-    void log(HttpRequest request, HttpResponse response);
+    void log(BaseHttpRequest request, BaseHttpResponse response);
 }

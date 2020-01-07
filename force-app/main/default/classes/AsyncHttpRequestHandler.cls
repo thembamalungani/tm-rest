@@ -7,7 +7,7 @@ public class AsyncHttpRequestHandler implements Queueable {
     /**
      * @param HttpRequest request
      */
-    private HttpRequest request;
+    private BaseHttpRequest request;
 
     /**
      * @param Type type
@@ -18,7 +18,7 @@ public class AsyncHttpRequestHandler implements Queueable {
         this.type = type;
     }
 
-    public void setRequest(HttpRequest request) {
+    public void setRequest(BaseHttpRequest request) {
         this.request = request;
     }
 

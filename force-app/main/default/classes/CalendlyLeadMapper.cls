@@ -46,9 +46,26 @@ public class CalendlyLeadMapper extends AbstractLeadMapper implements ILeadMappe
         String productId                = (String)((Map<String, Object>)payload.get('tracking')).get('salesforce_uuid');
 
         if (Pattern.compile('[a-zA-Z0-9]{15,18}').matcher(productId).matches()){
+
             tracking.productIds             = new List<String>{ productId };
+
         } else {
-            tracking.productParentUuids     = new List<String>{ productId };
+
+            List<Product2> presentations    = (new PresentationSelector()).selectByUuid(new Set<String>{productId}).values();
+
+            if (presentations.size() > 0 && presentations.get(0) != null) {
+
+                tracking.productUuids           = new List<String>{ presentations.get(0).UUID__c };
+
+            } else {
+
+                try {
+
+                    Course__c course                = (new CourseSelector()).selectByUuid(productId);
+                    tracking.productParentUuids     = new List<String>{ course.UUID__c };
+
+                } catch(Exception e){}
+            }
         }
 
         if (payload.get('old_event') != null) {

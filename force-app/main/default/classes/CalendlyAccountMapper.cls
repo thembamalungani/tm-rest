@@ -8,7 +8,7 @@ public class CalendlyAccountMapper extends BaseAccountMapper implements IAccount
      */
     public override Account doMap(Account account, Map<String, Object> accountParameters) {
 
-        if ( account.Id != null ) {
+        if (account != null && account.Id != null ) {
             accountParameters = this.removeGDPRFields(accountParameters);
         }
        
