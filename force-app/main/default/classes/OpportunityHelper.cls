@@ -1,5 +1,29 @@
 public class OpportunityHelper {
     
+    public static Id raiseOppClosedSegmentEvent(Map<Id, Opportunity> opportunitiesMapOld, Map<Id, Opportunity> opportunitiesMapNew) {
+
+        Id jobId;
+        Set<String> closedStages = new Set<String>{'Closed (Won)', 'Closed (Lost)'};
+        Set<Id> associatedAccountIds = new Set<Id>();
+        for (Opportunity o : opportunitiesMapNew.values()) {
+            associatedAccountIds.add(o.AccountId);
+        }
+        Map<Id, Account> associatedAccountsMap = getOpportunityAccountsByIds(associatedAccountIds);
+        for (Opportunity o : opportunitiesMapNew.values()) {
+            if (closedStages.contains(o.StageName) && associatedAccountsMap.get(o.AccountId).IsPersonAccount) {
+                if (o.StageName != opportunitiesMapOld.get(o.Id).StageName) {
+                    jobId = AsyncApexFramework.submitQueueable(new OpportunityClosedAsync(o.Id), null, false);
+                    AsyncApexFramework.flush();
+                }
+            }
+        }
+        return jobId;
+    }
+    
+    public static Map<Id, Account> getOpportunityAccountsByIds(Set<Id> accountIds) {
+        return new Map<Id, Account>([SELECT Id, Name, IsPersonAccount FROM Account WHERE Id IN : accountIds]);
+    }
+    
     /**
      * Prepares an opportunitu for the passed lead and account
      *

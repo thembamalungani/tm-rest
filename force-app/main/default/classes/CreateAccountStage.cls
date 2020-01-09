@@ -57,10 +57,16 @@ public class CreateAccountStage implements IPipelineStage {
 
         account = mapper.doMap(account, accountParameters);
 
-        if ( account.Id != null ) {
-            this.accountService.updateAccounts(new Map<Id, Account>{account.Id => account});
-        } else {
-            this.accountService.createAccounts(new List<Account>{account});
+        try {
+
+            if ( account.Id != null ) {
+                this.accountService.updateAccounts(new Map<Id, Account>{account.Id => account});
+            } else {
+                this.accountService.createAccounts(new List<Account>{account});
+            }
+
+        } catch (Exception e) {
+            System.debug('ERROR: ' + e.getMessage());
         }
         
         return account;
