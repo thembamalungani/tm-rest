@@ -9,7 +9,7 @@ public class CourseFinder implements IPipelineStage {
 
         Map<String, Object> payloadMap  = (Map<String, Object>)payload;
         try {
-            Course__c course                = (new CourseSelector()).selectByUuid((String)payloadMap.get('courseId'));
+            Course__c course = (new CourseSelector()).selectByUuid((String)payloadMap.get('courseId'));
 
             if (course != null) {
                 payloadMap.put('course', course);

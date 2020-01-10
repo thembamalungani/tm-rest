@@ -31,10 +31,12 @@ public class CreateOpportunityLineItemsStage implements IPipelineStage {
         opportunity = (Opportunity) payloadMap.get('opportunity');
         lineItems   = OpportunityLineItemHelper.prepareFor(lead, account, opportunity);
 
-        try {
-            this.opportunityLineItemsService.createLineItems(lineItems);
-        } catch (Exception e) {
-            System.debug('ERROR: ' + e.getMessage());
+        if (OpportunityHelper.checkOpportunity(lead, account) == null) {
+            try {
+                this.opportunityLineItemsService.createLineItems(lineItems);
+            } catch (Exception e) {
+                System.debug('ERROR: ' + e.getMessage());
+            }
         }
 
         return response(lead, account, opportunity, lineItems);

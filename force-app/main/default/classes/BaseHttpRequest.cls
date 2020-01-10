@@ -10,9 +10,7 @@ public class BaseHttpRequest {
     public static BaseHttpRequest fromContext(System.RestRequest restRequest) {
 
         BaseHttpRequest request = new BaseHttpRequest();
-
         request.body = restRequest.requestBody.toString();
-
         return request;
     }
 }

@@ -1,4 +1,4 @@
-public with sharing class CreateRequestACallStage implements IPipelineStage {
+public class CreateRequestACallStage implements IPipelineStage {
     /**
      * @param ICaseService caseService
      */
@@ -33,10 +33,12 @@ public with sharing class CreateRequestACallStage implements IPipelineStage {
         newCase     = CaseHelper.prepareFor(lead, account, opportunity);
         lineItems   = (List<OpportunityLineItem>) payloadMap.get('opportunityLineItems');
 
-        try {
-            this.caseService.createCases(new List<Case>{ newCase });
-        } catch (Exception e) {
-            System.debug('ERROR: ' + e.getMessage());
+        if (OpportunityHelper.checkOpportunity(lead, account) == null) {
+            try {
+                this.caseService.createCases(new List<Case>{ newCase });
+            } catch (Exception e) {
+                System.debug('ERROR: ' + e.getMessage());
+            }
         }
 
         return response(lead, account, opportunity, lineItems, newCase);

@@ -46,7 +46,6 @@ public class CalendlyHandler implements ILeadHandler {
         Map<String, Object> responseMap = (Map<String, Object>) this.result;
 
         if ( responseMap.get('account') != null && responseMap.get('opportunity') != null ) {
-
             return true;
         }
 

@@ -25,11 +25,10 @@ public virtual class LeadBatchParser implements ILeadBatchParser {
      */
     public List<BaseLead> parse(String jsonData) {
         
-        List<BaseLead> leads	= new List<BaseLead>();
+        List<BaseLead> leads    = new List<BaseLead>();
         List<Object> events 	= (List<Object>)JSON.deserializeUntyped(jsonData);
 
         for(Object event: events) {
-
             leads.add( this.factory.createFrom((Map<String, Object>) event));
         }
 

@@ -75,7 +75,7 @@ public class OpportunityHelper {
     public static String getLeadCapturType(BaseLead lead) {
 
         if (lead.getType().equals(LeadType.CALENDLY_RAC_CREATED) || lead.getType().equals(LeadType.CALENDLY_RAC_CANCELED)) {
-            return Strings.REQUEST_A_CALL;
+            return Strings.REQUESTED_A_CALL;
         }
 
         return lead.tracking.leadCaptureFormType;
