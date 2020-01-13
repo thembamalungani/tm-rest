@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description University selector class
+ * @date 2019-10-01
+ */
 public class UniversitySelector extends ObjectSelector {
     /**
      * UniversitySelector cosntructor

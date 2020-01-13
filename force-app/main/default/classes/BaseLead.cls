@@ -29,14 +29,31 @@ public virtual class BaseLead implements IMappable {
      */
     public GDPR gdpr;
 
+    /**
+     * Sets the type of the lead
+     *
+     * @param LeadType type
+     * @return 
+     */
     public void setType(LeadType type) {
         this.type = type;
     }
 
+    /**
+     * Gets the type of the lead
+     *
+     * @return LeadType
+     */
     public LeadType getType() {
         return this.type; 
     }
 
+    /**
+     * Sets a lead mapper
+     *
+     * @param ILeadMapper mapper
+     * @return 
+     */
     public void setMapper(ILeadMapper mapper) { 
         this.mapper = mapper;
     }

@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Handler class for requested a call lead type
+ * @date 2019-10-21
+ */
 public class RequestedACallHandler implements ILeadHandler {
     
     private Object result;
@@ -35,7 +40,6 @@ public class RequestedACallHandler implements ILeadHandler {
         Map<String, Object> responseMap = (Map<String, Object>) this.result;
 
         if ( responseMap.get('account') != null && responseMap.get('opportunity') != null && responseMap.get('case') != null) {
-
             return true;
         }
 

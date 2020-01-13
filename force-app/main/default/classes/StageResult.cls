@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Pipeline stage result
+ * @date 2019-10-01
+ */
 public class StageResult {
     
     private BaseLead lead;
@@ -50,44 +55,32 @@ public class StageResult {
         }
 
         public StageResult.Builder isSuccess(Boolean isSuccess) {
-
             this.isSuccess = isSuccess;
-
             return this;
         }
 
         public StageResult.Builder lead(BaseLead lead) {
-
             this.lead = lead;
-
             return this;
         }
 
         public StageResult.Builder stageAccount(Account stageAccount) {
-
             this.stageAccount = stageAccount;
-
             return this;
         }
 
         public StageResult.Builder stageOpportunity(Opportunity stageOpportunity) {
-
             this.stageOpportunity = stageOpportunity;
-
             return this;
         }
 
         public StageResult.Builder stageOpportunityLineItems(List<OpportunityLineItem> lineItems) {
-
             this.opportunityLineItems = lineItems;
-
             return this;
         }
 
         public StageResult.Builder stageCase(Case stageCase) {
-
             this.stageCase = stageCase;
-
             return this;
         }
     }

@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Used to translate passed product information to system presentations
+ * @date 2019-10-21
+ */
 public class ProductIdTranslator {
     /**
      * Translates product uuids or parent product uuids to actual product ids

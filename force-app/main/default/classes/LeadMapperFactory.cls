@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Used to create a lead mapper instance by lead type
+ * @date 2019-10-03
+ */
 public class LeadMapperFactory {
     /**
      * Determines the mapper for the passed lead type

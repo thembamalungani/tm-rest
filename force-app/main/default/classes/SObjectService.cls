@@ -19,13 +19,7 @@ public virtual class SObjectService {
      * @param Map<Id, SObject> objectsMap
      */
     public void updateObjects(Map<Id, SObject> objectsMap){
-        
-        List<SObject> objects  = new List<SObject>();
-
-        for (SObject value: objectsMap.values()) {
-            objects.add(value);
-        }
-
+        List<SObject> objects  = new List<SObject>(objectsMap.values());
         List<Database.SaveResult> results = Database.update(objects);
     }
 }

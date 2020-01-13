@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Used to create a handler for a lead by lead type
+ * @date 2019-10-03
+ */
 public class LeadHandlerFactory {
 
     public static final Map<LeadType, ILeadHandler> handlers = new Map<LeadType,ILeadHandler>{

@@ -1,6 +1,6 @@
 /**
  * @author Themba Malungani <themba.clarence@gmail.com>
- * @description Stage used to find eliginle product
+ * @description Case service.
  * @date 2019-10-04
  */
 public with sharing class CaseService extends SObjectService implements ICaseService {

@@ -12,5 +12,10 @@ public interface IMappable {
      */
     BaseLead fromMapper();
 
+    /**
+     * Sets an instance of ILeadMapper
+     *
+     * @param ILeadMapper mapper
+     */
     void setMapper(ILeadMapper mapper);
 }

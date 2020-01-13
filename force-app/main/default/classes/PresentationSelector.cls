@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Selector class for presentations
+ * @date 2019-10-21
+ */
 public class PresentationSelector extends ObjectSelector {
     /**
      * PresentationSelector cosntructor

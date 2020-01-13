@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description IPipeline implementation 
+ * @date 2019-10-21
+ */
 public class Pipeline implements IPipeline {
     /**
      * Pipeline stages

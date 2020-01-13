@@ -1,5 +1,9 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Selector class for price book entries
+ * @date 2019-10-21
+ */
 public class PricebookEntrySelector extends ObjectSelector {
-
     /**
      * PricebookEntrySelector cosntructor
      */

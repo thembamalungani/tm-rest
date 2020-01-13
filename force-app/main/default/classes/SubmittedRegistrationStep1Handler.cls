@@ -1,4 +1,12 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Submitted registration step 1 handler
+ * @date 2019-10-01
+ */
 public class SubmittedRegistrationStep1Handler implements ILeadHandler {
+
+    Object result;
+
     /**
      * Called when the stage is run
      * 
@@ -7,7 +15,6 @@ public class SubmittedRegistrationStep1Handler implements ILeadHandler {
      */
     public Object handle(BaseLead lead) {
 
-        Object result;
         IPipeline pipeline;
         Map<String, Object> payload;
 

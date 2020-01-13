@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Selector for opportunity line items
+ * @date 2019-10-21
+ */
 public class OpportunityLineItemSelctor extends ObjectSelector implements IOpportunityLineItemSelctor {
     /**
      * OpportunityLineItemSelctor cosntructor

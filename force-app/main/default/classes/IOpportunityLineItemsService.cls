@@ -4,5 +4,11 @@
  * @date 2019-10-03
  */
 public interface IOpportunityLineItemsService { 
+    /**
+     * Creates line items
+     * 
+     * @param List<OpportunityLineItem> lineItems
+     * @return 
+     */
     void createLineItems(List<OpportunityLineItem> lineItems);
 }

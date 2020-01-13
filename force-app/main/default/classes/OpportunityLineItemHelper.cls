@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Opportunity line items helper
+ * @date 2019-10-21
+ */
 public class OpportunityLineItemHelper {
     /**
      * Prepares an product line items 

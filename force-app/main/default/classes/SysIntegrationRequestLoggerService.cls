@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Used to log http requests
+ * @date 2019-10-01
+ */
 public class SysIntegrationRequestLoggerService implements IHttpRequestLoggerService{
     /**
      * Logs the http request and response

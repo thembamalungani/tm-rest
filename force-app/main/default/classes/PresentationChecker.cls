@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Used to check if a presentation exists
+ * @date 2019-10-21
+ */
 public class PresentationChecker implements IInterruptChecker {
     /**
      * Checks if we should interrupt the pipeline
