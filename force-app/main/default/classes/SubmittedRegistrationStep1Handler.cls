@@ -1,7 +1,4 @@
 public class SubmittedRegistrationStep1Handler implements ILeadHandler {
-    
-    private Object result;
-
     /**
      * Called when the stage is run
      * 
@@ -10,6 +7,7 @@ public class SubmittedRegistrationStep1Handler implements ILeadHandler {
      */
     public Object handle(BaseLead lead) {
 
+        Object result;
         IPipeline pipeline;
         Map<String, Object> payload;
 

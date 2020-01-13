@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Helper class for Case. Used to do mapping of case parameters
+ * @date 2019-10-04
+ */
 public class CaseHelper {
     /**
      * Prepares a requested a call case
@@ -9,7 +14,7 @@ public class CaseHelper {
      */
     public static Case prepareFor(BaseLead lead, Account account, Opportunity opportunity) {
 
-        Datetime callTime   = calltime(lead);
+        Datetime callTime = calltime(lead);
         Case newCase;
 
         try {

@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Stage used to find earliest unpublished product
+ * @date 2019-10-04
+ */
 public class EarliestUnpublishedFinder implements IPipelineStage {
     /**
      * Get the earliest unpublished product

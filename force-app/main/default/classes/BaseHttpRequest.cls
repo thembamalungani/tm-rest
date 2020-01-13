@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Http request object
+ * @date 2019-10-01
+ */
 public class BaseHttpRequest {
     
     public String body;

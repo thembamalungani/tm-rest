@@ -1,5 +1,4 @@
 public class LeadMapperFactory {
-	
     /**
      * Determines the mapper for the passed lead type
      * 

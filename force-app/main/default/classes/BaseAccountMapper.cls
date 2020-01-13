@@ -1,5 +1,9 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Base account mapper class. Used to map account properties
+ * @date 2019-10-01
+ */
 public virtual class BaseAccountMapper implements IAccountMapper{
-    
     /**
      * Does a mapping from account properties to account fields
      *

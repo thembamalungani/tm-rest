@@ -1,4 +1,13 @@
 public class LeadHandlerFactory {
+
+    public static final Map<LeadType, ILeadHandler> handlers = new Map<LeadType,ILeadHandler>{
+        LeadType.DOWNLOADED_INFO_PACK           => new DownloadedInfoPackHandler(),
+        LeadType.REQUESTED_A_CALL               => new RequestedACallHandler(),
+        LeadType.SUBMITTED_REGISTRATION_STEP1   => new SubmittedRegistrationStep1Handler(),
+        LeadType.CALENDLY_RAC_CREATED           => new CalendlyHandler(),
+        LeadType.CALENDLY_RAC_CANCELED          => new CalendlyHandler()
+    };
+
     /**
      * Get the handler for the specific lead type
      *
@@ -9,14 +18,10 @@ public class LeadHandlerFactory {
 
         ILeadHandler handler;
 
-        if (lead.getType() == LeadType.DOWNLOADED_INFO_PACK) {
-            handler = new DownloadedInfoPackHandler();
-        } else if (lead.getType() == LeadType.REQUESTED_A_CALL) {
-            handler = new RequestedACallHandler();
-        } else if (lead.getType() == LeadType.SUBMITTED_REGISTRATION_STEP1) {
-            handler = new SubmittedRegistrationStep1Handler();
-        } else if (lead.getType() == LeadType.CALENDLY_RAC_CREATED || lead.getType() == LeadType.CALENDLY_RAC_CANCELED) {
-            handler = new CalendlyHandler();
+        try {
+            handler = handlers.get(lead.getType());
+        } catch (Exception e) {
+            System.debug('No handler for lead type: ' + lead.getType().name());
         }
 
     	return handler;

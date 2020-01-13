@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Contract for Account mapper
+ * @date 2019-10-04
+ */
 public interface IAccountMapper {
     /**
      * Creates a map of account fields to lead values

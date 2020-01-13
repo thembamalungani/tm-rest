@@ -22,7 +22,13 @@ public class ProductIdTranslator {
      */
     public BaseLead translateProductUuids(BaseLead lead) {
 
-        Set<String> productUuids = new Set<String>(lead.tracking.productUuids);
+        Set<String> productUuids = new Set<String>();
+
+        for (String productUuid : lead.tracking.productUuids) {
+            if (!String.isBlank(productUuid)) {
+                productUuids.add(productUuid);
+            }
+        }
 
         try {
 
@@ -33,7 +39,6 @@ public class ProductIdTranslator {
             }
 
         } catch (Exception e) {
-
             System.debug('Error while translating presentation: ' + e.getMessage());
         }
 
@@ -55,7 +60,11 @@ public class ProductIdTranslator {
                              .pipe(new EligibleProductFinder());
 
         for (String parentProductUuid : lead.tracking.productParentUuids) {
-                
+            
+            if (String.isBlank(parentProductUuid)) {
+                continue;
+            }
+
             try {
 
                 Map<String, Object> payload = new Map<String, Object>{'courseId' => parentProductUuid};
@@ -69,7 +78,6 @@ public class ProductIdTranslator {
                 
                 System.debug('Error while translating parent products: ' + e.getMessage());
             }
-
         }
 
         return lead;

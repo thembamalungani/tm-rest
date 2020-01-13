@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Pipeline processor with the ability to be interrupted
+ * @date 2019-10-03
+ */
 public class InterruptibleProcessor implements IPipelineProcessor {
     /**
      * @var IInterruptChecker

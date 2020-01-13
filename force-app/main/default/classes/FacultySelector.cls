@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Contract for faculty selector
+ * @date 2019-10-04
+ */
 public class FacultySelector extends ObjectSelector {
     /**
      * FacultySelector cosntructor

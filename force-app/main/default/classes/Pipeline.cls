@@ -49,7 +49,6 @@ public class Pipeline implements IPipeline {
     public IPipeline pipe(IPipelineStage stage) {
 
         if (this.stages == null) {
-            
             this.stages	= new List<IPipelineStage>();
         }
         

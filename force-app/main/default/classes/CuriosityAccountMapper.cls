@@ -1,5 +1,9 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Maps lead parameters to Account object
+ * @date 2019-10-04
+ */
 public class CuriosityAccountMapper extends BaseAccountMapper implements IAccountMapper {
-
     /**
      * Maps account fields to account properties in map
      *

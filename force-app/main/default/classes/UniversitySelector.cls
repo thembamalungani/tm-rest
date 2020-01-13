@@ -17,6 +17,6 @@ public class UniversitySelector extends ObjectSelector {
         String template = 'SELECT {0}, University__r.Name FROM Course__c WHERE Id IN (SELECT Course__c FROM Product2 WHERE Id IN ({1})) LIMIT 1';
         String query    = String.format(template, new List<String>{ String.join((Iterable<String>)this.getFieldNames(), ', '), 'presentationId' });
 
-        return (University__c)super.query(query);
+        return (University__c)Database.query(query);
     }
 }

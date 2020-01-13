@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Stage used to find course by uuid
+ * @date 2019-10-04
+ */
 public class CourseFinder implements IPipelineStage {
     /**
      * Finds a course by course uuid

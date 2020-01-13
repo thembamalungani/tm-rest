@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Used to create a mapper instance based on lead type
+ * @date 2019-10-01
+ */
 public class AccountMapperFactory {
     /**
      * Gets an account mapper based on lead

@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Stage used to create opportunity line items 
+ * @date 2019-10-04
+ */
 public class CreateOpportunityLineItemsStage implements IPipelineStage {
     /**
      * @param IOpportunityLineItemsService opportunityLineItemsService

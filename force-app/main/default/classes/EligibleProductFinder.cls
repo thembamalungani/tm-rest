@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Stage used to find eliginle product
+ * @date 2019-10-04
+ */
 public class EligibleProductFinder implements IPipelineStage  {
     /**
      * Get the eligible product

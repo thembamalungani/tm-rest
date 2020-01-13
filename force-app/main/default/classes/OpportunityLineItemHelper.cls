@@ -60,7 +60,6 @@ public class OpportunityLineItemHelper {
             if (entry != null) return entry.Id;
 
         } catch(Exception e){
-            
             System.debug('Error while getting price book entry for: ' + productId);
         }
         

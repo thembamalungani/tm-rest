@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Stage used to cancel a request a call case
+ * @date 2019-10-04
+ */
 public class CancelRequestACallStage implements IPipelineStage {
     /**
      * @param ICaseService caseService

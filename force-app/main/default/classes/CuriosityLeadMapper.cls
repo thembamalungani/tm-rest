@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Maps lead map to BaseLead instance
+ * @date 2019-10-04
+ */
 public class CuriosityLeadMapper extends AbstractLeadMapper implements ILeadMapper {
     
     /**

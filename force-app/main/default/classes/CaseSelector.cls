@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Selector class for Case
+ * @date 2019-10-04
+ */
 public class CaseSelector extends ObjectSelector implements ICaseSelector {
     /**
      * AccountSelector cosntructor
