@@ -25,10 +25,10 @@ public class AsyncLeadHandler implements Queueable, IAsyncLeadHandler {
      */
     public void execute(QueueableContext context) { 
         
-        ILeadHandler handler = LeadHandlerFactory.getHandler(lead);
-
         lead = (new ProductIdTranslator()).translate(lead);
         
+        ILeadHandler handler = LeadHandlerFactory.getHandler(lead);
+
         if (handler != null) {
             Object result = handler.handle(lead);
         }

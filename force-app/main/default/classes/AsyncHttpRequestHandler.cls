@@ -14,10 +14,20 @@ public class AsyncHttpRequestHandler implements Queueable {
      */
     private Type type;
 
+    /**
+     * Sets the hnadler of the http request
+     *
+     * @param Type type
+     */
     public void setType(Type type) {
         this.type = type;
     }
 
+    /**
+     * Sets the request to be processed
+     * 
+     * @param BaseHttpRequest request
+     */
     public void setRequest(BaseHttpRequest request) {
         this.request = request;
     }

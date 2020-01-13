@@ -57,7 +57,13 @@ public class CreateRequestACallStage implements IPipelineStage {
      * @param Opportunity opportunity
      * @return Object
      */
-    private Object response(BaseLead lead, Account account, Opportunity opportunity, List<OpportunityLineItem> lineItems, Case newCase) {
+    private Object response(
+        BaseLead lead, 
+        Account account, 
+        Opportunity opportunity, 
+        List<OpportunityLineItem> lineItems, 
+        Case newCase
+    ) {
         return StageResult.builder()
                 .lead(lead)
                 .stageCase(newCase)
