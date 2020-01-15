@@ -6,7 +6,7 @@
 public class CuriosityLeadMapper extends AbstractLeadMapper implements ILeadMapper {
     
     /**
-     * Parses the contect details from leadMap
+     * Parses the contact details from leadMap
      *
      * @return ContactDetails
      */
@@ -49,30 +49,15 @@ public class CuriosityLeadMapper extends AbstractLeadMapper implements ILeadMapp
         tracking.source                     = 'Curiosity';
         
         if (leadMap.get('productIds') != null) {
-            
-            tracking.productIds = new List<String>();
-            
-            for(Object item: (List<Object>)leadMap.get('productIds')){
-                tracking.productIds.add((String)item);
-            }
+            tracking.productIds = new List<String>((List<String>)leadMap.get('productIds'));
         }
 
         if (leadMap.get('productUuids') != null) {
-            
-            tracking.productUuids  = new List<String>();
-
-            for(Object item: (List<Object>)leadMap.get('productUuids')){
-                tracking.productUuids.add((String)item);
-            }
+            tracking.productUuids = new List<String>((List<String>)leadMap.get('productUuids'));
         }
 
         if (leadMap.get('productParentUuids') != null) {
-            
-            tracking.productParentUuids  = new List<String>();
-
-            for(Object item: (List<Object>)leadMap.get('productParentUuids')){
-                tracking.productParentUuids.add((String)item);
-            }
+            tracking.productParentUuids = new List<String>((List<String>)leadMap.get('productParentUuids'));
         }
         
         return tracking;

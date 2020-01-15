@@ -27,6 +27,7 @@ public class BaseHttpRequest {
 
         BaseHttpRequest request = new BaseHttpRequest();
         request.body = restRequest.requestBody.toString();
+
         return request;
     }
 }

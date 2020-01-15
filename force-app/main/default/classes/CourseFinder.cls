@@ -13,12 +13,15 @@ public class CourseFinder implements IPipelineStage {
     public Object call(Object payload) {
 
         Map<String, Object> payloadMap  = (Map<String, Object>)payload;
+
         try {
+
             Course__c course = (new CourseSelector()).selectByUuid((String)payloadMap.get('courseId'));
 
             if (course != null) {
                 payloadMap.put('course', course);
             }
+
         }catch(Exception e){
             System.debug('Course not found');
         }

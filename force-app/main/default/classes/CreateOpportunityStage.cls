@@ -10,10 +10,16 @@ public class CreateOpportunityStage implements IPipelineStage {
     private IOpportunityService opportunityService;
 
     /**
+     * @param INotificationService notificationService
+     */
+    private INotificationService notificationService;
+
+    /**
      * Wire dependencies
      */
     public CreateOpportunityStage() {
-        this.opportunityService = new OpportunityService();
+        this.opportunityService     = new OpportunityService();
+        this.notificationService    = new EmailNofificationService();
     }
 
     /**
@@ -36,12 +42,23 @@ public class CreateOpportunityStage implements IPipelineStage {
         opportunity = OpportunityHelper.checkOpportunity(lead, account);
 
         if (opportunity == null) {
+
             opportunity = OpportunityHelper.prepareFor(lead, account);
             
-            try {
-                this.opportunityService.create(new List<Opportunity>{ opportunity });
-            } catch (Exception e) {
-                System.debug('ERROR: ' + e.getMessage());
+            if (lead.tracking.productIds.size() > 0) {
+                
+                try {
+                    
+                    opportunityService.create(new List<Opportunity>{ opportunity });
+
+                } catch (Exception e) {
+
+                    notificationService.notify(new OpportunityCreateFailedNotification(lead, e.getMessage()));
+                }
+
+            } else {
+
+                notificationService.notify(new OpportunityCreateFailedNotification(lead, Strings.NO_PRODUCT_PASSED));
             }
         }
 

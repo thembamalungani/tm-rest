@@ -5,7 +5,7 @@
  */
 public class SubmittedRegistrationStep1Handler implements ILeadHandler {
 
-    Object result;
+    private Object result;
 
     /**
      * Called when the stage is run

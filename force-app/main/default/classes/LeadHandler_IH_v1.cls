@@ -8,7 +8,7 @@ global class LeadHandler_IH_v1 {
     /**
      * Used to handle creating leads
      *
-     * @return HttpResponsep
+     * @return HttpResponse
      */
    	@HttpPost
     global static String create() {

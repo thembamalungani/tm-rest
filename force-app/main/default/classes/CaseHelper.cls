@@ -53,15 +53,20 @@ public class CaseHelper {
     public static Case setOwner(Case newCase, BaseLead lead) {
 
         if (!String.isBlank(lead.tracking.owner)) {
+
             try {
                 newCase.OwnerId = [SELECT Id FROM User WHERE Email = :lead.tracking.owner LIMIT 1].Id;
             }catch(Exception e){}
+
         } else {
+
             try {
+
                 Id salesCaseAssignmentRuleId    = [select id from AssignmentRule where SobjectType = 'Case' and Active = true limit 1].Id;
                 Database.DMLOptions dmlOpts     = new Database.DMLOptions();
                 dmlOpts.assignmentRuleHeader.assignmentRuleId = salesCaseAssignmentRuleId;
                 newCase.setOptions(dmlOpts);
+                
             } catch(Exception e){}
         }
 
@@ -89,7 +94,7 @@ public class CaseHelper {
      */
     public static String description(BaseLead lead) {
 
-        String presentationId   = lead.tracking.productIds.get(0);
+        String presentationId   = (lead.tracking.productIds.size() > 0) ? lead.tracking.productIds.get(0): 'Unknown';
         Course__c course        = (Course__c)((new CourseSelector()).selectByPresentationId(presentationId));
 
         Map<String, Object> values = new Map<String, Object>{

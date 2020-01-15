@@ -5,7 +5,7 @@
  */
 public class CaseSelector extends ObjectSelector implements ICaseSelector {
     /**
-     * AccountSelector cosntructor
+     * AccountSelector constructor
      */
     public CaseSelector() {
         super(Case.getSObjectType());

@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Lead helper class
+ * @date 2019-10-03
+ */
 public class LeadHelper {
     /**
      * Creates a map of account fields to lead values
@@ -33,5 +38,17 @@ public class LeadHelper {
         }catch(Exception e){}
 
         return accountParameters;
+    }
+
+
+    /**
+     * Checks if the lead is a calendly event
+     *
+     * @param BaseLead lead
+     * @return Boolean
+     */
+    public static Boolean isCalendly(BaseLead lead){
+        return (lead.getType() == LeadType.CALENDLY_RAC_CREATED)
+                || (lead.getType() == LeadType.CALENDLY_RAC_CANCELED);
     }
 }

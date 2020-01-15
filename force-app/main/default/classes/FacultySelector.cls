@@ -5,7 +5,7 @@
  */
 public class FacultySelector extends ObjectSelector {
     /**
-     * FacultySelector cosntructor
+     * FacultySelector constructor
      */
     public FacultySelector() {
         super(Faculty__c.getSObjectType());

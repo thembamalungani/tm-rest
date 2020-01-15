@@ -5,7 +5,7 @@
  */
 public class PricebookSelector extends ObjectSelector {
     /**
-     * PricebookSelector cosntructor
+     * PricebookSelector constructor
      */
     public PricebookSelector() {
         super(Pricebook2.getSObjectType());

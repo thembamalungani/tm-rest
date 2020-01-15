@@ -11,6 +11,18 @@ public class Misc {
      * @return Boolean
      */
     public static Boolean isSalesforceId(String toCheck) {
-        return Pattern.compile('[a-zA-Z0-9]{15,18}').matcher(toCheck).matches()
+
+        String salesforceIdRegex = '[a-zA-Z0-9]{15,18}';
+
+        return Pattern.compile(salesforceIdRegex).matcher(toCheck).matches();
+    }
+
+    public static String systemEmail() {
+        
+        try {
+            return EnvironmentVariables__c.getValues('LEAD_EVENTS_GROUP_EMAIL').get('Value__c').toString();
+        } catch (System.Exception e) {
+            return 'ct-crm-alerts@2u.com';
+        }
     }
 }

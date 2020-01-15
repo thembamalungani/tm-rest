@@ -12,6 +12,11 @@ public class StageResult {
     private List<OpportunityLineItem> opportunityLineItems;
     private Case stageCase;
 
+    /**
+     * StageResult constructor
+     *
+     * @param StageResult.Builder builder
+     */
     public StageResult(StageResult.Builder builder) {
         this.lead               = builder.lead;
         this.isSuccess          = builder.isSuccess;
@@ -21,6 +26,11 @@ public class StageResult {
         this.opportunityLineItems = builder.opportunityLineItems;
     }
 
+    /**
+     *  Returns a builder instance
+     *
+     *  @param  StageResult.Builder
+     */
     public static StageResult.Builder builder() {
         return new StageResult.Builder();
     }

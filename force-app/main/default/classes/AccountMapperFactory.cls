@@ -14,23 +14,12 @@ public class AccountMapperFactory {
         
         IAccountMapper mapper;
 
-        if ( isCalendly(lead) ) {
+        if ( LeadHelper.isCalendly(lead) ) {
             mapper = new CalendlyAccountMapper();
         } else {
             mapper = new CuriosityAccountMapper();
         }
 
         return mapper;
-    }
-
-    /**
-     * Checks if the lead is a calendly event
-     *
-     * @param BaseLead lead
-     * @return Boolean
-     */
-    public static Boolean isCalendly(BaseLead lead){
-        return (lead.getType() == LeadType.CALENDLY_RAC_CREATED)
-                || (lead.getType() == LeadType.CALENDLY_RAC_CANCELED);
     }
 }

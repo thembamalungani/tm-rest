@@ -3,11 +3,11 @@
  * @description Selector class for opportunities
  * @date 2019-10-21
  */
- public class OpportunitySelctor extends ObjectSelector implements IOpportunitySelector {
+ public class OpportunitySelector extends ObjectSelector implements IOpportunitySelector {
     /**
-     * OpportunitySelctorCreateOpportunityLineItemsStage cosntructor
+     * OpportunitySelector constructor
      */
-    public OpportunitySelctor() {
+    public OpportunitySelector() {
         super(Opportunity.getSObjectType());
     }
 

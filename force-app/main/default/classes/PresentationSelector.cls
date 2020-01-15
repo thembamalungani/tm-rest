@@ -5,7 +5,7 @@
  */
 public class PresentationSelector extends ObjectSelector {
     /**
-     * PresentationSelector cosntructor
+     * PresentationSelector constructor
      */
     public PresentationSelector() {
         super(Product2.getSObjectType());

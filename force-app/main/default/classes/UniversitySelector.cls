@@ -5,7 +5,7 @@
  */
 public class UniversitySelector extends ObjectSelector {
     /**
-     * UniversitySelector cosntructor
+     * UniversitySelector constructor
      */
     public UniversitySelector() {
         super(University__c.getSObjectType());

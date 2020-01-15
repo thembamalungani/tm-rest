@@ -5,7 +5,7 @@
  */
 public class CalendlyLeadMapper extends AbstractLeadMapper implements ILeadMapper {
     /**
-     * Parses the contect details from leadMap
+     * Parses the contact details from leadMap
      *
      * @return ContactDetails
      */
