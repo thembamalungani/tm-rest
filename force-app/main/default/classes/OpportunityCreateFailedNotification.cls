@@ -1,3 +1,8 @@
+/**
+ * @author Themba Malungani <themba.clarence@gmail.com>
+ * @description Used to encapsulate strings
+ * @date 2019-10-21
+ */
 public class OpportunityCreateFailedNotification implements INotification {
     
     private BaseLead lead;

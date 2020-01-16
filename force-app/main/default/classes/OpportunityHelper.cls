@@ -44,13 +44,13 @@ public class OpportunityHelper {
             Lead_Capture_Form_URL__c        = lead.tracking.leadCaptureFormUrl,
             Lead_Capture_Form_Type__c       = getLeadCapturType(lead),
             AccountId                       = account.Id,
-            Segment_Sync_Status__c          = Strings.SEGMENT_PENDING_SYNC,
             CurrencyIsoCode                 = Strings.CURRENCY_USD,
             Pricebook2Id                    = pricebook.Id
         );
 
         if (lead.tracking.productIds.size() == 1){
             opportunity.Inferred_Presentation__c = lead.tracking.productIds.get(0);
+            opportunity.Segment_Sync_Status__c   = Strings.SEGMENT_PENDING_SYNC;
         }
 
         return opportunity;
