@@ -11,4 +11,6 @@ public class Strings {
   public static final String REQUEST_A_CALL           = 'Request a call';
   public static final String REQUESTED_A_CALL         = 'Requested a call';
   public static final String NO_PRODUCT_PASSED        = 'No product Id was passed';
+  public static final String SYSTEM_EMAIL             = 'ct-crm-alerts@2u.com';
+  public static final String SALESFORCE_ID_REGEX      = '[a-zA-Z0-9]{15,18}';
 }

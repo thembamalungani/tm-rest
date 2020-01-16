@@ -15,7 +15,7 @@ global class LeadHandler_IH_v1 {
 
         BaseHttpResponse response = (new RequestDispatcher()).dispatch(LeadsCreateHandler.class);
 
-        RestContext.response.statusCode = response.httpCode;
+        RestContext.response.statusCode = response.statusCode;
 
         return response.body;
     }

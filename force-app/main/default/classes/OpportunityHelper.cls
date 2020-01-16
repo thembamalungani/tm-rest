@@ -37,7 +37,7 @@ public class OpportunityHelper {
 
         Opportunity opportunity = new Opportunity(
             Name                            = OpportunityHelper.nameFor(lead),
-            StageName                       = Strings.OP_STANE_NEW_INTEREST,
+            StageName                       = Strings.OP_STAGE_NEW_INTEREST,
             CloseDate                       = Date.today().addMonths(1),
             Google_Analytics_Client_Id__c   = lead.tracking.googleAnalyticsClientId,
             Segment_Anonymous_Id__c         = lead.tracking.segmentAnonymousId,

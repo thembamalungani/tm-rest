@@ -15,7 +15,7 @@ public class SysIntegrationRequestLoggerService implements IHttpRequestLoggerSer
 
         String requestString        = JSON.serialize(request.body);
         String responseString       = JSON.serialize(response.body);
-        Integer statusCode          = response.httpCode;
+        Integer statusCode          = response.statusCode;
         String sourceService        = '/services/apexrest/leads';
         String destinationService   = 'Salesforce';
         String method               = 'POST';

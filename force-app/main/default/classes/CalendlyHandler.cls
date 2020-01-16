@@ -4,6 +4,9 @@
  * @date 2019-10-01
  */
 public class CalendlyHandler implements ILeadHandler {
+    
+    Object result;
+    
     /**
      * Called when the stage is run
      * 
@@ -12,7 +15,6 @@ public class CalendlyHandler implements ILeadHandler {
      */
     public Object handle(BaseLead lead) {
 
-        Object result;
         IPipeline pipeline;
         Map<String, Object> payload;
 

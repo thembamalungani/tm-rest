@@ -12,7 +12,7 @@ public class Misc {
      */
     public static Boolean isSalesforceId(String toCheck) {
 
-        String salesforceIdRegex = '[a-zA-Z0-9]{15,18}';
+        String salesforceIdRegex = Strings.SALESFRCE_ID_REGEX;
 
         return Pattern.compile(salesforceIdRegex).matcher(toCheck).matches();
     }
@@ -22,7 +22,7 @@ public class Misc {
         try {
             return EnvironmentVariables__c.getValues('LEAD_EVENTS_GROUP_EMAIL').get('Value__c').toString();
         } catch (System.Exception e) {
-            return 'ct-crm-alerts@2u.com';
+            return Strings.SYSTEM_EMAIL;
         }
     }
 }

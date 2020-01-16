@@ -2,6 +2,7 @@ public class EmailNofificationService implements INotificationService {
 
     public Boolean notify(INotification notification) {
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email(notification) });
+        return true;
     }
 
     /**
